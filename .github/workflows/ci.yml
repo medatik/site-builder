@@ -1,0 +1,38 @@
+name: CI
+
+# A client's config is code too: a typo in one config can break that site's
+# build without touching a line of the engine. This is the check that cannot be
+# skipped or forgotten.
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Ordered cheapest-first so the fastest signal fails first.
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      # The real proof: the site must actually build, since that is what the
+      # host does on deploy.
+      - name: Build
+        run: npm run build
