@@ -99,7 +99,13 @@ export function HeroSlider({
       }}
       onKeyDown={onKeyDown}
     >
-      <div className="relative min-h-[clamp(30rem,78vh,46rem)]">
+      {/* The slides stack in a single grid cell rather than being absolutely
+          positioned. Absolute slides cannot contribute height, so the region
+          was locked to `min-h` and the tallest slide simply overflowed and got
+          clipped — which is why reserving space inside a slide did nothing.
+          One grid cell makes the height the max of the slides, so every slide
+          has somewhere to put its copy. */}
+      <div className="relative grid min-h-[clamp(30rem,78vh,46rem)]">
         {slides.map((slide, i) => {
           const active = i === index;
           return (
@@ -117,7 +123,7 @@ export function HeroSlider({
               aria-roledescription="slide"
               aria-label={`${i + 1} / ${count}`}
               className={cn(
-                "absolute inset-0 transition-opacity duration-700 ease-[var(--transition-ease)] motion-reduce:transition-none",
+                "relative [grid-area:1/1] transition-opacity duration-700 ease-[var(--transition-ease)] motion-reduce:transition-none",
                 active ? "opacity-100" : "pointer-events-none opacity-0",
               )}
             >
@@ -159,6 +165,15 @@ export function HeroSlider({
                     "flex max-w-2xl flex-col gap-5",
                     slide.align === "center" && "mx-auto items-center text-center",
                     slide.align === "end" && "ms-auto items-end text-end",
+                    // Reserve the strip the controls float in. They are pinned
+                    // at bottom-8 with z-10 and pointer-events-auto, so they sit
+                    // ABOVE the copy: on a slide whose heading runs to three
+                    // lines the CTA row reached into them, and the overlap did
+                    // not merely look wrong — a click in the shared band hit
+                    // "Previous slide" instead of the CTA. The copy is centred,
+                    // so padding here lifts it by half; this clears the strip
+                    // with room to spare.
+                    count > 1 && "pb-32",
                   )}
                 >
                   {slide.eyebrow && (
