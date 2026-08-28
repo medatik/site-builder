@@ -165,15 +165,16 @@ export function HeroSlider({
                     "flex max-w-2xl flex-col gap-5",
                     slide.align === "center" && "mx-auto items-center text-center",
                     slide.align === "end" && "ms-auto items-end text-end",
-                    // Reserve the strip the controls float in. They are pinned
-                    // at bottom-8 with z-10 and pointer-events-auto, so they sit
-                    // ABOVE the copy: on a slide whose heading runs to three
-                    // lines the CTA row reached into them, and the overlap did
-                    // not merely look wrong — a click in the shared band hit
-                    // "Previous slide" instead of the CTA. The copy is centred,
-                    // so padding here lifts it by half; this clears the strip
-                    // with room to spare.
-                    count > 1 && "pb-32",
+                    // Reserve the strip the controls float in — but only the
+                    // part the section's own bottom padding doesn't already
+                    // cover. The controls are pinned at bottom-8 (32px) and are
+                    // size-11 (44px), so they occupy 76px; `--section-py` runs
+                    // from 56px (stark) to 136px (soft), so most presets already
+                    // have room and a flat reserve would just make the hero
+                    // taller for nothing — tall enough, in fact, to push the
+                    // controls below the fold, trading one bug for another.
+                    // 5.75rem = the 76px strip plus 16px of breathing room.
+                    count > 1 && "pb-[max(0px,calc(5.75rem-var(--section-py)))]",
                   )}
                 >
                   {slide.eyebrow && (
