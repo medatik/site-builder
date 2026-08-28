@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+  <defs>
+    <linearGradient id="wash803805" gradientTransform="rotate(212 0.5 0.5)">
+      <stop offset="0" stop-color="#123E63" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#0C1622" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#C17A08" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="glow803805" cx="0.7" cy="0.25" r="0.8">
+      <stop offset="0" stop-color="#C17A08" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#C17A08" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#F4F7FB"/>
+  <rect width="1200" height="900" fill="url(#wash803805)"/>
+  <path d="M298.6 0 L426.26 0 L21.26 900 L-106.4 900 Z" fill="#123E63" opacity="0.08"/>
+  <path d="M219.04 0 L295.11 0 L-109.89 900 L-185.96 900 Z" fill="#123E63" opacity="0.09"/>
+  <path d="M100.64 0 L292.45 0 L-112.55 900 L-304.36 900 Z" fill="#123E63" opacity="0.06"/>
+  <path d="M170.76 0 L306.04 0 L-98.96 900 L-234.24 900 Z" fill="#123E63" opacity="0.06"/>
+  <path d="M332.84 0 L445.72 0 L40.72 900 L-72.16 900 Z" fill="#123E63" opacity="0.1"/>
+  <path d="M322.19 0 L451.91 0 L46.91 900 L-82.81 900 Z" fill="#123E63" opacity="0.05"/>
+  <polyline points="161.24,690.5 292.37,690.5 292.37,663.6 462.57,663.6 462.57,670.69" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="462.57" cy="670.69" r="8.4" fill="#C17A08" opacity="0.75"/>
+  <polyline points="461.64,355.82 602.15,355.82 602.15,301.5 775.76,301.5 775.76,306.23" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="775.76" cy="306.23" r="8.4" fill="#C17A08" opacity="0.75"/>
+  <polyline points="780.03,534.54 879.13,534.54 879.13,459.33 1061.51,459.33 1061.51,368.51" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="1061.51" cy="368.51" r="8.4" fill="#C17A08" opacity="0.75"/>
+  <polyline points="712.55,626.11 843.34,626.11 843.34,511.88 989.87,511.88 989.87,597.25" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="989.87" cy="597.25" r="8.4" fill="#C17A08" opacity="0.75"/>
+  <polyline points="230.93,199.73 391.08,199.73 391.08,303.66 564.5,303.66 564.5,423.69" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="564.5" cy="423.69" r="8.4" fill="#C17A08" opacity="0.75"/>
+  <path transform="rotate(-17 444 315)" d="M444 198 L379.65 329.04 L436.98 329.04 L418.26 432 L514.2 293.94 L453.36 293.94 Z" fill="#123E63" opacity="0.6"/>
+  <rect width="1200" height="900" fill="url(#glow803805)"/>
+</svg>

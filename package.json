@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "telegram:chatid": "node scripts/telegram-chatid.mjs"
+    "telegram:chatid": "node scripts/telegram-chatid.mjs",
+    "art": "node scripts/generate-art.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",

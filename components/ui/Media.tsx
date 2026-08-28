@@ -57,7 +57,13 @@ export function Media({
           fill
           sizes={sizes}
           priority={priority}
-          unoptimized={isRemote(media.src)}
+          // SVG is passed through for the same reason remote sources are: there
+          // is nothing for a raster optimiser to do to a vector, and routing one
+          // through /_next/image would require `images.dangerouslyAllowSVG` —
+          // which cannot be scoped to our own files. It would apply to every SVG
+          // the deployment is ever pointed at, including a client-supplied one.
+          // Skipping the optimiser costs nothing here and keeps that flag off.
+          unoptimized={isRemote(media.src) || /\.svg($|[?#])/i.test(media.src)}
           className="object-cover"
         />
       </div>

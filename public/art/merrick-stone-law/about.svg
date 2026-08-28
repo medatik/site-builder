@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+  <defs>
+    <linearGradient id="wash360956" gradientTransform="rotate(170 0.5 0.5)">
+      <stop offset="0" stop-color="#8A2733" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#1B2A4A" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#A77F39" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="glow360956" cx="0.7" cy="0.25" r="0.8">
+      <stop offset="0" stop-color="#A77F39" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#A77F39" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#F4F1E9"/>
+  <rect width="1200" height="900" fill="url(#wash360956)"/>
+  <rect x="136.8" y="335.48" width="54" height="564.52" fill="#20242E" opacity="0.07"/>
+  <rect x="124.92" y="315.68" width="77.76" height="19.8" fill="#20242E" opacity="0.09"/>
+  <rect x="304.62" y="297.65" width="54" height="602.35" fill="#20242E" opacity="0.07"/>
+  <rect x="292.74" y="277.85" width="77.76" height="19.8" fill="#20242E" opacity="0.09"/>
+  <rect x="472.45" y="280.88" width="54" height="619.12" fill="#20242E" opacity="0.07"/>
+  <rect x="460.57" y="261.08" width="77.76" height="19.8" fill="#20242E" opacity="0.09"/>
+  <rect x="640.27" y="305.47" width="54" height="594.53" fill="#20242E" opacity="0.07"/>
+  <rect x="628.39" y="285.67" width="77.76" height="19.8" fill="#20242E" opacity="0.09"/>
+  <rect x="808.09" y="335.89" width="54" height="564.11" fill="#20242E" opacity="0.07"/>
+  <rect x="796.21" y="316.09" width="77.76" height="19.8" fill="#20242E" opacity="0.09"/>
+  <rect x="975.91" y="285.07" width="54" height="614.93" fill="#20242E" opacity="0.07"/>
+  <rect x="964.03" y="265.27" width="77.76" height="19.8" fill="#20242E" opacity="0.09"/>
+  <path d="M96 270 Q 651.21 54 1032 270" fill="none" stroke="#8A2733" stroke-opacity="0.3" stroke-width="4.8"/>
+  <path d="M42 42 h1 M42 84 h1 M42 126 h1 M42 210 h1 M42 462 h1 M42 504 h1 M42 546 h1 M42 588 h1 M42 756 h1 M42 840 h1 M84 84 h1 M84 168 h1 M84 252 h1 M84 378 h1 M84 462 h1 M84 504 h1 M84 672 h1 M84 840 h1 M84 882 h1 M126 126 h1 M126 210 h1 M126 252 h1 M126 294 h1 M126 336 h1 M126 378 h1 M126 420 h1 M126 462 h1 M168 84 h1 M168 168 h1 M168 210 h1 M168 252 h1 M168 336 h1 M168 378 h1 M168 420 h1 M168 462 h1 M168 504 h1 M168 630 h1 M168 756 h1 M168 882 h1 M210 42 h1 M210 126 h1 M210 210 h1 M210 252 h1 M210 294 h1 M210 504 h1 M210 546 h1 M210 630 h1 M210 714 h1 M210 840 h1 M210 882 h1 M252 84 h1 M252 126 h1 M252 168 h1 M252 294 h1 M252 378 h1 M252 420 h1 M252 504 h1 M252 798 h1 M252 840 h1 M294 42 h1 M294 84 h1 M294 126 h1 M294 210 h1 M294 294 h1 M294 420 h1 M294 462 h1 M294 756 h1 M294 840 h1 M336 42 h1 M336 210 h1 M336 252 h1 M336 336 h1 M336 504 h1 M336 798 h1 M378 42 h1 M378 84 h1 M378 126 h1 M378 168 h1 M378 252 h1 M378 336 h1 M378 462 h1 M378 630 h1 M378 714 h1 M378 756 h1 M420 42 h1 M420 84 h1 M420 126 h1 M420 168 h1 M420 210 h1 M420 252 h1 M420 336 h1 M420 462 h1 M420 504 h1 M420 546 h1 M420 588 h1 M420 714 h1 M420 798 h1 M420 840 h1 M420 882 h1 M462 42 h1 M462 252 h1 M462 336 h1 M462 420 h1 M462 504 h1 M462 630 h1 M462 672 h1 M462 756 h1 M462 840 h1 M504 42 h1 M504 84 h1 M504 210 h1 M504 294 h1 M504 420 h1 M504 504 h1 M504 630 h1 M504 714 h1 M504 798 h1 M546 42 h1 M546 294 h1 M546 420 h1 M546 462 h1 M546 546 h1 M546 672 h1 M546 714 h1 M546 756 h1 M546 798 h1 M546 882 h1 M588 42 h1 M588 168 h1 M588 336 h1 M588 420 h1 M588 714 h1 M588 798 h1 M588 840 h1 M630 42 h1 M630 126 h1 M630 168 h1 M630 336 h1 M630 420 h1 M630 504 h1 M630 546 h1 M630 588 h1 M630 672 h1 M630 756 h1 M630 882 h1 M672 84 h1 M672 252 h1 M672 504 h1 M672 630 h1 M672 672 h1 M672 840 h1 M672 882 h1 M714 84 h1 M714 126 h1 M714 210 h1 M714 294 h1 M714 336 h1 M714 378 h1 M714 420 h1 M714 462 h1 M714 588 h1 M714 672 h1 M714 714 h1 M714 756 h1 M714 840 h1 M756 42 h1 M756 126 h1 M756 168 h1 M756 210 h1 M756 336 h1 M756 546 h1 M756 630 h1 M756 672 h1 M756 798 h1 M756 840 h1 M756 882 h1 M798 126 h1 M798 168 h1 M798 378 h1 M798 420 h1 M798 546 h1 M798 672 h1 M798 714 h1 M798 840 h1 M798 882 h1 M840 126 h1 M840 210 h1 M840 252 h1 M840 294 h1 M840 504 h1 M840 546 h1 M840 588 h1 M840 630 h1 M840 672 h1 M840 714 h1 M840 756 h1 M840 840 h1 M882 126 h1 M882 210 h1 M882 252 h1 M882 294 h1 M882 336 h1 M882 462 h1 M882 546 h1 M882 588 h1 M882 630 h1 M882 672 h1 M882 756 h1 M882 840 h1 M924 84 h1 M924 168 h1 M924 252 h1 M924 294 h1 M924 336 h1 M924 378 h1 M924 546 h1 M924 672 h1 M924 840 h1 M924 882 h1 M966 126 h1 M966 168 h1 M966 210 h1 M966 294 h1 M966 336 h1 M966 420 h1 M966 462 h1 M966 504 h1 M966 588 h1 M966 714 h1 M966 756 h1 M966 798 h1 M1008 42 h1 M1008 126 h1 M1008 168 h1 M1008 252 h1 M1008 336 h1 M1008 378 h1 M1008 462 h1 M1008 504 h1 M1008 630 h1 M1008 672 h1 M1050 42 h1 M1050 84 h1 M1050 252 h1 M1050 294 h1 M1050 504 h1 M1050 546 h1 M1050 840 h1 M1092 42 h1 M1092 84 h1 M1092 126 h1 M1092 252 h1 M1092 294 h1 M1092 336 h1 M1092 504 h1 M1092 546 h1 M1092 588 h1 M1092 630 h1 M1092 672 h1 M1134 42 h1 M1134 126 h1 M1134 168 h1 M1134 252 h1 M1134 294 h1 M1134 462 h1 M1134 504 h1 M1134 546 h1 M1134 588 h1 M1134 672 h1 M1134 756 h1 M1134 840 h1 M1134 882 h1 M1176 42 h1 M1176 210 h1 M1176 252 h1 M1176 294 h1 M1176 336 h1 M1176 378 h1 M1176 504 h1 M1176 756 h1 M1176 840 h1" stroke="#A77F39" stroke-opacity="0.26" stroke-width="4.2" stroke-linecap="round"/>
+  <g transform="rotate(-4.5 540 468)" stroke="#A77F39" stroke-opacity="0.56" stroke-width="6" fill="none" stroke-linecap="round"><path d="M540 368.55 V557.51"/><path d="M460.44 413.3 H619.56"/><path d="M460.44 413.3 l-29.83 54.7 h59.67 Z"/><path d="M619.56 413.3 l-29.83 54.7 h59.67 Z"/></g>
+  <rect width="1200" height="900" fill="url(#glow360956)"/>
+</svg>

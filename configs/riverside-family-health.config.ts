@@ -184,7 +184,7 @@ const config: SiteConfig = {
               variant: "secondary",
             },
             media: {
-              src: "",
+              src: "/art/riverside-family-health/hero.svg",
               alt: "A Riverside provider talking with a patient",
             },
             align: "start",
@@ -205,8 +205,10 @@ const config: SiteConfig = {
               href: "#services",
               variant: "secondary",
             },
-            // No `media` — a themed panel renders from the palette. Replace with
-            // a real photograph of the practice before this goes to a client.
+            media: {
+              src: "/art/riverside-family-health/hero-2.svg",
+              alt: "Same-day care at Riverside Family Health",
+            },
             align: "start",
           },
           {
@@ -224,6 +226,10 @@ const config: SiteConfig = {
               label: "Read patient stories",
               href: "#testimonials",
               variant: "secondary",
+            },
+            media: {
+              src: "/art/riverside-family-health/hero-3.svg",
+              alt: "A secure telehealth visit with a Riverside provider",
             },
             align: "start",
           },
@@ -302,7 +308,7 @@ const config: SiteConfig = {
           { value: "4.9★", label: "Patient rating" },
         ],
         mediaSide: "right",
-        media: { alt: "The Riverside Family Health waiting area" },
+        media: { src: "/art/riverside-family-health/about.svg", alt: "The Riverside Family Health waiting area" },
       },
     },
     {
@@ -317,36 +323,42 @@ const config: SiteConfig = {
         members: [
           {
             name: "Dr. Elena Ortiz",
+            photo: { src: "/art/riverside-family-health/team-eo.svg", alt: "Dr. Elena Ortiz" },
             role: "Family Medicine · Medical Director",
             credentials: "MD, FAAFP",
             bio: "Twenty years in family medicine with a soft spot for preventive care and demystifying lab results.",
           },
           {
             name: "Dr. Marcus Bell",
+            photo: { src: "/art/riverside-family-health/team-mb.svg", alt: "Dr. Marcus Bell" },
             role: "Pediatrics",
             credentials: "MD, FAAP",
             bio: "Makes even nervous toddlers laugh. Focused on development, nutrition, and calm, confident parents.",
           },
           {
             name: "Dr. Aisha Rahman",
+            photo: { src: "/art/riverside-family-health/team-ar.svg", alt: "Dr. Aisha Rahman" },
             role: "Women's Health",
             credentials: "MD, OB/GYN",
             bio: "Compassionate, evidence-based care across every stage of women's health, from teens to menopause.",
           },
           {
             name: "Nadia Chen, FNP",
+            photo: { src: "/art/riverside-family-health/team-nc.svg", alt: "Nadia Chen, FNP" },
             role: "Family Nurse Practitioner",
             credentials: "MSN, FNP-C",
             bio: "Same-day sick visits and chronic care with a knack for practical, livable plans.",
           },
           {
             name: "Dr. James Okafor",
+            photo: { src: "/art/riverside-family-health/team-jo.svg", alt: "Dr. James Okafor" },
             role: "Internal Medicine",
             credentials: "MD",
             bio: "Manages the complex, multi-condition cases with patience and clear communication.",
           },
           {
             name: "Priya Nair, RD",
+            photo: { src: "/art/riverside-family-health/team-pn.svg", alt: "Priya Nair, RD" },
             role: "Registered Dietitian",
             credentials: "RD, CDCES",
             bio: "Turns 'eat healthier' into a plan that fits your real life, budget, and kitchen.",
@@ -506,12 +518,12 @@ const config: SiteConfig = {
       props: {
         title: "Gallery",
         images: [
-          { alt: "Gallery image", src: "" },
-          { alt: "Gallery image", src: "" },
-          { alt: "Gallery image", src: "" },
-          { alt: "Gallery image", src: "" },
-          { alt: "Gallery image", src: "" },
-          { alt: "Gallery image", src: "" },
+          { alt: "The Riverside waiting room", src: "/art/riverside-family-health/gallery-1.svg" },
+          { alt: "A consultation room", src: "/art/riverside-family-health/gallery-2.svg" },
+          { alt: "The practice reception desk", src: "/art/riverside-family-health/gallery-3.svg" },
+          { alt: "On-site lab and vitals station", src: "/art/riverside-family-health/gallery-4.svg" },
+          { alt: "The children's corner", src: "/art/riverside-family-health/gallery-5.svg" },
+          { alt: "The Riverside building entrance", src: "/art/riverside-family-health/gallery-6.svg" },
         ],
       },
     },

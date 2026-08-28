@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img">
+  <defs>
+    <linearGradient id="wash347668" gradientTransform="rotate(259 0.5 0.5)">
+      <stop offset="0" stop-color="#123E63" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#0C1622" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#C17A08" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="glow347668" cx="0.7" cy="0.25" r="0.8">
+      <stop offset="0" stop-color="#C17A08" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#C17A08" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="#F4F7FB"/>
+  <rect width="1000" height="1000" fill="url(#wash347668)"/>
+  <path d="M0.33 0 L158.55 0 L-291.45 1000 L-449.67 1000 Z" fill="#123E63" opacity="0.1"/>
+  <path d="M665.78 0 L777.42 0 L327.42 1000 L215.78 1000 Z" fill="#123E63" opacity="0.1"/>
+  <path d="M729.1 0 L873.09 0 L423.09 1000 L279.1 1000 Z" fill="#123E63" opacity="0.09"/>
+  <polyline points="706.41,567.22 877.92,567.22 877.92,599.5 1033.55,599.5 1033.55,479.06" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="1033.55" cy="479.06" r="7" fill="#C17A08" opacity="0.75"/>
+  <polyline points="714.02,320.1 812.05,320.1 812.05,379.8 936.62,379.8 936.62,301.83" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="936.62" cy="301.83" r="7" fill="#C17A08" opacity="0.75"/>
+  <path transform="rotate(11 700 720)" d="M700 580 L623 736.8 L691.6 736.8 L669.2 860 L784 694.8 L711.2 694.8 Z" fill="#C17A08" opacity="0.64"/>
+  <rect width="1000" height="1000" fill="url(#glow347668)"/>
+</svg>

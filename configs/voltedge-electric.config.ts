@@ -227,7 +227,7 @@ const config: SiteConfig = {
         backdrop: "aurora",
         media: {
           alt: "VoltEdge electrician working on a panel",
-          src: "",
+          src: "/art/voltedge-electric/hero.svg",
         },
       },
     },
@@ -302,7 +302,7 @@ const config: SiteConfig = {
           { value: "4.9★", label: "Average rating" },
         ],
         mediaSide: "left",
-        media: { alt: "VoltEdge crew and service van" },
+        media: { src: "/art/voltedge-electric/about.svg", alt: "VoltEdge crew and service van" },
       },
     },
     {
@@ -370,31 +370,37 @@ const config: SiteConfig = {
         columns: 3,
         images: [
           {
+            src: "/art/voltedge-electric/gallery-1.svg",
             alt: "200A panel upgrade",
             label: "Panel Upgrade",
             caption: "Full 200A service upgrade — Rockridge",
           },
           {
+            src: "/art/voltedge-electric/gallery-2.svg",
             alt: "Recessed lighting install",
             label: "Recessed Lighting",
             caption: "Kitchen recessed lighting retrofit",
           },
           {
+            src: "/art/voltedge-electric/gallery-3.svg",
             alt: "EV charger installation",
             label: "EV Charger",
             caption: "Level 2 charger — Tesla Wall Connector",
           },
           {
+            src: "/art/voltedge-electric/gallery-4.svg",
             alt: "Commercial lighting fit-out",
             label: "Commercial",
             caption: "Warehouse LED retrofit — 40% energy saved",
           },
           {
+            src: "/art/voltedge-electric/gallery-5.svg",
             alt: "Standby generator install",
             label: "Generator",
             caption: "Whole-home standby generator",
           },
           {
+            src: "/art/voltedge-electric/gallery-6.svg",
             alt: "Landscape lighting",
             label: "Landscape",
             caption: "Low-voltage landscape lighting",

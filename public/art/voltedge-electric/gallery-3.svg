@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img">
+  <defs>
+    <linearGradient id="wash804699" gradientTransform="rotate(304 0.5 0.5)">
+      <stop offset="0" stop-color="#123E63" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#0C1622" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#C17A08" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="glow804699" cx="0.7" cy="0.25" r="0.8">
+      <stop offset="0" stop-color="#C17A08" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#C17A08" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="#F4F7FB"/>
+  <rect width="1000" height="1000" fill="url(#wash804699)"/>
+  <path d="M239.64 0 L321.48 0 L-128.52 1000 L-210.36 1000 Z" fill="#123E63" opacity="0.1"/>
+  <path d="M587.79 0 L706.35 0 L256.35 1000 L137.79 1000 Z" fill="#123E63" opacity="0.06"/>
+  <path d="M927.74 0 L995.89 0 L545.89 1000 L477.74 1000 Z" fill="#123E63" opacity="0.11"/>
+  <path d="M916.44 0 L1028.22 0 L578.22 1000 L466.44 1000 Z" fill="#123E63" opacity="0.05"/>
+  <polyline points="133.99,364.81 292.89,364.81 292.89,386.18 438.65,386.18 438.65,358.01" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="438.65" cy="358.01" r="7" fill="#C17A08" opacity="0.75"/>
+  <polyline points="532.11,338.31 636.22,338.31 636.22,391.95 768.16,391.95 768.16,385.5" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="768.16" cy="385.5" r="7" fill="#C17A08" opacity="0.75"/>
+  <polyline points="752.78,355.09 876.27,355.09 876.27,268.96 989.02,268.96 989.02,375.69" fill="none" stroke="#C17A08" stroke-opacity="0.45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="989.02" cy="375.69" r="7" fill="#C17A08" opacity="0.75"/>
+  <path transform="rotate(-12 670 380)" d="M670 240 L593 396.8 L661.6 396.8 L639.2 520 L754 354.8 L681.2 354.8 Z" fill="#C17A08" opacity="0.67"/>
+  <rect width="1000" height="1000" fill="url(#glow804699)"/>
+</svg>
