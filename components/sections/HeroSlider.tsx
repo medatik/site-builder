@@ -121,16 +121,26 @@ export function HeroSlider({
                 active ? "opacity-100" : "pointer-events-none opacity-0",
               )}
             >
-              <Media
-                media={slide.media}
-                rounded={false}
-                placeholderIcon="image"
-                className="absolute inset-0 size-full [&_img]:object-cover"
-                sizes="100vw"
-                // Only the first slide is the LCP candidate; preloading them all
-                // would fight the first one for bandwidth.
-                priority={i === 0}
-              />
+              {/* The wrapper does the positioning, not `className` on Media.
+                  Media's own root is `position: relative` and `cn` is a plain
+                  joiner, so passing `absolute` cannot win: Tailwind settles that
+                  conflict by STYLESHEET order, where `.relative` comes last —
+                  not by the order the classes appear on the element. Left that
+                  way the media stayed in normal flow at full height and pushed
+                  the copy past the section's `overflow-hidden` edge, so every
+                  slide rendered its heading and CTAs invisibly. */}
+              <div className="absolute inset-0">
+                <Media
+                  media={slide.media}
+                  rounded={false}
+                  placeholderIcon="image"
+                  className="size-full [&_img]:object-cover"
+                  sizes="100vw"
+                  // Only the first slide is the LCP candidate; preloading them
+                  // all would fight the first one for bandwidth.
+                  priority={i === 0}
+                />
+              </div>
               {/* Scrim: photos are unpredictable, so text needs a guaranteed
                   contrast floor. Built from the theme's own background so it
                   stays on-brand in both light and dark palettes. */}

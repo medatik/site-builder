@@ -184,7 +184,7 @@ const config: SiteConfig = {
               variant: "secondary",
             },
             media: {
-              src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ6PHf4A_0EfeiHnHnr92nBO3_Efp0QygPlPV6pvYlCA&s=10",
+              src: "",
               alt: "A Riverside provider talking with a patient",
             },
             align: "start",

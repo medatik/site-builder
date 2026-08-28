@@ -277,3 +277,67 @@ describe("rating badge hides rather than showing an empty score", () => {
     expect(render({ value: 4.8, count: 12, source: "Google" })).toContain("reviews on");
   });
 });
+
+/**
+ * `cn` is a plain joiner, not `tailwind-merge`. So when a component hardcodes a
+ * position on its root and a caller passes a different one, BOTH land on the
+ * element, and the winner is decided by STYLESHEET order — where `.relative`
+ * comes after `.absolute` — not by the order written on the element.
+ *
+ * That is invisible to every other check here: the markup is correct, the types
+ * are correct, nothing throws, and jsdom has no layout to measure. It shipped in
+ * `HeroSlider`, where the media stayed in normal flow at full height and pushed
+ * the copy past the section's `overflow-hidden` edge — a hero that rendered its
+ * heading, subtitle and CTAs completely invisibly, on a page whose whole job is
+ * that hero.
+ *
+ * A conflict of this shape is never deliberate, so it can simply be banned.
+ */
+const POSITIONS = ["static", "fixed", "absolute", "relative", "sticky"];
+
+function conflictingPositions(html: string): string[] {
+  const bad: string[] = [];
+  for (const m of html.matchAll(/class="([^"]*)"/g)) {
+    // Variant-prefixed utilities (`md:absolute`) are conditional and legitimate;
+    // only bare ones compete for the same cascade slot.
+    const hit = m[1].split(/\s+/).filter((c) => POSITIONS.includes(c));
+    if (hit.length > 1) bad.push(hit.join(" + ") + '  in  class="' + m[1] + '"');
+  }
+  return bad;
+}
+
+describe("no element carries two position utilities", () => {
+  it.each(sectionSkeletons.map((s) => [s.type, s] as const))("%s", (type, skeleton) => {
+    const Component = sectionComponents[type];
+    const props = (skeleton as Section).props as unknown as Record<string, unknown>;
+    const html = renderToStaticMarkup(
+      <Component {...props} id={type} business={business} siteName="Test Co" />,
+    );
+    const bad = conflictingPositions(html);
+    expect(bad, bad.join("\n")).toEqual([]);
+  });
+
+  it("hero slider — the layout the bug actually shipped in", () => {
+    const html = renderToStaticMarkup(
+      <Hero
+        id="hero"
+        layout="slider"
+        title="Headline"
+        slides={[
+          {
+            title: "Healthcare that",
+            highlight: "listens first.",
+            subtitle: "Unhurried visits.",
+            primaryCta: { label: "Book", href: "#contact" },
+            media: { src: "", alt: "A provider talking with a patient" },
+            align: "start",
+          },
+          { title: "Second slide", media: { src: "", alt: "Second" } },
+        ]}
+      />,
+    );
+    expect(html).toContain("listens first.");
+    const bad = conflictingPositions(html);
+    expect(bad, bad.join("\n")).toEqual([]);
+  });
+});

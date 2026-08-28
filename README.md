@@ -20,6 +20,22 @@ The three share 100% of their code. Every difference between them lives in
 > All business names, addresses, phone numbers and email addresses in these demos are
 > fictional. The phone numbers use the reserved `555-01xx` range.
 
+## The same codebase, three times
+
+| | |
+| :---: | :---: |
+| ![VoltEdge Electric](screenshots/voltedge-electric.png) | ![Riverside Family Health](screenshots/riverside-family-health.png) |
+| **VoltEdge Electric** — `sharp` preset, split hero, dual palette | **Riverside Family Health** — `soft` preset, slider hero, centred header |
+| ![Merrick & Stone](screenshots/merrick-stone-law.png) | ![Merrick & Stone in Arabic](screenshots/merrick-arabic-rtl.png) |
+| **Merrick & Stone** — `rounded` preset, serif type, brass on ink | **The same page in Arabic** — mirrored layout, RTL type, LTR-isolated phone number |
+
+Not three templates, and not three forks: one set of components reading three different
+configuration files. The two Merrick shots are the same route, the same build and the same
+components, differing only by `?lang=ar`.
+
+Demos ship without stock photography, so image slots render an on-brand placeholder rather
+than something borrowed — visible above in both hero media areas.
+
 ## Quick start
 
 ```bash

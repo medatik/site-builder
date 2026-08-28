@@ -66,9 +66,9 @@ const config: SiteConfig = {
     // their own tel: hrefs from it, and `{phone}` in copy expands to the
     // bidi-hardened display form. Never store the hardened form here: the
     // isolate characters would leak into every generated tel: link.
-    phone: "+212 656 55 01 64",
+    phone: "+1 (312) 555-0148",
     email: "intake@merrickstonelaw.com",
-    address: "Casablanca, Morocco",
+    address: "70 W. Madison St., Chicago, IL 60602",
     // Emitted as JSON-LD "@type". `LegalService` is the schema.org type for a
     // firm; `Attorney` is for an individual practitioner.
     schemaType: "LegalService",
@@ -90,7 +90,7 @@ const config: SiteConfig = {
   // The WhatsApp glyph needs no translation either way.
   floatingButton: {
     enabled: true,
-    href: "https://wa.me/212656550164",
+    href: "https://wa.me/13125550148",
     label: "Chat on WhatsApp",
     icon: "whatsapp",
     position: { x: "right", y: "bottom" },

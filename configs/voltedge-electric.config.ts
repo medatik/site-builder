@@ -14,10 +14,10 @@ const config: SiteConfig = {
   siteName: "VoltEdge Electric",
   logo: {
     alt: "VoltEdge Electric",
-    // Per-mode logo images. Either one may be omitted — whichever is defined is
-    // then used in BOTH modes.
-    srcLight: "/Logo.png",
-    srcDark: "/LogoDark.jpeg",
+    // No image source, so the engine renders its own wordmark + monogram. Add
+    // `srcLight` / `srcDark` to use real artwork; either may be omitted and
+    // whichever is defined is then used in BOTH modes.
+    monogram: "VE",
   },
 
   theme: {
@@ -227,7 +227,7 @@ const config: SiteConfig = {
         backdrop: "aurora",
         media: {
           alt: "VoltEdge electrician working on a panel",
-          src: "/logo_bgless.png",
+          src: "",
         },
       },
     },
