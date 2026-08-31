@@ -278,7 +278,7 @@ const config: SiteConfig = {
             { value: "98%", label: "Gagnés ou transigés favorablement" },
           ],
           media: {
-            src: "/photos/merrick-stone-law/about.jpg",
+            src: "/photos/merrick-stone-law/about.64fc38af.jpg",
             alt: "L'équipe de Merrick & Stone devant le palais de justice",
           },
         },
@@ -647,7 +647,7 @@ const config: SiteConfig = {
             { value: "20+", label: "عامًا من المرافعات" },
             { value: "98%", label: "رُبحت أو سُوّيت لصالحنا" },
           ],
-          media: { src: "/photos/merrick-stone-law/about.jpg", alt: "فريق ميريك وستون أمام المحكمة" },
+          media: { src: "/photos/merrick-stone-law/about.64fc38af.jpg", alt: "فريق ميريك وستون أمام المحكمة" },
         },
         team: {
           eyebrow: "محاموك",
@@ -988,7 +988,7 @@ const config: SiteConfig = {
           { value: "98%", label: "Won or favorably settled" },
         ],
         mediaSide: "right",
-        media: { src: "/photos/merrick-stone-law/about.jpg", alt: "The Merrick & Stone trial team outside the courthouse" },
+        media: { src: "/photos/merrick-stone-law/about.64fc38af.jpg", alt: "The Merrick & Stone trial team outside the courthouse" },
       },
     },
     {

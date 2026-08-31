@@ -184,7 +184,7 @@ const config: SiteConfig = {
               variant: "secondary",
             },
             media: {
-              src: "/photos/riverside-family-health/hero.jpg",
+              src: "/photos/riverside-family-health/hero.05dbf5c3.jpg",
               alt: "A Riverside provider talking with a patient",
             },
             align: "start",
@@ -206,7 +206,7 @@ const config: SiteConfig = {
               variant: "secondary",
             },
             media: {
-              src: "/photos/riverside-family-health/hero-2.jpg",
+              src: "/photos/riverside-family-health/hero-2.eedc44f3.jpg",
               alt: "Same-day care at Riverside Family Health",
             },
             align: "start",
@@ -228,7 +228,7 @@ const config: SiteConfig = {
               variant: "secondary",
             },
             media: {
-              src: "/photos/riverside-family-health/hero-3.jpg",
+              src: "/photos/riverside-family-health/hero-3.5439ff7b.jpg",
               alt: "A secure telehealth visit with a Riverside provider",
             },
             align: "start",
@@ -308,7 +308,7 @@ const config: SiteConfig = {
           { value: "4.9★", label: "Patient rating" },
         ],
         mediaSide: "right",
-        media: { src: "/photos/riverside-family-health/about.jpg", alt: "The Riverside Family Health waiting area" },
+        media: { src: "/photos/riverside-family-health/about.2e1ddaca.jpg", alt: "The Riverside Family Health waiting area" },
       },
     },
     {

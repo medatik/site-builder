@@ -227,7 +227,7 @@ const config: SiteConfig = {
         backdrop: "aurora",
         media: {
           alt: "VoltEdge electrician working on a panel",
-          src: "/photos/voltedge-electric/hero.jpg",
+          src: "/photos/voltedge-electric/hero.9ce174d3.jpg",
         },
       },
     },
@@ -302,7 +302,7 @@ const config: SiteConfig = {
           { value: "4.9★", label: "Average rating" },
         ],
         mediaSide: "left",
-        media: { src: "/photos/voltedge-electric/about.jpg", alt: "VoltEdge crew and service van" },
+        media: { src: "/photos/voltedge-electric/about.36f302ba.jpg", alt: "VoltEdge crew and service van" },
       },
     },
     {
@@ -370,37 +370,37 @@ const config: SiteConfig = {
         columns: 3,
         images: [
           {
-            src: "/photos/voltedge-electric/gallery-1.jpg",
+            src: "/photos/voltedge-electric/gallery-1.dd705410.jpg",
             alt: "200A panel upgrade",
             label: "Panel Upgrade",
             caption: "Full 200A service upgrade — Rockridge",
           },
           {
-            src: "/photos/voltedge-electric/gallery-2.jpg",
+            src: "/photos/voltedge-electric/gallery-2.2a7d29f7.jpg",
             alt: "Recessed lighting install",
             label: "Recessed Lighting",
             caption: "Kitchen recessed lighting retrofit",
           },
           {
-            src: "/photos/voltedge-electric/gallery-3.jpg",
+            src: "/photos/voltedge-electric/gallery-3.bc2f348e.jpg",
             alt: "EV charger installation",
             label: "EV Charger",
             caption: "Level 2 charger — Tesla Wall Connector",
           },
           {
-            src: "/photos/voltedge-electric/gallery-4.jpg",
+            src: "/photos/voltedge-electric/gallery-4.2611f525.jpg",
             alt: "Commercial lighting fit-out",
             label: "Commercial",
             caption: "Warehouse LED retrofit — 40% energy saved",
           },
           {
-            src: "/photos/voltedge-electric/gallery-5.jpg",
+            src: "/photos/voltedge-electric/gallery-5.96cba473.jpg",
             alt: "Battery and inverter bank for a home standby power system",
             label: "Standby Power",
             caption: "Whole-home battery and inverter backup",
           },
           {
-            src: "/photos/voltedge-electric/gallery-6.jpg",
+            src: "/photos/voltedge-electric/gallery-6.5919ed75.jpg",
             alt: "Landscape lighting",
             label: "Landscape",
             caption: "Low-voltage landscape lighting",

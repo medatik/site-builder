@@ -40,6 +40,15 @@ use, and shown **as shot** — no colour processing. Source and licence are reco
 [`public/photos/CREDITS.md`](public/photos/CREDITS.md), because a public repository should be
 able to say where its assets came from.
 
+Filenames carry a hash of their own contents — `hero.05dbf5c3.jpg` — maintained by
+`npm run hash:photos`. Replacing a photo while keeping its name is silently broken: nothing
+downstream can tell the bytes changed, so Next's optimiser keeps serving the old picture from
+a path-keyed cache and browsers hold `/_next/image` responses for four hours. The file on disk
+is right and the page stays wrong. A content hash changes the URL whenever the picture
+changes, so no cache can serve a stale one — the same trick `brandFingerprint` plays for the
+generated favicon and OG image. The script is safe to re-run and is a no-op when nothing has
+changed.
+
 `Media` does support an optional `treatment: "tint"`, which desaturates a photo and puts
 `--primary` back through a `mix-blend-mode: color` layer, so the image keeps its own luminance
 and takes its hue from the theme. It is useful when photography has to match a palette it was
@@ -199,7 +208,7 @@ lib/         engine: types, theme, i18n, tokens, SEO, nav, validation
 configs/     one file per site + the registry
 overrides/   per-client component replacements
 tests/       vitest suites
-scripts/     artwork generator, section skeletons, Telegram chat-id helper
+scripts/     artwork generator, photo hasher, section skeletons, Telegram helper
 public/photos/  licensed photographs, one folder per site (+ CREDITS.md)
 public/art/     generated artwork for slots without a photograph
 ```
