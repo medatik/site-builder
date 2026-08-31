@@ -46,9 +46,18 @@ export function Media({
 }) {
   const radius = rounded ? "rounded-[var(--radius-media)]" : "";
   if (media?.src) {
+    const treatment = media.treatment ?? "none";
     return (
       <div
-        className={cn("relative overflow-hidden", radius, className)}
+        className={cn(
+          "relative overflow-hidden",
+          // `isolate` confines the blend below to this box. Without it the
+          // overlay blends with whatever the section painted behind it, so the
+          // treatment would change depending on where the image sat.
+          treatment !== "none" && "isolate",
+          radius,
+          className,
+        )}
         style={aspect ? { aspectRatio: aspect } : undefined}
       >
         <NextImage
@@ -64,8 +73,20 @@ export function Media({
           // the deployment is ever pointed at, including a client-supplied one.
           // Skipping the optimiser costs nothing here and keeps that flag off.
           unoptimized={isRemote(media.src) || /\.svg($|[?#])/i.test(media.src)}
-          className="object-cover"
+          className={cn("object-cover", treatment !== "none" && "grayscale")}
         />
+        {/* The photo is greyscaled first so its own saturation cannot fight the
+            blend; these layers then put the palette back. */}
+        {treatment === "tint" && (
+          // `color` takes hue and saturation from this layer and luminance from
+          // the photo below, so the picture keeps its detail and depth and only
+          // its colour comes from the theme.
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 mix-blend-color"
+            style={{ background: "var(--primary)" }}
+          />
+        )}
       </div>
     );
   }

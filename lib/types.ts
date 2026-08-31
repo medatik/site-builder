@@ -102,10 +102,35 @@ export interface CtaLink {
   icon?: string;
 }
 
+/**
+ * How a photograph is mapped into the site's palette.
+ *
+ * Stock photography arrives in whatever colours it was shot in, and a site is
+ * only as coherent as its least matching image. Rather than hunting for photos
+ * that happen to suit each palette, the palette is applied to the photo: the
+ * image keeps its LUMINANCE — so detail, depth and composition survive — and
+ * takes its HUE from the theme. A photo swapped in later cannot break the look,
+ * and one photo suits every client.
+ *
+ * - `none` — the photograph as shot. The default; nothing changes.
+ * - `tint` — monochrome in `--primary`.
+ *
+ * A two-colour `duotone` was tried and dropped. A real duotone remaps the
+ * TONAL range, and CSS blend modes cannot express that: blending a gradient
+ * varies hue across the frame rather than across the tones (a sepia wash), and
+ * `lighten`/`darken` clamp each RGB channel independently (garish artefacts).
+ * Doing it properly needs an SVG filter with the two colours baked into
+ * `feComponentTransfer` tables — which cannot read CSS custom properties, so it
+ * would stop being palette-driven, which was the whole point.
+ */
+export type MediaTreatment = "none" | "tint";
+
 export interface Media {
   /** Optional image URL. When omitted a themed placeholder is rendered. */
   src?: string;
   alt: string;
+  /** Palette mapping applied to the photo. Default `none`. */
+  treatment?: MediaTreatment;
 }
 
 export interface NavItem {

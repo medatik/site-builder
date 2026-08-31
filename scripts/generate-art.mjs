@@ -2,11 +2,14 @@
 /**
  * Generates the demo sites' artwork from their own palettes.
  *
- * The demos ship without stock photography — it cannot be licensed for a public
- * repository, and a borrowed photograph would say nothing about the engine. So
- * every image here is DERIVED FROM THE CONFIG that uses it: the script reads
- * `colorsLight` out of each config and draws with those exact values. It is the
- * same idea as the theme system, applied to assets.
+ * Most photographic slots now carry real, licensed photographs (see
+ * public/photos/CREDITS.md). This covers what is left: team monograms, and any
+ * slot with no photograph behind it. Every image is DERIVED FROM THE CONFIG that
+ * uses it — the script reads `colorsLight` out of each config and draws with
+ * those exact values, which is the theme system's idea applied to assets.
+ *
+ * It also remains the fallback for a NEW client: a site can be stood up and
+ * demonstrated before anyone has sourced a single photograph.
  *
  * Output is deterministic — the RNG is seeded from each file's name — so
  * re-running produces byte-identical files and never churns the repo.
@@ -14,9 +17,10 @@
  * Usage:  node scripts/generate-art.mjs
  *
  * These are illustrations, not photographs, and deliberately so: a generated
- * photograph of a clinic that does not exist would be a lie in a way a
- * generated pattern is not. A real client replaces them by pointing the
- * config's `src` at real artwork; nothing in the engine depends on these files.
+ * photograph of a clinic that does not exist would be a lie in a way a generated
+ * pattern is not. That is also why team members stay monograms even now that
+ * real photography is available — a stock face under an invented name is a
+ * different thing again, and this repository is public.
  */
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -262,9 +266,14 @@ function avatar({ palette, initials, seed }) {
  * gallery, so generating either would just leave dead files in the repo.
  * ------------------------------------------------------------------ */
 const CLIENTS = {
-  "voltedge-electric": { motif: "angular", heroes: 1, gallery: 6 },
-  "riverside-family-health": { motif: "organic", heroes: 3, gallery: 6 },
-  "merrick-stone-law": { motif: "classical", heroes: 0, gallery: 0 },
+  // Counts track what each config still needs. Slots that now carry a real
+  // photograph (see public/photos/CREDITS.md) are not generated — a spare file
+  // nothing references is just repo litter. Team members stay monograms
+  // everywhere: a stock face attached to an invented name is a different thing
+  // from an illustration, and this repo is public.
+  "voltedge-electric": { motif: "angular", heroes: 0, about: false, gallery: 0 },
+  "riverside-family-health": { motif: "organic", heroes: 0, about: false, gallery: 6 },
+  "merrick-stone-law": { motif: "classical", heroes: 0, about: false, gallery: 0 },
 };
 
 const configs = readdirSync(join(ROOT, "configs")).filter(
@@ -279,7 +288,7 @@ for (const file of configs) {
     console.log(`  ${slug}: no spec assigned, skipped`);
     continue;
   }
-  const { motif, heroes, gallery } = spec;
+  const { motif, heroes, about, gallery } = spec;
   const source = readFileSync(join(ROOT, "configs", file), "utf8");
   const palette = paletteOf(source, file);
   const dir = join(OUT_ROOT, slug);
@@ -294,7 +303,7 @@ for (const file of configs) {
     const n = i === 1 ? "hero" : `hero-${i}`;
     put(`${n}.svg`, scene({ palette, motif, w: 1600, h: 1000, seed: `${slug}-${n}` }));
   }
-  put("about.svg", scene({ palette, motif, w: 1200, h: 900, seed: `${slug}-about` }));
+  if (about) put("about.svg", scene({ palette, motif, w: 1200, h: 900, seed: `${slug}-about` }));
   for (let i = 1; i <= gallery; i++) {
     put(`gallery-${i}.svg`, scene({ palette, motif, w: 1000, h: 1000, seed: `${slug}-gallery-${i}` }));
   }

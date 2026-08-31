@@ -10,7 +10,7 @@ a theme, or a fork.
 
 | Demo | Sector | Preset | Palette | Notable |
 | --- | --- | --- | --- | --- |
-| **VoltEdge Electric** | Electrician | `sharp` | amber + electric cyan on graphite navy | dual light/dark with a toggle, plus a per-client hero override |
+| **VoltEdge Electric** | Electrician | `sharp` | steel navy + amber (light) · amber + cyan on graphite (dark) | dual light/dark with a toggle, plus a per-client hero override |
 | **Riverside Family Health** | Family clinic | `soft` | healing teal + coral on warm white | light only, routed `/privacy` page |
 | **Merrick & Stone** | Personal-injury law | `rounded` | ink + brass | trilingual EN/FR/AR, including full RTL |
 
@@ -33,19 +33,35 @@ Not three templates, and not three forks: one set of components reading three di
 configuration files. The two Merrick shots are the same route, the same build and the same
 components, differing only by `?lang=ar`.
 
-**The artwork is generated from the configs themselves.** `npm run art` reads each config's
-`colorsLight` palette and draws every hero, section and team image with those exact values —
-the same idea as the theme system, applied to assets. Three motifs (angular for the
-electrician, organic for the clinic, classical for the firm) are the only hand-made decision;
-everything else — composition, placement, which palette colour leads — is seeded from the
-file name, so the output is deterministic and re-running never churns the repo.
+### The photographs match the palette because the palette is applied to them
 
-Two reasons it works this way rather than shipping photographs. Stock photography cannot be
-licensed for a public repository, and a borrowed image would say nothing about the engine.
-And a *generated* photograph of a clinic that does not exist would be a lie in a way a
-generated pattern is not — these are plainly illustrations, and team members are monograms
-rather than invented faces. A real client replaces any of it by pointing the config's `src`
-at real artwork; nothing in the engine depends on these files.
+Every photograph is real, from [Pexels](https://www.pexels.com/license/), and free for
+commercial use — sources recorded per file in
+[`public/photos/CREDITS.md`](public/photos/CREDITS.md).
+
+Stock photography arrives in whatever colours it was shot in, and a site is only as coherent
+as its least matching image. Rather than hunting for photos that happen to suit three very
+different palettes, `media.treatment: "tint"` applies the palette **to the photo**: the image
+is desaturated and a `mix-blend-mode: color` layer puts `--primary` back, so the picture keeps
+its own **luminance** — detail, depth, composition — and takes its **hue** from the theme.
+
+The consequence worth noticing: the same photograph would come out steel navy on VoltEdge,
+teal on Riverside and maroon on Merrick, without being edited. Swapping a photo later cannot
+break the look, and sourcing stops being a colour-matching exercise.
+
+A two-colour `duotone` was attempted and dropped rather than shipped looking wrong — see the
+note on `MediaTreatment` in `lib/types.ts` for why CSS blend modes cannot express one.
+
+**Where no photograph belongs, the art is generated from the config.** `npm run art` reads each
+config's `colorsLight` and draws with those exact values — the theme system's idea applied to
+assets. Composition is seeded from the file name, so output is deterministic and re-running
+never churns the repo. It covers team monograms and any slot without a photo, and it is what
+lets a brand-new client site be stood up and demonstrated before anyone has sourced a single
+image.
+
+**Team members stay monograms deliberately.** A generated pattern is plainly an illustration;
+a stock photograph of a real person placed under an invented name is a different thing, and
+this repository is public.
 
 ## Quick start
 
@@ -192,7 +208,8 @@ configs/     one file per site + the registry
 overrides/   per-client component replacements
 tests/       vitest suites
 scripts/     artwork generator, section skeletons, Telegram chat-id helper
-public/art/  generated artwork, one folder per site
+public/photos/  licensed photographs, one folder per site (+ CREDITS.md)
+public/art/     generated artwork for slots without a photograph
 ```
 
 ## Deployment

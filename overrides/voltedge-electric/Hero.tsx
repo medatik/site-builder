@@ -107,22 +107,17 @@ export function VoltEdgeHero({
                 style={{ background: "radial-gradient(circle at 50% 40%, color-mix(in srgb,var(--accent) 45%, transparent), transparent 70%)" }}
                 aria-hidden
               /> */}
-              {media?.src ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={media.src}
-                  alt={media.alt}
-                  className="mx-auto w-full max-w-md object-contain drop-shadow-[var(--shadow-card-lg)]"
-                  loading="lazy"
-                />
-              ) : (
-                <Media
-                  media={media}
-                  aspect="4 / 5"
-                  placeholderIcon="image"
-                  className="w-full shadow-[var(--shadow-card-lg)]"
-                />
-              )}
+              {/* This used to branch to a bare <img> with `object-contain` when
+                  a src was present — shaped for the cut-out logo that once sat
+                  here, not for a photograph. It also meant this one slot opted
+                  out of everything `Media` provides: next/image sizing, the
+                  themed placeholder, and the palette treatment. One path now. */}
+              <Media
+                media={media}
+                aspect="4 / 5"
+                placeholderIcon="image"
+                className="w-full shadow-[var(--shadow-card-lg)]"
+              />
             </div>
           )}
         </div>
