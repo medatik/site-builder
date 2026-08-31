@@ -1,49 +1,53 @@
 import type { SiteConfig } from "@/lib/types";
 
 /**
- * VoltEdge Electric — licensed residential & commercial electricians.
+ * VoltEdge Électricité — électriciens qualifiés, résidentiel et tertiaire.
  *
- * Identity: bold, high-contrast, industrial. A dark graphite-navy surface with
- * a high-visibility amber (safety/electricity) and an electric-cyan spark.
- * Condensed signage typography (Barlow Condensed) + the "sharp" preset give it
- * a confident, technical, on-the-truck feel. What their customers care about —
- * being licensed & insured, fast 24/7 response, and upfront pricing — leads.
+ * Identité : franche, contrastée, industrielle. Un fond graphite-marine avec un
+ * ambre haute visibilité (sécurité / électricité) et un éclat cyan. La
+ * typographie condensée (Barlow Condensed) et le préréglage « sharp » donnent
+ * le ton technique, celui d'une entreprise de terrain. Ce qui compte pour ses
+ * clients — être assuré et qualifié, intervenir vite, annoncer le prix
+ * d'avance — passe en premier.
+ *
+ * Les numéros de téléphone appartiennent aux plages fictives réservées par
+ * l'ARCEP (07 55 53 XX XX), l'équivalent français du 555-01XX américain.
  */
 const config: SiteConfig = {
   client: "voltedge-electric",
-  siteName: "VoltEdge Electric",
+  siteName: "VoltEdge Électricité",
   logo: {
-    alt: "VoltEdge Electric",
-    // No image source, so the engine renders its own wordmark + monogram. Add
-    // `srcLight` / `srcDark` to use real artwork; either may be omitted and
-    // whichever is defined is then used in BOTH modes.
+    alt: "VoltEdge Électricité",
+    // Pas de fichier image : le moteur rend son propre logotype + monogramme.
+    // Ajoutez `srcLight` / `srcDark` pour une vraie identité graphique ; l'un
+    // des deux suffit, il sert alors dans les DEUX modes.
     monogram: "VE",
   },
 
   theme: {
     stylePreset: "sharp",
     defaultMode: "light",
-    // Dark is the flagship VoltEdge look: amber + cyan on graphite navy.
+    // Le mode sombre est la signature VoltEdge : ambre + cyan sur graphite.
     colorsDark: {
-      primary: "#FFB020", // high-visibility amber
-      secondary: "#12324F", // deep steel navy
-      accent: "#38D2F0", // electric cyan spark
-      background: "#0C1622", // graphite navy
+      primary: "#FFB020", // ambre haute visibilité
+      secondary: "#12324F", // bleu acier profond
+      accent: "#38D2F0", // éclat cyan
+      background: "#0C1622", // graphite marine
       text: "#EAF1F8",
       muted: "#8DA2B8",
     },
-    // Light variant: same electric identity, but steel-navy leads (so on-primary
-    // text stays legible on a bright surface) with the amber kept as the spark.
+    // Variante claire : même identité, mais le bleu acier passe devant (pour que
+    // le texte sur `primary` reste lisible sur fond clair), l'ambre reste l'éclat.
     colorsLight: {
-      primary: "#123E63", // steel navy
+      primary: "#123E63", // bleu acier
       secondary: "#0C1622", // graphite
-      // Deepened from #E8930A (2.27:1) for WCAG AA on this near-white surface:
-      // `--accent` colours the star ratings, and stars carry meaning, so they
-      // need 3:1 as non-text content. The dark palette keeps the bright spark —
-      // #38D2F0 is already 10.10:1 on graphite navy.
-      accent: "#C17A08", // amber spark — 3.23:1 on background
-      background: "#F4F7FB", // cool near-white
-      text: "#0F1C2B", // graphite ink
+      // Assombri depuis #E8930A (2,27:1) pour respecter WCAG AA sur ce fond
+      // presque blanc : `--accent` colore les étoiles de notation, qui portent
+      // du sens et exigent donc 3:1 en tant que contenu non textuel. La palette
+      // sombre garde l'éclat vif — #38D2F0 est déjà à 10,10:1 sur le graphite.
+      accent: "#C17A08", // éclat ambre — 3,23:1 sur le fond
+      background: "#F4F7FB", // blanc cassé froid
+      text: "#0F1C2B", // encre graphite
       muted: "#566574",
     },
     fonts: {
@@ -53,16 +57,17 @@ const config: SiteConfig = {
   },
 
   business: {
-    phone: "(415) 555-0147",
-    email: "dispatch@voltedgeelectric.com",
-    address: "1820 Industrial Way, Oakland, CA 94607",
-    // Emitted as JSON-LD "@type". The specific schema.org type beats the
-    // default "LocalBusiness" for the local map pack and "electrician near me".
+    phone: "+33 7 55 53 41 20",
+    email: "contact@voltedge-electricite.fr",
+    address: "18 rue de l'Industrie, 69007 Lyon",
+    // Émis comme "@type" dans le JSON-LD. Le type schema.org le plus précis
+    // devance le "LocalBusiness" par défaut pour le pack local et la recherche
+    // « électricien près de chez moi ».
     schemaType: "Electrician",
     hours: [
-      { days: "Mon–Fri", hours: "7:00am – 6:00pm" },
-      { days: "Saturday", hours: "8:00am – 4:00pm" },
-      { days: "Sunday", hours: "Emergency service only" },
+      { days: "Lun – Ven", hours: "7h00 – 18h00" },
+      { days: "Samedi", hours: "8h00 – 16h00" },
+      { days: "Dimanche", hours: "Urgences uniquement" },
     ],
     socials: [
       { icon: "facebook", label: "Facebook", href: "https://facebook.com" },
@@ -71,65 +76,92 @@ const config: SiteConfig = {
     ],
   },
 
+  // Explicite parce que les libellés déduits automatiquement (lib/nav.ts) sont
+  // en anglais. Ce site ayant des pages routées, les ancres de la page d'accueil
+  // sont préfixées par "/" — un "#services" nu ne ferait rien depuis /confidentialite.
+  nav: [
+    { label: "Prestations", href: "/#services" },
+    { label: "Le cabinet", href: "/#about" },
+    { label: "Réalisations", href: "/#gallery" },
+    { label: "Tarifs", href: "/#pricing" },
+    { label: "Avis", href: "/#testimonials" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Nous trouver", href: "/#location" },
+    { label: "Contact", href: "/#contact" },
+  ],
+
   header: {
     sticky: true,
     cta: {
-      label: "Call 24/7",
-      href: "tel:+14155550147",
+      label: "Urgence 24h/24",
+      href: "{phoneHref}",
       icon: "phone",
       variant: "primary",
     },
-    // Both palettes are defined above, so offer the light/dark toggle.
-    // Defaults to moon (in light) / sun (in dark) — override with iconLight/iconDark.
+    // Les deux palettes sont définies plus haut : on propose donc le sélecteur
+    // clair/sombre. Icônes par défaut lune (en clair) / soleil (en sombre) —
+    // remplaçables via iconLight/iconDark.
     themeToggle: { enabled: true },
   },
 
-  // Floating WhatsApp button, pinned bottom-right. Fully configurable — move it
-  // to any corner via `position`, swap the icon/href for a different channel, or
-  // set `enabled: false` to hide it.
+  // Bouton WhatsApp flottant, épinglé en bas à droite. Entièrement configurable :
+  // déplacez-le dans n'importe quel coin via `position`, changez l'icône et le
+  // lien pour un autre canal, ou passez `enabled: false` pour le masquer.
   floatingButton: {
     enabled: true,
-    href: "https://wa.me/14155550147",
-    label: "Chat on WhatsApp",
+    href: "https://wa.me/33755534120",
+    label: "Écrire sur WhatsApp",
     icon: "whatsapp",
     position: { x: "right", y: "bottom" },
   },
 
   footer: {
     tagline:
-      "Licensed, insured, and on call around the clock for homes and businesses across the East Bay.",
-    legal: "CA C-10 License #1043927 · Fully insured & bonded",
+      "Qualifiés, assurés et joignables jour et nuit, pour les particuliers et les professionnels de la métropole lyonnaise.",
+    legal: "Qualifelec E2 · RGE · Assurance décennale n° 1043927",
+  },
+
+  // Déclare la langue du site. Sans bloc `i18n`, `pickLocale` retombe sur "en"
+  // et le document sort en `<html lang="en">` — un lecteur d'écran prononcerait
+  // alors le français avec la phonétique anglaise, et les moteurs de recherche
+  // se tromperaient de langue. Une seule locale suffit : le sélecteur reste
+  // masqué, seule la langue du document est fixée.
+  i18n: {
+    defaultLocale: "fr",
+    locales: [{ code: "fr", label: "Français", dir: "ltr" }],
+    switcher: { enabled: false },
   },
 
   seo: {
-    title: "VoltEdge Electric — 24/7 Licensed Electricians in Oakland",
+    title: "VoltEdge Électricité — électriciens à Lyon, urgences 24h/24",
     description:
-      "Residential and commercial electrical work done right. Panel upgrades, EV chargers, lighting, and 24/7 emergency service. Licensed, insured, upfront pricing.",
+      "Travaux électriques résidentiels et tertiaires réalisés dans les règles de l'art. Mise aux normes de tableau, bornes de recharge, éclairage et dépannage 24h/24. Qualifiés, assurés, prix annoncé d'avance.",
     keywords: [
-      "electrician",
-      "Oakland electrician",
-      "EV charger installation",
-      "panel upgrade",
-      "emergency electrician",
+      "électricien",
+      "électricien Lyon",
+      "installation borne de recharge",
+      "mise aux normes tableau électrique",
+      "électricien urgence",
     ],
   },
 
-  // Routed pages. `nav: false` keeps the policy out of the header and puts it in
-  // the footer's legal row instead — reachable, but not competing with Services.
+  // Pages routées. `nav: false` sort la politique de l'en-tête et la place dans
+  // la rangée légale du pied de page : accessible, sans concurrencer les
+  // Prestations.
   //
-  // The processor list below MUST match the delivery channels actually enabled
-  // on the contact section (Telegram) plus the host. Naming a provider that
-  // doesn't handle the data is as wrong as omitting one that does — so if the
-  // delivery channel ever changes, this changes with it.
+  // La liste des destinataires ci-dessous DOIT correspondre aux canaux de
+  // livraison réellement activés sur la section contact (Telegram), plus
+  // l'hébergeur. Nommer un prestataire qui ne traite pas la donnée est aussi
+  // faux qu'en omettre un qui la traite : si le canal change, ceci change aussi.
   pages: [
     {
-      slug: "privacy",
-      title: "Privacy",
+      slug: "confidentialite",
+      title: "Confidentialité",
       nav: false,
       seo: {
-        title: "Privacy policy — VoltEdge Electric",
+        title: "Politique de confidentialité — VoltEdge Électricité",
         description:
-          "How VoltEdge Electric handles the information you send through our contact form.",
+          "Comment VoltEdge Électricité traite les informations que vous nous transmettez via le formulaire de contact.",
       },
       sections: [
         {
@@ -137,54 +169,54 @@ const config: SiteConfig = {
           id: "privacy-body",
           enabled: true,
           props: {
-            eyebrow: "Legal",
-            title: "Privacy policy",
-            updated: "Last updated: 3 August 2026",
+            eyebrow: "Mentions légales",
+            title: "Politique de confidentialité",
+            updated: "Dernière mise à jour : 3 août 2026",
             intro:
-              "This policy explains what personal information {siteName} collects through this website, why we collect it, and what you can ask us to do with it.",
+              "Cette politique explique quelles données personnelles {siteName} recueille via ce site, pourquoi nous les recueillons, et ce que vous pouvez nous demander d'en faire.",
             blocks: [
               {
-                heading: "Who we are",
-                body: "{siteName} is the controller of the personal information described here. You can reach us at {email}, call {phone}, or write to us at {address}.",
+                heading: "Qui nous sommes",
+                body: "{siteName} est responsable du traitement des données décrites ici. Vous pouvez nous joindre à {email}, appeler le {phone}, ou nous écrire au {address}.",
               },
               {
-                heading: "What we collect",
-                body: "We only collect what you type into our service request form, plus a small amount of technical information your browser sends automatically.",
+                heading: "Ce que nous recueillons",
+                body: "Nous ne recueillons que ce que vous saisissez dans le formulaire de demande d'intervention, plus quelques informations techniques que votre navigateur envoie automatiquement.",
                 bullets: [
-                  "Your name and phone number, which we need in order to call you back.",
-                  "Your email address, if you choose to give it.",
-                  "The service you selected and anything you write in the job description.",
-                  "Your IP address, which we use to limit automated abuse of the form and which is included in the notification we receive.",
-                  "Standard server logs kept by our website host, such as the pages requested and the time of the request.",
+                  "Vos nom et numéro de téléphone, nécessaires pour vous rappeler.",
+                  "Votre adresse e-mail, si vous choisissez de la donner.",
+                  "La prestation sélectionnée et ce que vous écrivez dans la description des travaux.",
+                  "Votre adresse IP, utilisée pour limiter les envois automatisés abusifs et incluse dans la notification que nous recevons.",
+                  "Les journaux de serveur habituels tenus par notre hébergeur, comme les pages demandées et l'heure de la demande.",
                 ],
               },
               {
-                heading: "Why we collect it",
-                body: "We use your request solely to contact you about the electrical work you asked about and to schedule it. We do not sell your information, and we do not use it for advertising or profiling.",
+                heading: "Pourquoi nous les recueillons",
+                body: "Nous utilisons votre demande uniquement pour vous recontacter au sujet des travaux électriques évoqués et pour les planifier. Nous ne vendons pas vos données et ne les utilisons ni à des fins publicitaires ni de profilage.",
               },
               {
-                heading: "Who else sees it",
-                body: "We share your information only with the providers that operate this website and deliver your request to us:",
+                heading: "Qui d'autre y a accès",
+                body: "Nous ne partageons vos données qu'avec les prestataires qui font fonctionner ce site et nous transmettent votre demande :",
                 bullets: [
-                  "Vercel, which hosts this website and keeps standard server logs.",
-                  "Telegram, which delivers your request to our dispatcher's phone.",
+                  "Vercel, qui héberge ce site et conserve les journaux de serveur habituels.",
+                  "Telegram, qui transmet votre demande sur le téléphone de notre régulateur.",
                 ],
               },
               {
-                heading: "How long we keep it",
-                body: "We keep service requests for as long as we need them to answer you and to keep a record of work we have carried out, which we may also need for warranty, insurance and licensing purposes. After that we delete them. If you ask us to delete your request sooner, we will.",
+                heading: "Combien de temps nous les conservons",
+                body: "Nous conservons les demandes d'intervention le temps nécessaire pour vous répondre et pour garder une trace des travaux réalisés, trace qui peut également nous être utile au titre de la garantie, de l'assurance et de nos qualifications. Ensuite, nous les supprimons. Si vous nous demandez de supprimer votre demande plus tôt, nous le ferons.",
               },
               {
-                heading: "Your rights",
-                body: "You can ask us for a copy of the information we hold about you, ask us to correct it, or ask us to delete it. Email {email} and we will respond. If you are not satisfied with our response, you can complain to your local data protection authority.",
+                heading: "Vos droits",
+                body: "Vous pouvez demander une copie des données que nous détenons sur vous, leur rectification ou leur suppression. Écrivez à {email} et nous vous répondrons. Si notre réponse ne vous satisfait pas, vous pouvez saisir la CNIL.",
               },
               {
-                heading: "Cookies and browser storage",
-                body: "This site sets no advertising or tracking cookies. If you switch the site between light and dark mode, that choice is saved in your browser's local storage so the page does not flash the wrong theme when you return. It stays on your device and is never sent to us.",
+                heading: "Cookies et stockage du navigateur",
+                body: "Ce site ne dépose aucun cookie publicitaire ni de mesure d'audience. Si vous basculez le site entre les modes clair et sombre, ce choix est enregistré dans le stockage local de votre navigateur afin que la page n'affiche pas brièvement le mauvais thème à votre retour. Il reste sur votre appareil et ne nous est jamais transmis.",
               },
               {
-                heading: "Changes to this policy",
-                body: "If we change how we handle your information we will update this page and the date at the top.",
+                heading: "Modifications de cette politique",
+                body: "Si nous changeons notre façon de traiter vos données, nous mettrons à jour cette page ainsi que la date indiquée en haut.",
               },
             ],
           },
@@ -198,35 +230,35 @@ const config: SiteConfig = {
       type: "hero",
       enabled: true,
       props: {
-        eyebrow: "Licensed · Insured · 24/7",
-        title: "Power you can",
-        highlight: "count on.",
+        eyebrow: "Qualifiés · Assurés · 24h/24",
+        title: "Une électricité",
+        highlight: "sur laquelle compter.",
         subtitle:
-          "From dead outlets to full panel upgrades and EV chargers — VoltEdge gets it done safely, on time, and at a price we quote before we start.",
+          "D'une prise morte à la mise aux normes complète du tableau ou à la pose d'une borne de recharge — VoltEdge intervient en sécurité, dans les délais, et au prix annoncé avant de commencer.",
         bullets: [
-          "Upfront, flat-rate pricing — no surprise invoices",
-          "Same-day and 24/7 emergency call-outs",
-          "Every job backed by our workmanship warranty",
+          "Tarifs forfaitaires annoncés d'avance — aucune facture surprise",
+          "Interventions le jour même et urgences 24h/24",
+          "Chaque chantier couvert par notre garantie de bonne exécution",
         ],
         primaryCta: {
-          label: "Call (415) 555-0147",
-          href: "tel:+14155550147",
+          label: "Appeler le {phone}",
+          href: "{phoneHref}",
           icon: "phone",
         },
         secondaryCta: {
-          label: "Request a quote",
+          label: "Demander un devis",
           href: "#contact",
           variant: "secondary",
         },
         badges: [
-          "Licensed & Insured",
-          "4.9★ · 500+ reviews",
-          "Upfront pricing",
+          "Qualifiés & assurés",
+          "4,9★ · plus de 500 avis",
+          "Prix annoncé d'avance",
         ],
         layout: "split",
         backdrop: "aurora",
         media: {
-          alt: "VoltEdge electrician working on a panel",
+          alt: "Électricien VoltEdge intervenant sur un tableau électrique",
           src: "/photos/voltedge-electric/hero.9ce174d3.jpg",
         },
       },
@@ -235,47 +267,47 @@ const config: SiteConfig = {
       type: "services",
       enabled: true,
       props: {
-        eyebrow: "What we do",
-        title: "Electrical work, done to code",
+        eyebrow: "Nos prestations",
+        title: "Des travaux électriques conformes aux normes",
         subtitle:
-          "Whole-home rewires to a single flickering light — same crew, same standards.",
+          "De la rénovation complète d'une installation à un simple point lumineux qui clignote — la même équipe, les mêmes exigences.",
         columns: 3,
         items: [
           {
             icon: "house",
-            title: "Residential Wiring",
+            title: "Installation résidentielle",
             description:
-              "Rewires, new circuits, outlets, switches, and troubleshooting for older and newer homes alike.",
+              "Rénovation d'installation, création de circuits, prises, interrupteurs et recherche de pannes, dans l'ancien comme dans le neuf.",
           },
           {
             icon: "gauge",
-            title: "Panel Upgrades",
+            title: "Mise aux normes du tableau",
             description:
-              "Upgrade to 200A service, replace failing panels, and add capacity for modern electrical loads.",
+              "Passage à un tableau conforme NF C 15-100, remplacement des tableaux vétustes et ajout de puissance pour les usages actuels.",
           },
           {
             icon: "plug-zap",
-            title: "EV Charger Installation",
+            title: "Bornes de recharge",
             description:
-              "Level 2 home charger installs — permitted, load-calculated, and ready for any EV.",
+              "Pose de bornes de recharge à domicile — déclarées, dimensionnées après bilan de puissance, compatibles avec tous les véhicules.",
           },
           {
             icon: "lightbulb",
-            title: "Lighting Design",
+            title: "Conception d'éclairage",
             description:
-              "Recessed, landscape, and accent lighting that's planned around how you actually use each room.",
+              "Éclairage encastré, extérieur et d'accentuation, pensé à partir de l'usage réel de chaque pièce.",
           },
           {
             icon: "siren",
-            title: "Emergency Repairs",
+            title: "Dépannage d'urgence",
             description:
-              "Lost power, burning smells, tripping breakers — we're on call 24/7 when it can't wait.",
+              "Coupure de courant, odeur de brûlé, disjoncteur qui saute — nous sommes joignables 24h/24 quand cela ne peut pas attendre.",
           },
           {
             icon: "power",
-            title: "Generator Installs",
+            title: "Groupes électrogènes",
             description:
-              "Standby and portable generator setups so the lights stay on when the grid doesn't.",
+              "Installation de groupes de secours, fixes ou mobiles, pour que la lumière reste allumée quand le réseau lâche.",
           },
         ],
       },
@@ -284,126 +316,129 @@ const config: SiteConfig = {
       type: "about",
       enabled: true,
       props: {
-        eyebrow: "Why VoltEdge",
-        title: "The electrician you'd recommend to your mom",
+        eyebrow: "Pourquoi VoltEdge",
+        title: "L'électricien que vous recommanderiez à vos parents",
         body: [
-          "VoltEdge started on a single service truck in 2009 with one rule: treat every home like it's our own. Fifteen years later that hasn't changed — just the size of the crew.",
-          "We're a licensed C-10 contractor, fully insured, and background-checked to the last apprentice. You'll get a firm quote before we touch a wire, a clean worksite when we leave, and a warranty that means we come back if anything's off.",
+          "VoltEdge a démarré en 2009 avec une seule camionnette et une règle : traiter chaque logement comme le nôtre. Quinze ans plus tard, la règle n'a pas bougé — seule la taille de l'équipe a changé.",
+          "Nous sommes qualifiés Qualifelec, couverts par une assurance décennale, et chaque intervenant jusqu'au dernier apprenti est identifié. Vous recevez un devis ferme avant que nous touchions au moindre fil, un chantier propre à notre départ, et une garantie qui signifie que nous revenons si quelque chose ne va pas.",
         ],
         highlights: [
-          "Licensed C-10 & fully insured",
-          "Upfront, itemized quotes",
-          "On-time arrival windows",
-          "1-year workmanship warranty",
+          "Qualifelec E2 & assurance décennale",
+          "Devis détaillés, annoncés d'avance",
+          "Créneaux d'arrivée respectés",
+          "Garantie de bonne exécution d'un an",
         ],
         stats: [
-          { value: "15+", label: "Years in business" },
-          { value: "8,200+", label: "Jobs completed" },
-          { value: "4.9★", label: "Average rating" },
+          { value: "15+", label: "Ans d'activité" },
+          { value: "8 200+", label: "Chantiers réalisés" },
+          { value: "4,9★", label: "Note moyenne" },
         ],
         mediaSide: "left",
-        media: { src: "/photos/voltedge-electric/about.36f302ba.jpg", alt: "VoltEdge crew and service van" },
+        media: {
+          src: "/photos/voltedge-electric/about.36f302ba.jpg",
+          alt: "L'équipe VoltEdge et son véhicule d'intervention",
+        },
       },
     },
     {
       type: "pricing",
       enabled: true,
       props: {
-        eyebrow: "Straight pricing",
-        title: "Know the price before we start",
+        eyebrow: "Des prix clairs",
+        title: "Connaître le prix avant que nous commencions",
         subtitle:
-          "Flat-rate on common jobs, and a firm written quote on everything else. No hourly surprises.",
+          "Un forfait sur les interventions courantes, un devis écrit et ferme sur tout le reste. Pas de mauvaise surprise à l'heure.",
         tiers: [
           {
-            name: "Service Call",
-            price: "$89",
-            period: "diagnostic",
+            name: "Déplacement diagnostic",
+            price: "89 €",
+            period: "par intervention",
             description:
-              "A licensed electrician at your door to diagnose the problem — credited toward the repair.",
+              "Un électricien qualifié chez vous pour identifier la panne — montant déduit de la réparation.",
             features: [
-              "Full safety inspection",
-              "Written diagnosis",
-              "Fee credited to the job",
-              "Same-day slots available",
+              "Vérification complète de sécurité",
+              "Diagnostic écrit",
+              "Montant déduit des travaux",
+              "Créneaux le jour même",
             ],
-            cta: { label: "Book a visit", href: "#contact" },
+            cta: { label: "Réserver une intervention", href: "#contact" },
           },
           {
-            name: "Panel Upgrade",
-            price: "from $1,850",
+            name: "Mise aux normes du tableau",
+            price: "à partir de 1 850 €",
             description:
-              "Upgrade to modern 200A service — permits, labor, and cleanup included.",
+              "Passage à un tableau conforme — démarches, main-d'œuvre et remise en état comprises.",
             features: [
-              "200A panel & breakers",
-              "Permit & inspection handled",
-              "Whole-home load calc",
-              "1-year workmanship warranty",
-              "Financing available",
+              "Tableau et protections neufs",
+              "Déclarations et contrôle pris en charge",
+              "Bilan de puissance du logement",
+              "Garantie de bonne exécution d'un an",
+              "Paiement en plusieurs fois possible",
             ],
-            cta: { label: "Get a quote", href: "#contact" },
+            cta: { label: "Demander un devis", href: "#contact" },
             highlighted: true,
-            badge: "Most popular",
+            badge: "Le plus demandé",
           },
           {
-            name: "EV Charger Install",
-            price: "from $650",
+            name: "Pose de borne de recharge",
+            price: "à partir de 650 €",
             description:
-              "Level 2 home charging, installed and permitted by licensed pros.",
+              "Recharge à domicile, installée et déclarée par des professionnels qualifiés.",
             features: [
-              "Dedicated 240V circuit",
-              "Load calculation & permit",
-              "Works with any EV",
-              "Rebate paperwork help",
+              "Circuit dédié 230 V",
+              "Bilan de puissance et déclaration",
+              "Compatible avec tous les véhicules",
+              "Aide au montage du dossier de prime",
             ],
-            cta: { label: "Get a quote", href: "#contact" },
+            cta: { label: "Demander un devis", href: "#contact" },
           },
         ],
-        note: "Quotes are always free. Emergency and after-hours rates differ — we'll tell you before we dispatch.",
+        note: "Les devis sont toujours gratuits. Les tarifs d'urgence et de nuit diffèrent — nous vous les annonçons avant de nous déplacer.",
       },
     },
     {
       type: "gallery",
       enabled: true,
       props: {
-        eyebrow: "Recent work",
-        title: "From our trucks this month",
+        eyebrow: "Réalisations récentes",
+        title: "Sorties de nos camionnettes ce mois-ci",
         columns: 3,
         images: [
           {
             src: "/photos/voltedge-electric/gallery-1.dd705410.jpg",
-            alt: "200A panel upgrade",
-            label: "Panel Upgrade",
-            caption: "Full 200A service upgrade — Rockridge",
+            alt: "Tableau électrique mis aux normes",
+            label: "Tableau électrique",
+            caption: "Mise aux normes complète du tableau — Croix-Rousse",
           },
           {
             src: "/photos/voltedge-electric/gallery-2.2a7d29f7.jpg",
-            alt: "Recessed lighting install",
-            label: "Recessed Lighting",
-            caption: "Kitchen recessed lighting retrofit",
+            alt: "Pose d'éclairage encastré",
+            label: "Éclairage encastré",
+            caption: "Rénovation de l'éclairage d'une cuisine",
           },
           {
             src: "/photos/voltedge-electric/gallery-3.bc2f348e.jpg",
-            alt: "EV charger installation",
-            label: "EV Charger",
-            caption: "Level 2 charger — Tesla Wall Connector",
+            alt: "Installation d'une borne de recharge",
+            label: "Borne de recharge",
+            caption: "Borne de recharge à domicile, 7,4 kW",
           },
           {
             src: "/photos/voltedge-electric/gallery-4.2611f525.jpg",
-            alt: "Commercial lighting fit-out",
-            label: "Commercial",
-            caption: "Warehouse LED retrofit — 40% energy saved",
+            alt: "Éclairage de locaux professionnels",
+            label: "Tertiaire",
+            caption: "Passage d'un entrepôt en LED — 40 % d'énergie économisée",
           },
           {
             src: "/photos/voltedge-electric/gallery-5.96cba473.jpg",
-            alt: "Battery and inverter bank for a home standby power system",
-            label: "Standby Power",
-            caption: "Whole-home battery and inverter backup",
+            alt: "Batteries et onduleur d'une alimentation de secours",
+            label: "Alimentation de secours",
+            caption: "Batteries et onduleur pour un logement entier",
           },
           {
             src: "/photos/voltedge-electric/gallery-6.5919ed75.jpg",
-            alt: "Landscape lighting",
-            label: "Landscape",
-            caption: "Low-voltage landscape lighting",
+            alt: "Éclairage extérieur",
+            label: "Extérieur",
+            caption: "Éclairage extérieur en très basse tension",
           },
         ],
       },
@@ -412,35 +447,35 @@ const config: SiteConfig = {
       type: "testimonials",
       enabled: true,
       props: {
-        eyebrow: "Reviews",
-        title: "Neighbors who trust us with their homes",
+        eyebrow: "Avis clients",
+        title: "Des voisins qui nous confient leur logement",
         items: [
           {
             quote:
-              "Our panel was original to a 1950s house and finally gave out. VoltEdge quoted it flat, pulled the permit, and had power back the same day. Spotless work.",
-            author: "Marisa T.",
-            role: "Rockridge, Oakland",
+              "Notre tableau datait d'une maison des années 1950 et a fini par lâcher. VoltEdge a annoncé un forfait, s'est occupé des démarches, et le courant était revenu le jour même. Travail impeccable.",
+            author: "Marise T.",
+            role: "Croix-Rousse, Lyon",
             rating: 5,
           },
           {
             quote:
-              "Called at 11pm when half the house went dark. A real electrician answered, walked me through making it safe, and was out first thing. Lifesavers.",
-            author: "Devon K.",
-            role: "Alameda",
+              "J'ai appelé à 23h quand la moitié de la maison s'est retrouvée dans le noir. Un vrai électricien a répondu, m'a guidée pour sécuriser l'installation, et est passé dès le lendemain matin. Ils m'ont sauvée.",
+            author: "Delphine K.",
+            role: "Villeurbanne",
             rating: 5,
           },
           {
             quote:
-              "Our panel was original to a 1950s house and finally gave out. VoltEdge quoted it flat, pulled the permit, and had power back the same day. Spotless work.",
-            author: "Marisa T.",
-            role: "Rockridge, Oakland",
+              "Devis reçu le mardi, chantier terminé le jeudi, et le prix final était exactement celui du devis. C'est devenu assez rare pour être signalé.",
+            author: "Olivier M.",
+            role: "Caluire-et-Cuire",
             rating: 5,
           },
           {
             quote:
-              "Got three EV charger quotes. VoltEdge was the only one who did an actual load calculation instead of guessing. Clean install, fair price.",
+              "J'avais demandé trois devis pour une borne de recharge. VoltEdge est le seul à avoir fait un vrai bilan de puissance au lieu d'estimer au jugé. Pose soignée, prix juste.",
             author: "Priya S.",
-            role: "Berkeley",
+            role: "Bron",
             rating: 5,
           },
         ],
@@ -450,33 +485,33 @@ const config: SiteConfig = {
       type: "faq",
       enabled: true,
       props: {
-        eyebrow: "Good to know",
-        title: "Questions we hear a lot",
+        eyebrow: "Bon à savoir",
+        title: "Les questions qui reviennent souvent",
         items: [
           {
-            question: "Are you licensed and insured?",
+            question: "Êtes-vous qualifiés et assurés ?",
             answer:
-              "Yes — we're a licensed California C-10 electrical contractor (License #1043927), fully insured and bonded. We're happy to provide certificates before any work begins.",
+              "Oui — nous sommes qualifiés Qualifelec E2 et couverts par une assurance décennale (n° 1043927). Nous transmettons volontiers les attestations avant tout début de travaux.",
           },
           {
-            question: "Do you really offer 24/7 emergency service?",
+            question: "Assurez-vous réellement les urgences 24h/24 ?",
             answer:
-              "We do. A real electrician — not a call center — answers after hours for genuine emergencies like power loss, burning smells, or sparking. After-hours rates apply and we'll confirm them before dispatching.",
+              "Oui. C'est un véritable électricien — et non un centre d'appels — qui répond en dehors des heures ouvrées pour les urgences réelles : coupure de courant, odeur de brûlé, arc électrique. Les tarifs de nuit s'appliquent et nous vous les confirmons avant de nous déplacer.",
           },
           {
-            question: "How soon can you come out?",
+            question: "Sous quel délai pouvez-vous intervenir ?",
             answer:
-              "Most non-emergency requests are booked within 1–2 business days, and we hold same-day slots for urgent issues. Emergencies are handled around the clock.",
+              "La plupart des demandes non urgentes sont planifiées sous 1 à 2 jours ouvrés, et nous gardons des créneaux le jour même pour les situations pressantes. Les urgences sont traitées à toute heure.",
           },
           {
-            question: "Do you charge for quotes?",
+            question: "Les devis sont-ils payants ?",
             answer:
-              "Quotes on planned work like panel upgrades, EV chargers, and lighting are always free. Diagnostic service calls carry an $89 fee that we credit toward the repair if you proceed.",
+              "Les devis sur travaux planifiés — tableau électrique, borne de recharge, éclairage — sont toujours gratuits. Le déplacement diagnostic est facturé 89 €, montant déduit de la réparation si vous donnez suite.",
           },
           {
-            question: "Do you guarantee your work?",
+            question: "Garantissez-vous vos travaux ?",
             answer:
-              "Every job is backed by a one-year workmanship warranty on top of manufacturer warranties. If something isn't right, we come back and make it right.",
+              "Chaque chantier bénéficie d'une garantie de bonne exécution d'un an, qui s'ajoute aux garanties des fabricants. Si quelque chose ne va pas, nous revenons et nous le reprenons.",
           },
         ],
       },
@@ -485,17 +520,17 @@ const config: SiteConfig = {
       type: "cta",
       enabled: true,
       props: {
-        title: "Lights out? Breaker won't reset?",
+        title: "Plus de courant ? Un disjoncteur qui refuse de se réarmer ?",
         description:
-          "We're on call 24/7. Talk to a licensed electrician right now.",
+          "Nous sommes joignables 24h/24. Parlez tout de suite à un électricien qualifié.",
         primaryCta: {
-          label: "Call (415) 555-0147",
-          href: "tel:+14155550147",
+          label: "Appeler le {phone}",
+          href: "{phoneHref}",
           icon: "phone",
         },
         secondaryCta: {
-          label: "WhatsApp us",
-          href: "https://wa.me/14155550147",
+          label: "Nous écrire sur WhatsApp",
+          href: "https://wa.me/33755534120",
           icon: "whatsapp",
         },
         variant: "band",
@@ -506,43 +541,45 @@ const config: SiteConfig = {
       type: "contact",
       enabled: true,
       props: {
-        eyebrow: "Get in touch",
-        title: "Request service or a free quote",
+        eyebrow: "Nous contacter",
+        title: "Demander une intervention ou un devis gratuit",
         subtitle:
-          "Tell us what's going on and we'll get back fast — usually within the hour during business hours.",
-        submitLabel: "Request service",
+          "Dites-nous ce qui se passe et nous revenons vers vous rapidement — en général dans l'heure pendant les heures ouvrées.",
+        submitLabel: "Envoyer ma demande",
         successMessage:
-          "Thanks — a VoltEdge dispatcher will call you back shortly. For emergencies, call (415) 555-0147.",
+          "Merci — un régulateur VoltEdge vous rappelle très vite. En cas d'urgence, appelez le {phone}.",
         showBusinessInfo: true,
-        // Enquiries go to Telegram. The bot token and chat id are ENV VARS in
-        // Vercel (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID) — never here.
-        // Named explicitly rather than left to env alone so this stays in step
-        // with the processor named in the privacy policy below.
+        // Les demandes partent vers Telegram. Le jeton du bot et l'identifiant de
+        // conversation sont des VARIABLES D'ENVIRONNEMENT sur Vercel
+        // (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID) — jamais ici. Le canal est
+        // nommé explicitement plutôt que laissé à l'environnement seul, pour
+        // rester cohérent avec le destinataire cité dans la politique de
+        // confidentialité ci-dessus.
         delivery: { channels: ["telegram"] },
         fields: [
-          { name: "name", label: "Full name", type: "text", required: true },
-          { name: "phone", label: "Phone", type: "tel", required: true },
-          { name: "email", label: "Email", type: "email" },
+          { name: "name", label: "Nom et prénom", type: "text", required: true },
+          { name: "phone", label: "Téléphone", type: "tel", required: true },
+          { name: "email", label: "E-mail", type: "email" },
           {
             name: "service",
-            label: "What do you need?",
+            label: "De quoi avez-vous besoin ?",
             type: "select",
             required: true,
-            placeholder: "Choose a service",
+            placeholder: "Choisissez une prestation",
             options: [
-              "Emergency repair",
-              "Panel upgrade",
-              "EV charger install",
-              "Lighting",
-              "Generator",
-              "Something else",
+              "Dépannage d'urgence",
+              "Mise aux normes du tableau",
+              "Pose d'une borne de recharge",
+              "Éclairage",
+              "Groupe électrogène",
+              "Autre demande",
             ],
           },
           {
             name: "message",
-            label: "Describe the job",
+            label: "Décrivez les travaux",
             type: "textarea",
-            placeholder: "e.g. Half the kitchen outlets stopped working…",
+            placeholder: "ex. La moitié des prises de la cuisine ne fonctionnent plus…",
           },
         ],
       },
@@ -551,26 +588,27 @@ const config: SiteConfig = {
       type: "location",
       enabled: true,
       props: {
-        eyebrow: "Service area",
-        title: "Based in Oakland, serving the East Bay",
+        eyebrow: "Zone d'intervention",
+        title: "Basés à Lyon, au service de la métropole",
         subtitle:
-          "Oakland, Berkeley, Alameda, Piedmont, and surrounding neighborhoods.",
-        address: "1820 Industrial Way, Oakland, CA 94607",
-        phone: "(415) 555-0147",
+          "Lyon, Villeurbanne, Caluire-et-Cuire, Bron, Vénissieux et les communes alentour.",
+        address: "18 rue de l'Industrie, 69007 Lyon",
+        phone: "+33 7 55 53 41 20",
         hours: [
-          { days: "Mon–Fri", hours: "7:00am – 6:00pm" },
-          { days: "Saturday", hours: "8:00am – 4:00pm" },
-          { days: "Sunday", hours: "Emergency only" },
+          { days: "Lun – Ven", hours: "7h00 – 18h00" },
+          { days: "Samedi", hours: "8h00 – 16h00" },
+          { days: "Dimanche", hours: "Urgences uniquement" },
         ],
       },
     },
-    // Disabled: a small crew doesn't need a staff page. Kept here to show the
-    // enable/disable toggle — flip to `true` to surface it with no other change.
+    // Désactivée : une petite équipe n'a pas besoin d'une page trombinoscope.
+    // Conservée ici pour montrer l'interrupteur activer/désactiver — passez à
+    // `true` pour la faire apparaître, sans aucune autre modification.
     {
       type: "team",
       enabled: false,
       props: {
-        title: "Meet the crew",
+        title: "L'équipe",
         members: [],
       },
     },

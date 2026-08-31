@@ -8,30 +8,35 @@ line of engine code.
 Adding a site means adding a value to a map. It does not mean adding a folder of code,
 a theme, or a fork.
 
-| Demo | Sector | Preset | Palette | Notable |
+| Demo | Sector | Language | Preset | Notable |
 | --- | --- | --- | --- | --- |
-| **VoltEdge Electric** | Electrician | `sharp` | steel navy + amber (light) · amber + cyan on graphite (dark) | dual light/dark with a toggle, plus a per-client hero override |
-| **Riverside Family Health** | Family clinic | `soft` | healing teal + coral on warm white | light only, routed `/privacy` page |
-| **Merrick & Stone** | Personal-injury law | `rounded` | ink + brass | trilingual EN/FR/AR, including full RTL |
+| **VoltEdge Électricité** | Electrician, Lyon | French | `sharp` | dual light/dark palette with a toggle, per-client hero override, routed `/confidentialite` page |
+| **Riverside Santé Familiale** | Family clinic, Bordeaux | French | `soft` | light-only palette, three-slide hero, team section |
+| **Merrick & Stone** | Personal-injury law, Chicago | EN / FR / AR | `rounded` | trilingual from one config, including full RTL |
 
-The three share 100% of their code. Every difference between them lives in
-`configs/<slug>.config.ts`.
+The three share 100% of their code. Every difference between them — including which
+language they are written in — lives in `configs/<slug>.config.ts`.
+
+Two of the demos are monolingual French and one is trilingual, which is the point: the
+language a site is written in is content, not code. Merrick additionally carries a
+translation overlay, so the *same* config renders in three languages.
 
 > All business names, addresses, phone numbers and email addresses in these demos are
-> fictional. The phone numbers use the reserved `555-01xx` range.
+> fictional. Phone numbers use the ranges reserved for fiction — `555-01xx` in the US,
+> and ARCEP's `05 36 49`/`07 55 53` ranges in France.
 
 ## The same codebase, three times
 
 | | |
 | :---: | :---: |
 | ![VoltEdge Electric](screenshots/voltedge-electric.png) | ![Riverside Family Health](screenshots/riverside-family-health.png) |
-| **VoltEdge Electric** — `sharp` preset, split hero, dual palette | **Riverside Family Health** — `soft` preset, slider hero, centred header |
+| **VoltEdge Électricité** — `sharp` preset, split hero, dual palette | **Riverside Santé Familiale** — `soft` preset, slider hero, centred header |
 | ![Merrick & Stone](screenshots/merrick-stone-law.png) | ![Merrick & Stone in Arabic](screenshots/merrick-arabic-rtl.png) |
 | **Merrick & Stone** — `rounded` preset, serif type, brass on ink | **The same page in Arabic** — mirrored layout, RTL type, LTR-isolated phone number |
 
 Not three templates, and not three forks: one set of components reading three different
-configuration files. The two Merrick shots are the same route, the same build and the same
-components, differing only by `?lang=ar`.
+configuration files — two of them written in French, one in English. The two Merrick shots
+are the same route, the same build and the same components, differing only by `?lang=ar`.
 
 ### Images
 

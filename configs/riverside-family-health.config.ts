@@ -1,47 +1,52 @@
 import type { SiteConfig } from "@/lib/types";
 
 /**
- * Riverside Family Health — a family medicine & primary care clinic.
+ * Riverside Santé Familiale — cabinet de médecine générale et de soins primaires.
  *
- * Identity: calm, warm, reassuring — the opposite of clinical-cold. A soft
- * warm-white surface, a healing teal-green primary, and a human coral accent.
- * Friendly rounded typography (Poppins + Nunito Sans) with the "soft" preset
- * (big radii, diffuse shadows, airy spacing). What patients care about — being
- * heard, easy booking, insurance, and who they'll actually see — leads, so the
- * providers get a dedicated Team section and there's no pricing/gallery.
+ * Identité : calme, chaleureuse, rassurante — l'inverse du froid clinique. Un
+ * fond blanc chaud, un vert-bleu apaisant en couleur principale et un corail
+ * humain en accent. Typographie ronde et accueillante (Poppins + Nunito Sans)
+ * avec le préréglage « soft » (grands rayons, ombres diffuses, respiration).
+ * Ce qui compte pour les patients — être écouté, prendre rendez-vous
+ * facilement, savoir qui l'on va voir — passe devant : les praticiens ont donc
+ * leur propre section, et il n'y a ni tarifs ni galerie.
+ *
+ * Les numéros appartiennent aux plages fictives réservées par l'ARCEP
+ * (05 36 49 XX XX).
  */
 const config: SiteConfig = {
   client: "riverside-family-health",
-  siteName: "Riverside Family Health",
+  siteName: "Riverside Santé Familiale",
   logo: {
-    alt: "Riverside Family Health",
+    alt: "Riverside Santé Familiale",
     monogram: "R",
   },
 
   theme: {
     stylePreset: "rounded",
     defaultMode: "light",
-    // Single-palette (light-only) site: no second palette, so the header theme
-    // toggle stays hidden even if enabled.
+    // Site à palette unique (clair seulement) : pas de seconde palette, donc le
+    // sélecteur de thème reste masqué même s'il est activé.
     colorsDark: {
-      primary: "#EC7684", // reversed (RGB-inverted) teal-green
-      secondary: "#F4A5AB", // reversed (RGB-inverted) deep teal
-      accent: "#0F819C", // reversed (RGB-inverted) warm coral
-      background: "#090507", // reversed (RGB-inverted) soft warm white
-      text: "#E8CBCF", // reversed (RGB-inverted) deep teal-charcoal
-      muted: "#A1848A", // reversed (RGB-inverted) muted teal
+      primary: "#EC7684", // vert-bleu inversé (RVB)
+      secondary: "#F4A5AB", // bleu-vert profond inversé
+      accent: "#0F819C", // corail chaud inversé
+      background: "#090507", // blanc chaud inversé
+      text: "#E8CBCF", // anthracite bleu-vert inversé
+      muted: "#A1848A", // bleu-vert atténué inversé
     },
-    // Darkened 2026-08-04 for WCAG AA. The originals sat just under the line:
-    // primary 4.08:1 and muted 4.37:1 against this background (AA needs 4.5),
-    // and accent 2.53:1 where the star ratings it colours need 3:1 as non-text
-    // content. Same hues, a few percent darker — measured, not eyeballed.
+    // Assombrie le 04/08/2026 pour respecter WCAG AA. Les valeurs d'origine
+    // passaient juste sous la barre : primary à 4,08:1 et muted à 4,37:1 sur ce
+    // fond (AA exige 4,5), et accent à 2,53:1 alors que les étoiles de notation
+    // qu'il colore exigent 3:1 en contenu non textuel. Mêmes teintes, quelques
+    // pour cent plus sombres — mesuré, pas estimé à l'œil.
     colorsLight: {
-      primary: "#117B6F", // healing teal-green — 4.88:1 on background
-      secondary: "#0B5A54", // deep teal
-      accent: "#D36F57", // warm human coral — 3.23:1, used for star ratings
-      background: "#F6FAF8", // soft warm white, hint of green
-      text: "#173430", // deep teal-charcoal
-      muted: "#58746E", // 4.82:1 on background
+      primary: "#117B6F", // vert-bleu apaisant — 4,88:1 sur le fond
+      secondary: "#0B5A54", // bleu-vert profond
+      accent: "#D36F57", // corail chaud — 3,23:1, utilisé pour les étoiles
+      background: "#F6FAF8", // blanc chaud, nuance verte
+      text: "#173430", // anthracite bleu-vert
+      muted: "#58746E", // 4,82:1 sur le fond
     },
     fonts: {
       heading: "Poppins",
@@ -50,16 +55,16 @@ const config: SiteConfig = {
   },
 
   business: {
-    phone: "(503) 555-0192",
-    email: "hello@riversidefamilyhealth.com",
-    address: "440 Rivermist Ave, Suite 200, Portland, OR 97205",
-    // Emitted as JSON-LD "@type". `MedicalClinic` fits a practice with several
-    // providers; `Physician` would describe a single doctor.
+    phone: "+33 5 36 49 12 80",
+    email: "contact@riverside-sante.fr",
+    address: "12 avenue des Quais, 33000 Bordeaux",
+    // Émis comme "@type" dans le JSON-LD. `MedicalClinic` convient à un cabinet
+    // de groupe ; `Physician` décrirait un praticien seul.
     schemaType: "MedicalClinic",
     hours: [
-      { days: "Mon–Fri", hours: "8:00am – 5:30pm" },
-      { days: "Saturday", hours: "9:00am – 1:00pm" },
-      { days: "Sunday", hours: "Closed" },
+      { days: "Lun – Ven", hours: "8h00 – 17h30" },
+      { days: "Samedi", hours: "9h00 – 13h00" },
+      { days: "Dimanche", hours: "Fermé" },
     ],
     socials: [
       { icon: "facebook", label: "Facebook", href: "https://facebook.com" },
@@ -68,26 +73,39 @@ const config: SiteConfig = {
     ],
   },
 
-  // A clinic is the one niche where this needs a real decision, not a default.
-  // WhatsApp is not a HIPAA-covered channel, so a patient describing symptoms in
-  // it puts PHI somewhere the practice cannot control. Points at `tel:` instead:
-  // same one-tap intent, no protected health information in a chat log. Swap to
-  // a wa.me link ONLY if the practice has cleared it and will keep replies to
-  // "please call us".
+  // Un cabinet médical est le seul cas où ceci demande une vraie décision, pas
+  // un réglage par défaut. WhatsApp n'offre aucune garantie sur l'hébergement
+  // des données de santé : un patient qui y décrit ses symptômes place des
+  // données sensibles hors du contrôle du cabinet. Le bouton pointe donc vers
+  // `tel:` — même geste en un appui, aucune donnée de santé dans un historique
+  // de conversation. Ne passez à un lien wa.me QUE si le cabinet l'a validé et
+  // s'en tient à des réponses du type « merci de nous appeler ».
   floatingButton: {
     enabled: true,
-    href: "tel:+15035550192",
-    label: "Call the clinic",
+    href: "{phoneHref}",
+    label: "Appeler le cabinet",
     icon: "phone",
     variant: "primary",
     position: { x: "right", y: "bottom" },
   },
 
+  // Explicite parce que les libellés déduits automatiquement (lib/nav.ts) sont
+  // en anglais. Pas de page routée sur ce site : les ancres nues conviennent.
+  nav: [
+    { label: "Spécialités", href: "#services" },
+    { label: "Le cabinet", href: "#about" },
+    { label: "Équipe", href: "#team" },
+    { label: "Témoignages", href: "#testimonials" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Nous trouver", href: "#location" },
+    { label: "Contact", href: "#contact" },
+  ],
+
   header: {
     sticky: true,
     type: "centered",
     cta: {
-      label: "Book appointment",
+      label: "Prendre rendez-vous",
       href: "#contact",
       icon: "calendar-check",
       variant: "primary",
@@ -100,25 +118,35 @@ const config: SiteConfig = {
   footer: {
     type: "minimal",
     tagline:
-      "Whole-family primary care in the heart of Portland — where you're a person first, and a patient second.",
-    legal: "Accredited by AAAHC · Most major insurance accepted",
-    contactLabel: "Contact us",
-    // exploreLabel: "Explore",
-    copyrightText: "© All rights reserved.",
+      "Des soins primaires pour toute la famille, au cœur de Bordeaux — où l'on est une personne d'abord, un patient ensuite.",
+    legal: "Cabinet conventionné secteur 1 · Tiers payant accepté",
+    contactLabel: "Nous contacter",
+    copyrightText: "© Tous droits réservés.",
     showHours: true,
+  },
+
+  // Déclare la langue du site. Sans bloc `i18n`, `pickLocale` retombe sur "en"
+  // et le document sort en `<html lang="en">` — un lecteur d'écran prononcerait
+  // alors le français avec la phonétique anglaise, et les moteurs de recherche
+  // se tromperaient de langue. Une seule locale suffit : le sélecteur reste
+  // masqué, seule la langue du document est fixée.
+  i18n: {
+    defaultLocale: "fr",
+    locales: [{ code: "fr", label: "Français", dir: "ltr" }],
+    switcher: { enabled: false },
   },
 
   seo: {
     title:
-      "Riverside Family Health — Family Medicine & Primary Care in Portland",
+      "Riverside Santé Familiale — médecine générale et soins primaires à Bordeaux",
     description:
-      "Board-certified family medicine, pediatrics, women's health, and telehealth in Portland, OR. Same-day appointments and most insurance accepted. Now welcoming new patients.",
+      "Médecine générale, pédiatrie, santé de la femme et téléconsultation à Bordeaux. Rendez-vous le jour même, tiers payant accepté. Nouveaux patients bienvenus.",
     keywords: [
-      "family doctor Portland",
-      "primary care",
-      "pediatrics",
-      "same-day appointment",
-      "telehealth",
+      "médecin généraliste Bordeaux",
+      "soins primaires",
+      "pédiatrie",
+      "rendez-vous le jour même",
+      "téléconsultation",
     ],
   },
 
@@ -127,109 +155,112 @@ const config: SiteConfig = {
       type: "hero",
       enabled: true,
       props: {
-        eyebrow: "Now welcoming new patients",
-        title: "Healthcare that",
-        highlight: "listens first.",
+        eyebrow: "Nous acceptons de nouveaux patients",
+        title: "Une médecine qui",
+        highlight: "écoute d'abord.",
         subtitle:
-          "Unhurried visits, a team that knows your name, and same-day care when you need it. Riverside is family medicine the way it should feel.",
+          "Des consultations sans précipitation, une équipe qui connaît votre nom, et des rendez-vous le jour même quand il le faut. Riverside, c'est la médecine de famille telle qu'elle devrait être.",
         bullets: [
-          "Same-day and next-day appointments",
-          "Most major insurance plans accepted",
-          "In-person and secure telehealth visits",
+          "Rendez-vous le jour même ou le lendemain",
+          "Tiers payant et principales mutuelles acceptés",
+          "Consultations au cabinet et téléconsultations sécurisées",
         ],
         primaryCta: {
-          label: "Book an appointment",
+          label: "Prendre rendez-vous",
           href: "#contact",
           icon: "calendar-check",
         },
         secondaryCta: {
-          label: "Call (503) 555-0192",
-          href: "tel:+15035550192",
+          label: "Appeler le {phone}",
+          href: "{phoneHref}",
           variant: "secondary",
         },
         badges: [
-          "Board-certified providers",
-          "4.9★ patient rating",
-          "AAAHC accredited",
+          "Praticiens diplômés",
+          "4,9★ de satisfaction patients",
+          "Conventionné secteur 1",
         ],
-        // Full-bleed rotating banner. `slides` is what renders; the props above
-        // (bullets, badges, backdrop, and the top-level copy) are IGNORED by
-        // this layout and kept only so `layout: "split"` restores the old hero
-        // in one word.
+        // Bandeau plein cadre en rotation. Ce sont les `slides` qui s'affichent ;
+        // les propriétés ci-dessus (bullets, badges, backdrop et le texte de
+        // premier niveau) sont IGNORÉES par cette mise en page et conservées
+        // uniquement pour que `layout: "split"` rétablisse l'ancien héros d'un
+        // seul mot.
         layout: "slider",
-        // Slow on purpose — a clinic reads as calm, not as a promotion. Autoplay
-        // pauses on hover, on keyboard focus and in background tabs, and is off
-        // entirely for visitors who ask for reduced motion.
+        // Lent volontairement : un cabinet médical doit respirer le calme, pas la
+        // promotion. La rotation se met en pause au survol, au focus clavier et
+        // dans un onglet en arrière-plan, et elle est totalement désactivée pour
+        // les visiteurs qui demandent une réduction des animations.
         autoplayMs: 7000,
-        // One slide per reason someone arrives: new patient, unwell today, or
-        // can't come in. Each carries its own CTA, so the slider is doing real
-        // work rather than rotating one message over changing pictures.
-        // Visitors act on slide 1 far more than the rest, so the strongest
-        // message stays first.
+        // Une diapositive par motif d'arrivée : nouveau patient, souffrant
+        // aujourd'hui, ou empêché de se déplacer. Chacune porte son propre appel
+        // à l'action : le carrousel fait donc un vrai travail au lieu de faire
+        // tourner un même message sur des images qui changent. Les visiteurs
+        // agissent bien davantage sur la première : le message le plus fort y
+        // reste.
         slides: [
           {
-            eyebrow: "Now welcoming new patients",
-            title: "Healthcare that",
-            highlight: "listens first.",
+            eyebrow: "Nous acceptons de nouveaux patients",
+            title: "Une médecine qui",
+            highlight: "écoute d'abord.",
             subtitle:
-              "Unhurried visits with board-certified providers who know your name. Family medicine the way it should feel.",
+              "Des consultations sans précipitation, avec des praticiens diplômés qui connaissent votre nom. La médecine de famille telle qu'elle devrait être.",
             primaryCta: {
-              label: "Book an appointment",
+              label: "Prendre rendez-vous",
               href: "#contact",
               icon: "calendar-check",
             },
             secondaryCta: {
-              label: "Call (503) 555-0192",
-              href: "tel:+15035550192",
+              label: "Appeler le {phone}",
+              href: "{phoneHref}",
               variant: "secondary",
             },
             media: {
               src: "/photos/riverside-family-health/hero.05dbf5c3.jpg",
-              alt: "A Riverside provider talking with a patient",
+              alt: "Une salle d'examen du cabinet Riverside",
             },
             align: "start",
           },
           {
-            eyebrow: "Feeling unwell today?",
-            title: "Same-day appointments,",
-            highlight: "often within hours.",
+            eyebrow: "Vous ne vous sentez pas bien aujourd'hui ?",
+            title: "Des rendez-vous le jour même,",
+            highlight: "souvent en quelques heures.",
             subtitle:
-              "Sore throats, infections, injuries and the things that can't wait until next week. Most major insurance plans accepted.",
+              "Maux de gorge, infections, petites blessures et tout ce qui ne peut pas attendre la semaine prochaine. Tiers payant et principales mutuelles acceptés.",
             primaryCta: {
-              label: "Book same-day care",
+              label: "Consulter aujourd'hui",
               href: "#contact",
               icon: "calendar-check",
             },
             secondaryCta: {
-              label: "See our services",
+              label: "Voir nos spécialités",
               href: "#services",
               variant: "secondary",
             },
             media: {
               src: "/photos/riverside-family-health/hero-2.eedc44f3.jpg",
-              alt: "Same-day care at Riverside Family Health",
+              alt: "Un cabinet de consultation du centre Riverside",
             },
             align: "start",
           },
           {
-            eyebrow: "From wherever you are",
-            title: "Secure telehealth",
-            highlight: "when you can't come in.",
+            eyebrow: "Où que vous soyez",
+            title: "La téléconsultation sécurisée",
+            highlight: "quand vous ne pouvez pas venir.",
             subtitle:
-              "Follow-ups, prescription questions and advice by video, from an AAAHC-accredited practice you already trust.",
+              "Suivis, questions sur une ordonnance et conseils en visio, avec un cabinet conventionné que vous connaissez déjà.",
             primaryCta: {
-              label: "Start a virtual visit",
+              label: "Démarrer une téléconsultation",
               href: "#contact",
               icon: "video",
             },
             secondaryCta: {
-              label: "Read patient stories",
+              label: "Lire les témoignages",
               href: "#testimonials",
               variant: "secondary",
             },
             media: {
               src: "/photos/riverside-family-health/hero-3.5439ff7b.jpg",
-              alt: "A secure telehealth visit with a Riverside provider",
+              alt: "Une téléconsultation sécurisée avec un praticien Riverside",
             },
             align: "start",
           },
@@ -240,48 +271,47 @@ const config: SiteConfig = {
       type: "services",
       enabled: true,
       props: {
-        eyebrow: "How we care for you",
-        title: "Comprehensive care, all in one place",
+        eyebrow: "Comment nous vous soignons",
+        title: "Une prise en charge complète, au même endroit",
         subtitle:
-          "From your child's first checkup to managing life's long-term stuff — one team, one chart, one relationship.",
+          "Du premier examen de votre enfant au suivi des maladies chroniques — une équipe, un dossier, une relation.",
         columns: 3,
         items: [
           {
             icon: "heart-pulse",
-            title: "Family Medicine",
+            title: "Médecine générale",
             description:
-              "Primary care for every age — checkups, illness, and everything in between, with a provider who knows your history.",
-            href: "#top",
+              "Soins primaires à tout âge — examens de routine, maladies aiguës et tout ce qu'il y a entre les deux, avec un praticien qui connaît vos antécédents.",
           },
           {
             icon: "baby",
-            title: "Pediatrics",
+            title: "Pédiatrie",
             description:
-              "Gentle, kid-friendly care from newborn visits and vaccines to school physicals and sick days.",
+              "Des soins doux et adaptés aux enfants, du suivi du nourrisson et des vaccins aux certificats scolaires et aux jours de fièvre.",
           },
           {
             icon: "flower",
-            title: "Women's Health",
+            title: "Santé de la femme",
             description:
-              "Well-woman exams, contraception counseling, and prenatal care in a comfortable, judgment-free space.",
+              "Suivi gynécologique, conseil en contraception et suivi de grossesse, dans un cadre confortable et sans jugement.",
           },
           {
             icon: "shield-check",
-            title: "Preventive Care",
+            title: "Prévention",
             description:
-              "Screenings, immunizations, and wellness planning to catch things early and keep you healthy.",
+              "Dépistages, vaccinations et bilans de prévention pour repérer tôt et vous garder en bonne santé.",
           },
           {
             icon: "activity",
-            title: "Chronic Care Management",
+            title: "Maladies chroniques",
             description:
-              "Thoughtful, coordinated support for diabetes, blood pressure, thyroid, and other ongoing conditions.",
+              "Un accompagnement coordonné et attentif pour le diabète, la tension, la thyroïde et les autres affections au long cours.",
           },
           {
             icon: "video",
-            title: "Telehealth Visits",
+            title: "Téléconsultation",
             description:
-              "Secure video visits for follow-ups, refills, and minor concerns — care from wherever you are.",
+              "Des consultations vidéo sécurisées pour les suivis, les renouvellements d'ordonnance et les motifs simples — où que vous soyez.",
           },
         ],
       },
@@ -290,78 +320,99 @@ const config: SiteConfig = {
       type: "about",
       enabled: true,
       props: {
-        eyebrow: "Our approach",
-        title: "You're a person first, and a patient second",
+        eyebrow: "Notre approche",
+        title: "Vous êtes une personne d'abord, un patient ensuite",
         body: [
-          "Riverside was founded on a simple frustration: healthcare had stopped listening. We built a clinic around longer visits, real relationships, and providers who remember the details that matter to you.",
-          "That means you'll usually see the same face each visit, get answers you can actually understand, and never feel like you're being rushed out the door. Good medicine starts with being heard.",
+          "Riverside est né d'un constat simple : la médecine avait cessé d'écouter. Nous avons construit un cabinet autour de consultations plus longues, de vraies relations, et de praticiens qui retiennent les détails qui comptent pour vous.",
+          "Concrètement, vous voyez le plus souvent le même visage à chaque visite, vous repartez avec des réponses réellement compréhensibles, et vous n'avez jamais le sentiment qu'on vous pousse vers la porte. Une bonne médecine commence par une écoute.",
         ],
         highlights: [
-          "Longer, unhurried appointments",
-          "See the same provider each visit",
-          "Same-day sick appointments",
-          "Coordinated referrals & labs on-site",
+          "Des consultations plus longues, sans précipitation",
+          "Le même praticien à chaque visite",
+          "Consultations le jour même en cas de maladie",
+          "Orientations coordonnées et prélèvements sur place",
         ],
         stats: [
-          { value: "25k+", label: "Patients cared for" },
-          { value: "12", label: "Providers on staff" },
-          { value: "4.9★", label: "Patient rating" },
+          { value: "25 000+", label: "Patients suivis" },
+          { value: "12", label: "Praticiens au cabinet" },
+          { value: "4,9★", label: "Satisfaction patients" },
         ],
         mediaSide: "right",
-        media: { src: "/photos/riverside-family-health/about.2e1ddaca.jpg", alt: "The Riverside Family Health waiting area" },
+        media: {
+          src: "/photos/riverside-family-health/about.2e1ddaca.jpg",
+          alt: "La salle d'attente du cabinet Riverside",
+        },
       },
     },
     {
       type: "team",
       enabled: true,
       props: {
-        eyebrow: "Meet your care team",
-        title: "The people you'll actually see",
+        eyebrow: "Votre équipe soignante",
+        title: "Les personnes que vous verrez vraiment",
         subtitle:
-          "Board-certified, genuinely kind, and here for the long haul.",
+          "Diplômées, sincèrement bienveillantes, et là sur la durée.",
         columns: 3,
         members: [
           {
-            name: "Dr. Elena Ortiz",
-            photo: { src: "/art/riverside-family-health/team-eo.svg", alt: "Dr. Elena Ortiz" },
-            role: "Family Medicine · Medical Director",
-            credentials: "MD, FAAFP",
-            bio: "Twenty years in family medicine with a soft spot for preventive care and demystifying lab results.",
+            name: "Dr Emma Ollivier",
+            photo: {
+              src: "/art/riverside-family-health/team-eo.svg",
+              alt: "Dr Emma Ollivier",
+            },
+            role: "Médecine générale · Directrice médicale",
+            credentials: "Docteure en médecine",
+            bio: "Vingt ans de médecine générale, avec un faible pour la prévention et pour rendre un résultat d'analyse enfin compréhensible.",
           },
           {
-            name: "Dr. Marcus Bell",
-            photo: { src: "/art/riverside-family-health/team-mb.svg", alt: "Dr. Marcus Bell" },
-            role: "Pediatrics",
-            credentials: "MD, FAAP",
-            bio: "Makes even nervous toddlers laugh. Focused on development, nutrition, and calm, confident parents.",
+            name: "Dr Mathieu Bernard",
+            photo: {
+              src: "/art/riverside-family-health/team-mb.svg",
+              alt: "Dr Mathieu Bernard",
+            },
+            role: "Pédiatrie",
+            credentials: "Pédiatre",
+            bio: "Il fait rire même les tout-petits les plus inquiets. Développement, nutrition, et des parents rassurés.",
           },
           {
-            name: "Dr. Aisha Rahman",
-            photo: { src: "/art/riverside-family-health/team-ar.svg", alt: "Dr. Aisha Rahman" },
-            role: "Women's Health",
-            credentials: "MD, OB/GYN",
-            bio: "Compassionate, evidence-based care across every stage of women's health, from teens to menopause.",
+            name: "Dr Amina Reggani",
+            photo: {
+              src: "/art/riverside-family-health/team-ar.svg",
+              alt: "Dr Amina Reggani",
+            },
+            role: "Santé de la femme",
+            credentials: "Gynécologue obstétricienne",
+            bio: "Un suivi bienveillant et fondé sur les preuves, à chaque étape — de l'adolescence à la ménopause.",
           },
           {
-            name: "Nadia Chen, FNP",
-            photo: { src: "/art/riverside-family-health/team-nc.svg", alt: "Nadia Chen, FNP" },
-            role: "Family Nurse Practitioner",
-            credentials: "MSN, FNP-C",
-            bio: "Same-day sick visits and chronic care with a knack for practical, livable plans.",
+            name: "Nadia Chevalier, IPA",
+            photo: {
+              src: "/art/riverside-family-health/team-nc.svg",
+              alt: "Nadia Chevalier, IPA",
+            },
+            role: "Infirmière en pratique avancée",
+            credentials: "IPA, mention pathologies chroniques",
+            bio: "Consultations du jour et suivi des maladies chroniques, avec le don de proposer des plans réellement tenables.",
           },
           {
-            name: "Dr. James Okafor",
-            photo: { src: "/art/riverside-family-health/team-jo.svg", alt: "Dr. James Okafor" },
-            role: "Internal Medicine",
-            credentials: "MD",
-            bio: "Manages the complex, multi-condition cases with patience and clear communication.",
+            name: "Dr Jérôme Ollier",
+            photo: {
+              src: "/art/riverside-family-health/team-jo.svg",
+              alt: "Dr Jérôme Ollier",
+            },
+            role: "Médecine interne",
+            credentials: "Docteur en médecine",
+            bio: "Il prend en charge les situations complexes, à plusieurs pathologies, avec patience et clarté.",
           },
           {
-            name: "Priya Nair, RD",
-            photo: { src: "/art/riverside-family-health/team-pn.svg", alt: "Priya Nair, RD" },
-            role: "Registered Dietitian",
-            credentials: "RD, CDCES",
-            bio: "Turns 'eat healthier' into a plan that fits your real life, budget, and kitchen.",
+            name: "Perrine Naudin",
+            photo: {
+              src: "/art/riverside-family-health/team-pn.svg",
+              alt: "Perrine Naudin",
+            },
+            role: "Diététicienne",
+            credentials: "Diététicienne nutritionniste",
+            bio: "Elle transforme « mangez mieux » en un plan compatible avec votre vraie vie, votre budget et votre cuisine.",
           },
         ],
       },
@@ -370,28 +421,28 @@ const config: SiteConfig = {
       type: "testimonials",
       enabled: true,
       props: {
-        eyebrow: "Patient stories",
-        title: "Care our patients come back for",
+        eyebrow: "Témoignages",
+        title: "Des soins pour lesquels nos patients reviennent",
         items: [
           {
             quote:
-              "First doctor's office where I didn't feel like a number. Dr. Ortiz actually remembered what we talked about last time and followed up. That's rare.",
-            author: "Rebecca M.",
-            role: "Patient since 2021",
+              "Le premier cabinet où je ne me suis pas sentie être un numéro. La Dre Ollivier se souvenait vraiment de ce dont nous avions parlé la fois précédente, et elle a assuré le suivi. C'est rare.",
+            author: "Camille M.",
+            role: "Patiente depuis 2021",
             rating: 5,
           },
           {
             quote:
-              "My son is terrified of doctors, and Dr. Bell somehow made his checkup fun. We drove past two closer clinics to come here and it's worth it.",
-            author: "Tom & Alicia W.",
-            role: "Parents of two",
+              "Mon fils est terrifié par les médecins, et le Dr Bernard a réussi à rendre sa visite amusante. Nous passons devant deux cabinets plus proches pour venir ici, et ça en vaut la peine.",
+            author: "Thomas et Alice B.",
+            role: "Parents de deux enfants",
             rating: 5,
           },
           {
             quote:
-              "Booked a same-day telehealth visit on my lunch break, had my prescription before I got back to my desk. Modern care that still feels personal.",
-            author: "Jordan P.",
-            role: "Telehealth patient",
+              "J'ai obtenu une téléconsultation le jour même pendant ma pause déjeuner, et mon ordonnance était prête avant que je retourne au bureau. Une médecine moderne qui reste humaine.",
+            author: "Julien P.",
+            role: "Patient en téléconsultation",
             rating: 5,
           },
         ],
@@ -401,33 +452,33 @@ const config: SiteConfig = {
       type: "faq",
       enabled: true,
       props: {
-        eyebrow: "Before your visit",
-        title: "Questions new patients ask",
+        eyebrow: "Avant votre visite",
+        title: "Les questions des nouveaux patients",
         items: [
           {
-            question: "Are you accepting new patients?",
+            question: "Acceptez-vous de nouveaux patients ?",
             answer:
-              "Yes! We're currently welcoming new patients of all ages. You can request an appointment through the form below or give us a call and we'll get you scheduled.",
+              "Oui ! Nous accueillons actuellement de nouveaux patients de tous âges. Vous pouvez demander un rendez-vous via le formulaire ci-dessous, ou nous appeler et nous vous trouverons un créneau.",
           },
           {
-            question: "What insurance do you accept?",
+            question: "Comment fonctionne la prise en charge ?",
             answer:
-              "We accept most major insurance plans, including Blue Cross Blue Shield, Aetna, Cigna, UnitedHealthcare, Medicare, and Oregon Health Plan. Call us to confirm your specific plan — we're glad to check before your visit.",
+              "Le cabinet est conventionné secteur 1 : les tarifs sont ceux de l'Assurance Maladie, sans dépassement d'honoraires. Nous pratiquons le tiers payant sur la part obligatoire, et sur la part mutuelle pour la plupart des complémentaires. Munissez-vous de votre carte Vitale et de votre carte de mutuelle.",
           },
           {
-            question: "Can I get a same-day appointment?",
+            question: "Puis-je avoir un rendez-vous le jour même ?",
             answer:
-              "We reserve same-day slots every day for sick visits and urgent concerns. Call early in the morning for the best availability, or request one through the form and we'll find the soonest opening.",
+              "Nous réservons chaque jour des créneaux pour les consultations urgentes et les motifs aigus. Appelez tôt le matin pour les meilleures disponibilités, ou faites une demande via le formulaire et nous trouverons l'ouverture la plus proche.",
           },
           {
-            question: "Do you offer telehealth?",
+            question: "Proposez-vous la téléconsultation ?",
             answer:
-              "We do. Secure video visits are available for follow-ups, medication refills, and many minor concerns. When you request an appointment, just let us know you'd prefer telehealth.",
+              "Oui. Des consultations vidéo sécurisées sont possibles pour les suivis, les renouvellements d'ordonnance et de nombreux motifs simples. Lors de votre demande de rendez-vous, indiquez simplement que vous préférez la téléconsultation.",
           },
           {
-            question: "What should I bring to my first visit?",
+            question: "Que dois-je apporter à ma première visite ?",
             answer:
-              "Please bring a photo ID, your insurance card, a list of current medications, and any relevant records from previous providers. Arriving 15 minutes early gives us time to get you set up.",
+              "Merci d'apporter une pièce d'identité, votre carte Vitale et votre carte de mutuelle, la liste de vos traitements en cours, et tout compte rendu utile de vos précédents médecins. Arriver 15 minutes en avance nous laisse le temps de créer votre dossier.",
           },
         ],
       },
@@ -436,15 +487,15 @@ const config: SiteConfig = {
       type: "cta",
       enabled: true,
       props: {
-        title: "Ready to feel heard?",
+        title: "Prêt à être enfin écouté ?",
         description:
-          "Booking takes about a minute. We'll match you with a provider and find a time that works.",
+          "La prise de rendez-vous prend environ une minute. Nous vous orientons vers le bon praticien et trouvons un horaire qui vous convient.",
         primaryCta: {
-          label: "Book an appointment",
+          label: "Prendre rendez-vous",
           href: "#contact",
           icon: "calendar-check",
         },
-        secondaryCta: { label: "Call the clinic", href: "tel:+15035550192" },
+        secondaryCta: { label: "Appeler le cabinet", href: "{phoneHref}" },
         variant: "card",
         backdrop: "glow",
       },
@@ -453,41 +504,41 @@ const config: SiteConfig = {
       type: "contact",
       enabled: true,
       props: {
-        eyebrow: "Appointments",
-        title: "Request an appointment",
+        eyebrow: "Rendez-vous",
+        title: "Demander un rendez-vous",
         subtitle:
-          "Share a few details and our front desk will reach out to confirm a time. For medical emergencies, call 911.",
-        submitLabel: "Request appointment",
+          "Donnez-nous quelques informations et le secrétariat vous rappelle pour confirmer un horaire. En cas d'urgence vitale, appelez le 15 (SAMU) ou le 112.",
+        submitLabel: "Envoyer ma demande",
         successMessage:
-          "Thank you — our front desk will call you within one business day to confirm your appointment.",
+          "Merci — le secrétariat vous appelle sous un jour ouvré pour confirmer votre rendez-vous.",
         showBusinessInfo: true,
         fields: [
-          { name: "name", label: "Full name", type: "text", required: true },
-          { name: "phone", label: "Phone", type: "tel", required: true },
-          { name: "email", label: "Email", type: "email" },
+          { name: "name", label: "Nom et prénom", type: "text", required: true },
+          { name: "phone", label: "Téléphone", type: "tel", required: true },
+          { name: "email", label: "E-mail", type: "email" },
           {
             name: "reason",
-            label: "Reason for visit",
+            label: "Motif de la consultation",
             type: "select",
             required: true,
-            placeholder: "Select a reason",
+            placeholder: "Choisissez un motif",
             options: [
-              "New patient visit",
-              "Annual checkup",
-              "Sick visit",
-              "Pediatric visit",
-              "Women's health",
-              "Telehealth",
-              "Something else",
+              "Première consultation",
+              "Bilan annuel",
+              "Consultation pour maladie",
+              "Consultation pédiatrique",
+              "Santé de la femme",
+              "Téléconsultation",
+              "Autre motif",
             ],
           },
-          { name: "preferred", label: "Preferred date", type: "date" },
+          { name: "preferred", label: "Date souhaitée", type: "date" },
           {
             name: "message",
-            label: "Anything we should know?",
+            label: "Quelque chose à nous signaler ?",
             type: "textarea",
             placeholder:
-              "Optional — tell us a little about what's bringing you in.",
+              "Facultatif — dites-nous en quelques mots ce qui vous amène.",
           },
         ],
       },
@@ -496,34 +547,53 @@ const config: SiteConfig = {
       type: "location",
       enabled: true,
       props: {
-        eyebrow: "Visit us",
-        title: "Easy to find, easy to park",
+        eyebrow: "Nous trouver",
+        title: "Facile à trouver, facile à stationner",
         subtitle:
-          "In the Rivermist district with free patient parking and a MAX stop one block away.",
-        address: "440 Rivermist Ave, Suite 200, Portland, OR 97205",
-        phone: "(503) 555-0192",
+          "Sur les quais, avec un parking patients gratuit et un arrêt de tramway à une rue.",
+        address: "12 avenue des Quais, 33000 Bordeaux",
+        phone: "+33 5 36 49 12 80",
         hours: [
-          { days: "Mon–Fri", hours: "8:00am – 5:30pm" },
-          { days: "Saturday", hours: "9:00am – 1:00pm" },
-          { days: "Sunday", hours: "Closed" },
+          { days: "Lun – Ven", hours: "8h00 – 17h30" },
+          { days: "Samedi", hours: "9h00 – 13h00" },
+          { days: "Dimanche", hours: "Fermé" },
         ],
       },
     },
-    // Disabled for this clinic: medical pricing is insurance-driven, and a photo
-    // gallery isn't the right fit. Left here to demonstrate per-client toggling.
-    { type: "pricing", enabled: false, props: { title: "Pricing", tiers: [] } },
+    // Désactivées pour ce cabinet : les tarifs médicaux relèvent de la
+    // convention, et une galerie photo n'est pas adaptée. Conservées ici pour
+    // montrer l'activation/désactivation par client.
+    { type: "pricing", enabled: false, props: { title: "Tarifs", tiers: [] } },
     {
       type: "gallery",
       enabled: false,
       props: {
-        title: "Gallery",
+        title: "Galerie",
         images: [
-          { alt: "The Riverside waiting room", src: "/art/riverside-family-health/gallery-1.svg" },
-          { alt: "A consultation room", src: "/art/riverside-family-health/gallery-2.svg" },
-          { alt: "The practice reception desk", src: "/art/riverside-family-health/gallery-3.svg" },
-          { alt: "On-site lab and vitals station", src: "/art/riverside-family-health/gallery-4.svg" },
-          { alt: "The children's corner", src: "/art/riverside-family-health/gallery-5.svg" },
-          { alt: "The Riverside building entrance", src: "/art/riverside-family-health/gallery-6.svg" },
+          {
+            alt: "La salle d'attente de Riverside",
+            src: "/art/riverside-family-health/gallery-1.svg",
+          },
+          {
+            alt: "Un cabinet de consultation",
+            src: "/art/riverside-family-health/gallery-2.svg",
+          },
+          {
+            alt: "L'accueil du cabinet",
+            src: "/art/riverside-family-health/gallery-3.svg",
+          },
+          {
+            alt: "L'espace de prélèvements et de constantes",
+            src: "/art/riverside-family-health/gallery-4.svg",
+          },
+          {
+            alt: "Le coin des enfants",
+            src: "/art/riverside-family-health/gallery-5.svg",
+          },
+          {
+            alt: "L'entrée du bâtiment Riverside",
+            src: "/art/riverside-family-health/gallery-6.svg",
+          },
         ],
       },
     },
