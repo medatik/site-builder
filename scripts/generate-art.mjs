@@ -249,7 +249,10 @@ function avatar({ palette, initials, seed }) {
       <stop offset="1" stop-color="${palette.secondary}"/>
     </linearGradient>
   </defs>
-  <rect width="${s}" height="${s}" fill="${palette.background}"/>
+  <!-- No background rect on purpose. These are drawn from colorsLight, so
+       painting the light background here put a cream tile on every card of a
+       DARK-mode page. Transparent, the monogram sits on whatever surface
+       renders it and both modes look deliberate. -->
   <circle cx="${s / 2}" cy="${s / 2}" r="${s * 0.44}" fill="url(#g)"/>
   <circle cx="${s / 2}" cy="${s / 2}" r="${s * 0.475}" fill="none" stroke="${palette.accent}" stroke-opacity="0.5" stroke-width="${s * 0.01}"/>
   <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"

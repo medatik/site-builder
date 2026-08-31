@@ -25,15 +25,20 @@ const config: SiteConfig = {
   theme: {
     stylePreset: "rounded",
     defaultMode: "light",
-    // Site à palette unique (clair seulement) : pas de seconde palette, donc le
-    // sélecteur de thème reste masqué même s'il est activé.
+    // La palette sombre était auparavant une simple inversion RVB de la palette
+    // claire. Elle passait tous les seuils de contraste, mais une inversion
+    // mécanique ne conserve pas une identité : le vert-bleu apaisant devenait
+    // rose, et un cabinet médical se retrouvait habillé comme une marque de
+    // cosmétiques. Celle-ci est composée, pas calculée — mêmes teintes que le
+    // mode clair, éclaircies pour un fond sombre. Toutes les valeurs sont
+    // mesurées sur le fond ci-dessous.
     colorsDark: {
-      primary: "#EC7684", // vert-bleu inversé (RVB)
-      secondary: "#F4A5AB", // bleu-vert profond inversé
-      accent: "#0F819C", // corail chaud inversé
-      background: "#090507", // blanc chaud inversé
-      text: "#E8CBCF", // anthracite bleu-vert inversé
-      muted: "#A1848A", // bleu-vert atténué inversé
+      primary: "#5EC5B5", // vert-bleu éclairci — 8,59:1 sur le fond
+      secondary: "#2E8C7E", // vert-bleu profond — 4,38:1 (surfaces, non-texte)
+      accent: "#E8927A", // corail chaud — 7,48:1, colore les étoiles (3:1 requis)
+      background: "#0E1A18", // anthracite à nuance verte
+      text: "#E8F1ED", // blanc cassé légèrement vert — 15,46:1
+      muted: "#A3BBB4", // 8,75:1 sur le fond
     },
     // Assombrie le 04/08/2026 pour respecter WCAG AA. Les valeurs d'origine
     // passaient juste sous la barre : primary à 4,08:1 et muted à 4,37:1 sur ce
