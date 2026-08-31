@@ -228,7 +228,6 @@ const config: SiteConfig = {
         media: {
           alt: "VoltEdge electrician working on a panel",
           src: "/photos/voltedge-electric/hero.jpg",
-          treatment: "tint",
         },
       },
     },
@@ -303,7 +302,7 @@ const config: SiteConfig = {
           { value: "4.9★", label: "Average rating" },
         ],
         mediaSide: "left",
-        media: { src: "/photos/voltedge-electric/about.jpg", treatment: "tint", alt: "VoltEdge crew and service van" },
+        media: { src: "/photos/voltedge-electric/about.jpg", alt: "VoltEdge crew and service van" },
       },
     },
     {
@@ -372,42 +371,36 @@ const config: SiteConfig = {
         images: [
           {
             src: "/photos/voltedge-electric/gallery-1.jpg",
-            treatment: "tint",
             alt: "200A panel upgrade",
             label: "Panel Upgrade",
             caption: "Full 200A service upgrade — Rockridge",
           },
           {
             src: "/photos/voltedge-electric/gallery-2.jpg",
-            treatment: "tint",
             alt: "Recessed lighting install",
             label: "Recessed Lighting",
             caption: "Kitchen recessed lighting retrofit",
           },
           {
             src: "/photos/voltedge-electric/gallery-3.jpg",
-            treatment: "tint",
             alt: "EV charger installation",
             label: "EV Charger",
             caption: "Level 2 charger — Tesla Wall Connector",
           },
           {
             src: "/photos/voltedge-electric/gallery-4.jpg",
-            treatment: "tint",
             alt: "Commercial lighting fit-out",
             label: "Commercial",
             caption: "Warehouse LED retrofit — 40% energy saved",
           },
           {
             src: "/photos/voltedge-electric/gallery-5.jpg",
-            treatment: "tint",
-            alt: "Standby generator install",
-            label: "Generator",
-            caption: "Whole-home standby generator",
+            alt: "Battery and inverter bank for a home standby power system",
+            label: "Standby Power",
+            caption: "Whole-home battery and inverter backup",
           },
           {
             src: "/photos/voltedge-electric/gallery-6.jpg",
-            treatment: "tint",
             alt: "Landscape lighting",
             label: "Landscape",
             caption: "Low-voltage landscape lighting",

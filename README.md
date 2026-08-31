@@ -33,31 +33,23 @@ Not three templates, and not three forks: one set of components reading three di
 configuration files. The two Merrick shots are the same route, the same build and the same
 components, differing only by `?lang=ar`.
 
-### The photographs match the palette because the palette is applied to them
+### Images
 
-Every photograph is real, from [Pexels](https://www.pexels.com/license/), and free for
-commercial use — sources recorded per file in
-[`public/photos/CREDITS.md`](public/photos/CREDITS.md).
+Every photograph is real, from [Pexels](https://www.pexels.com/license/), free for commercial
+use, and shown **as shot** — no colour processing. Source and licence are recorded per file in
+[`public/photos/CREDITS.md`](public/photos/CREDITS.md), because a public repository should be
+able to say where its assets came from.
 
-Stock photography arrives in whatever colours it was shot in, and a site is only as coherent
-as its least matching image. Rather than hunting for photos that happen to suit three very
-different palettes, `media.treatment: "tint"` applies the palette **to the photo**: the image
-is desaturated and a `mix-blend-mode: color` layer puts `--primary` back, so the picture keeps
-its own **luminance** — detail, depth, composition — and takes its **hue** from the theme.
-
-The consequence worth noticing: the same photograph would come out steel navy on VoltEdge,
-teal on Riverside and maroon on Merrick, without being edited. Swapping a photo later cannot
-break the look, and sourcing stops being a colour-matching exercise.
-
-A two-colour `duotone` was attempted and dropped rather than shipped looking wrong — see the
-note on `MediaTreatment` in `lib/types.ts` for why CSS blend modes cannot express one.
+`Media` does support an optional `treatment: "tint"`, which desaturates a photo and puts
+`--primary` back through a `mix-blend-mode: color` layer, so the image keeps its own luminance
+and takes its hue from the theme. It is useful when photography has to match a palette it was
+never shot for. **No demo uses it** — the default is `none`.
 
 **Where no photograph belongs, the art is generated from the config.** `npm run art` reads each
 config's `colorsLight` and draws with those exact values — the theme system's idea applied to
 assets. Composition is seeded from the file name, so output is deterministic and re-running
 never churns the repo. It covers team monograms and any slot without a photo, and it is what
-lets a brand-new client site be stood up and demonstrated before anyone has sourced a single
-image.
+lets a brand-new client site be stood up before anyone has sourced a single image.
 
 **Team members stay monograms deliberately.** A generated pattern is plainly an illustration;
 a stock photograph of a real person placed under an invented name is a different thing, and
