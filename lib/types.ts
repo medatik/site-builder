@@ -906,6 +906,23 @@ export interface SiteConfig {
    * wants to rank for a specific service — Google ranks pages, not sections.
    */
   pages?: PageConfig[];
+  /**
+   * Document language for a site that is NOT multilingual, e.g. `"fr"`.
+   *
+   * `<html lang>` drives screen-reader pronunciation and search-engine language
+   * detection, and it fell back to "en" for every site without `i18n` — so a
+   * French site was read aloud with English phonetics. Declaring a single-locale
+   * `i18n` block fixes the language but opts the whole site into DYNAMIC
+   * rendering: the layout calls `headers()` and the page awaits `searchParams`,
+   * both gated on `i18n` precisely to keep monolingual sites static. That is a
+   * real cost for no benefit when there is only one language to choose from.
+   *
+   * This states the language without buying the machinery. Ignored when `i18n`
+   * is present, which already knows the locale.
+   */
+  lang?: string;
+  /** Text direction for `lang`. Default `"ltr"`. Ignored when `i18n` is set. */
+  dir?: TextDir;
   /** Optional multilingual setup. Omit for a single-language site. */
   i18n?: I18nConfig;
   /** Per-locale content overlays, keyed by locale code. See `Translation`. */

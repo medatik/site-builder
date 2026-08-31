@@ -135,16 +135,12 @@ const config: SiteConfig = {
     showHours: true,
   },
 
-  // Déclare la langue du site. Sans bloc `i18n`, `pickLocale` retombe sur "en"
-  // et le document sort en `<html lang="en">` — un lecteur d'écran prononcerait
-  // alors le français avec la phonétique anglaise, et les moteurs de recherche
-  // se tromperaient de langue. Une seule locale suffit : le sélecteur reste
-  // masqué, seule la langue du document est fixée.
-  i18n: {
-    defaultLocale: "fr",
-    locales: [{ code: "fr", label: "Français", dir: "ltr" }],
-    switcher: { enabled: false },
-  },
+  // Site monolingue : `lang` suffit à fixer `<html lang="fr">`. Une première
+  // version déclarait un bloc `i18n` d'une seule locale pour obtenir le même
+  // résultat — mais `i18n` fait basculer TOUT le site en rendu dynamique (le
+  // layout appelle `headers()`, la page attend `searchParams`), ce qui coûte le
+  // rendu statique sans rien apporter quand il n'y a qu'une langue à choisir.
+  lang: "fr",
 
   seo: {
     title:

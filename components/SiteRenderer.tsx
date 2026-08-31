@@ -35,7 +35,7 @@ export function SiteRenderer({
       theme={config.theme}
       scopeId={config.client}
       switchable={themeToggleShown(config.theme, config.header?.themeToggle)}
-      lang={config.i18n ? code : undefined}
+      lang={config.i18n ? code : config.lang}
       dir={config.i18n ? dir : undefined}
     >
       {/* Local-SEO structured data, derived entirely from the `business` block. */}

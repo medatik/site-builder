@@ -57,7 +57,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // only called when the config actually has i18n — single-language sites keep
   // their static rendering.
   const requested = config.i18n ? (await headers()).get("x-locale") ?? undefined : undefined;
-  const meta = localeMeta(config, pickLocale(config, requested));
+  // A monolingual site says its language through `lang`/`dir` instead, so it
+  // never reaches `headers()` above and keeps its static rendering.
+  const meta = config.i18n
+    ? localeMeta(config, pickLocale(config, requested))
+    : { code: config.lang ?? "en", dir: config.dir ?? "ltr" };
   return (
     <html lang={meta.code} dir={meta.dir}>
       <body>{children}</body>
