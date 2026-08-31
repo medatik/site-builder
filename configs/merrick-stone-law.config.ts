@@ -1198,6 +1198,12 @@ const config: SiteConfig = {
         eyebrow: "Free case review",
         title: "Tell us what happened",
         subtitle: "Share a few details in confidence and an attorney will get back to you — usually the same day. If it's urgent, call us anytime at {phone}.",
+        // Two channels configured: email and Telegram. Each is skipped without
+        // its own environment variables (never stored here), so turning either
+        // on later needs no code change. Covers the fr/ar overlays too — neither
+        // declares its own `delivery`, so both inherit this by the translation
+        // overlay's deep merge.
+        delivery: { channels: ["email", "telegram"] },
         submitLabel: "Request my free review",
         successMessage:
           "Thank you — your message is confidential, and an attorney from Merrick & Stone will reach out shortly, usually within a few hours.",

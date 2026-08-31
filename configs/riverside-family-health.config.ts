@@ -516,6 +516,10 @@ const config: SiteConfig = {
         title: "Demander un rendez-vous",
         subtitle:
           "Donnez-nous quelques informations et le secrétariat vous rappelle pour confirmer un horaire. En cas d'urgence vitale, appelez le 15 (protection civile) ou le 19 (police).",
+        // Deux canaux configurés : e-mail et Telegram. Chacun est ignoré sans
+        // ses propres variables d'environnement (jamais stockées ici), donc
+        // activer l'un ou l'autre plus tard ne demande aucun changement de code.
+        delivery: { channels: ["email", "telegram"] },
         submitLabel: "Envoyer ma demande",
         successMessage:
           "Merci — le secrétariat vous appelle sous un jour ouvré pour confirmer votre rendez-vous.",

@@ -202,6 +202,7 @@ const config: SiteConfig = {
                 bullets: [
                   "Vercel, qui héberge ce site et conserve les journaux de serveur habituels.",
                   "Telegram, qui transmet votre demande sur le téléphone de notre régulateur.",
+                  "Resend, qui achemine votre demande par e-mail à notre équipe.",
                 ],
               },
               {
@@ -551,13 +552,16 @@ const config: SiteConfig = {
         successMessage:
           "Merci — un régulateur VoltEdge vous rappelle très vite. En cas d'urgence, appelez le {phone}.",
         showBusinessInfo: true,
-        // Les demandes partent vers Telegram. Le jeton du bot et l'identifiant de
-        // conversation sont des VARIABLES D'ENVIRONNEMENT sur Vercel
-        // (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID) — jamais ici. Le canal est
-        // nommé explicitement plutôt que laissé à l'environnement seul, pour
-        // rester cohérent avec le destinataire cité dans la politique de
-        // confidentialité ci-dessus.
-        delivery: { channels: ["telegram"] },
+        // Deux canaux, pas un seul — pour montrer que le processus n'est pas figé
+        // sur un outil : une même demande arrive par e-mail ET sur Telegram, et
+        // chacun continue de fonctionner même si l'autre tombe en panne. Les
+        // identifiants (RESEND_API_KEY/RESEND_FROM, TELEGRAM_BOT_TOKEN/
+        // TELEGRAM_CHAT_ID) sont des VARIABLES D'ENVIRONNEMENT sur Vercel —
+        // jamais ici. Un canal sans ses variables est simplement ignoré, donc
+        // ajouter Telegram plus tard ne casse rien en attendant. La liste DOIT
+        // rester cohérente avec le paragraphe « qui d'autre y a accès » de la
+        // politique de confidentialité ci-dessus.
+        delivery: { channels: ["email", "telegram"] },
         fields: [
           { name: "name", label: "Nom et prénom", type: "text", required: true },
           { name: "phone", label: "Téléphone", type: "tel", required: true },
