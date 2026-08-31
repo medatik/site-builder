@@ -880,6 +880,17 @@ export interface Translation {
   nav?: NavItem[];
   /** Section prop overrides, keyed by section `id`. */
   sections?: Record<string, Record<string, unknown>>;
+  /**
+   * Per-page `<title>`/SEO overrides for routed pages, keyed by `PageConfig.slug`.
+   * A page's BODY localises through `sections` like the home page's — but its
+   * title and meta description live on `PageConfig` itself, outside the section
+   * tree, so `sections` cannot reach them. Omit and the base-language title
+   * carries over unchanged, which is correct for a single routed page authored
+   * once (e.g. a monolingual site's privacy page) and wrong for one meant to
+   * read in every locale (a browser tab reading "Privacy policy" on an Arabic
+   * page is the kind of mismatch that's invisible until you compare tabs).
+   */
+  pages?: Record<string, { title?: string; seo?: DeepPartial<SeoConfig> }>;
 }
 
 export interface SiteConfig {

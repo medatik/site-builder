@@ -118,25 +118,37 @@ function localizeForLocale(config: SiteConfig, locale: string): SiteConfig {
   // Sections: overlay props by section id (defaulting to type). The cast is
   // needed because `.map` erases the per-section `type`↔`props` correlation of
   // the discriminated union — the overlay is loosely typed by design, same as
-  // the section registry.
-  if (t.sections) {
-    const overlaySections = (list: Section[]): Section[] =>
-      list.map((section): Section => {
-        const overlay = t.sections?.[section.id ?? section.type];
-        if (!overlay) return section;
-        return { ...section, props: deepMerge(section.props, overlay) } as Section;
-      });
+  // the section registry. Defined outside the `if (t.sections)` branch below so
+  // it is also available to the pages branch when a translation supplies ONLY
+  // `t.pages` (a title/SEO fix with no section copy to change) — `t.sections?.`
+  // handles the undefined case itself, returning each section unchanged.
+  const overlaySections = (list: Section[]): Section[] =>
+    list.map((section): Section => {
+      const overlay = t.sections?.[section.id ?? section.type];
+      if (!overlay) return section;
+      return { ...section, props: deepMerge(section.props, overlay) } as Section;
+    });
 
+  if (t.sections) {
     localized.sections = overlaySections(config.sections);
-    // Routed pages localise through the SAME overlay map — their sections are
-    // keyed by id/type just like home's, so ids must be unique site-wide.
-    // Without this a multilingual site would silently serve English sub-pages.
-    if (config.pages?.length) {
-      localized.pages = config.pages.map((page) => ({
+  }
+
+  // Routed pages localise through the SAME overlay map — their sections are
+  // keyed by id/type just like home's, so ids must be unique site-wide. Without
+  // this a multilingual site would silently serve English sub-pages. `t.pages`
+  // additionally covers the page's own `title`/`seo`, which live on
+  // `PageConfig` itself — outside the section tree, so `t.sections` cannot
+  // reach them (see `Translation.pages`).
+  if (config.pages?.length && (t.sections || t.pages)) {
+    localized.pages = config.pages.map((page) => {
+      const pageOverlay = t.pages?.[page.slug];
+      return {
         ...page,
+        title: pageOverlay?.title ?? page.title,
+        seo: pageOverlay?.seo ? deepMerge(page.seo ?? {}, pageOverlay.seo) : page.seo,
         sections: overlaySections(page.sections),
-      }));
-    }
+      };
+    });
   }
 
   return localized;

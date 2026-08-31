@@ -102,15 +102,21 @@ const config: SiteConfig = {
   },
 
   // Explicite parce que les libellés déduits automatiquement (lib/nav.ts) sont
-  // en anglais. Pas de page routée sur ce site : les ancres nues conviennent.
+  // en anglais. Le site a désormais une page routée (/confidentialite), donc
+  // les ancres de la page d'accueil sont préfixées par "/" — un "#services" nu
+  // ne ferait rien depuis cette page. En pratique le moteur corrige n'importe
+  // quel "#..." au rendu dès qu'un site a des pages (`rootRelativeAnchors`
+  // dans lib/i18n.ts) ; le préfixe est écrit ici en toutes lettres pour que ce
+  // tableau, le seul écrit à la main, ne soit pas le seul endroit du fichier
+  // qui ait l'air faux à la lecture.
   nav: [
-    { label: "Spécialités", href: "#services" },
-    { label: "Le cabinet", href: "#about" },
-    { label: "Équipe", href: "#team" },
-    { label: "Témoignages", href: "#testimonials" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Nous trouver", href: "#location" },
-    { label: "Contact", href: "#contact" },
+    { label: "Spécialités", href: "/#services" },
+    { label: "Le cabinet", href: "/#about" },
+    { label: "Équipe", href: "/#team" },
+    { label: "Témoignages", href: "/#testimonials" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Nous trouver", href: "/#location" },
+    { label: "Contact", href: "/#contact" },
   ],
 
   header: {
@@ -157,6 +163,87 @@ const config: SiteConfig = {
       "téléconsultation",
     ],
   },
+
+  // Page routée. `nav: false` la sort de l'en-tête et la place dans la rangée
+  // légale du pied de page — accessible, sans concurrencer Spécialités.
+  //
+  // La liste des destinataires ci-dessous DOIT correspondre aux canaux de
+  // livraison réellement activés sur la section contact (e-mail + Telegram),
+  // plus l'hébergeur. Nommer un prestataire qui ne traite pas la donnée est
+  // aussi faux qu'en omettre un qui la traite.
+  pages: [
+    {
+      slug: "confidentialite",
+      title: "Confidentialité",
+      nav: false,
+      seo: {
+        title: "Politique de confidentialité — Riverside Santé Familiale",
+        description:
+          "Comment Riverside Santé Familiale traite les informations que vous nous transmettez via le formulaire de demande de rendez-vous.",
+      },
+      sections: [
+        {
+          type: "legal",
+          id: "privacy-body",
+          enabled: true,
+          props: {
+            eyebrow: "Mentions légales",
+            title: "Politique de confidentialité",
+            updated: "Dernière mise à jour : 3 août 2026",
+            intro:
+              "Cette politique explique quelles données personnelles {siteName} recueille via ce site, pourquoi nous les recueillons, et ce que vous pouvez nous demander d'en faire.",
+            blocks: [
+              {
+                heading: "Qui nous sommes",
+                body: "{siteName} est responsable du traitement des données décrites ici. Vous pouvez nous joindre à {email}, appeler le {phone}, ou nous écrire au {address}.",
+              },
+              {
+                heading: "Ce que nous recueillons",
+                body: "Nous ne recueillons que ce que vous saisissez dans le formulaire de demande de rendez-vous, plus quelques informations techniques que votre navigateur envoie automatiquement.",
+                bullets: [
+                  "Vos nom et numéro de téléphone, nécessaires pour confirmer votre rendez-vous.",
+                  "Votre adresse e-mail, si vous choisissez de la donner.",
+                  "Le motif de consultation sélectionné et la date souhaitée.",
+                  "Ce que vous écrivez dans le champ libre « Quelque chose à nous signaler ? » — n'y indiquez que ce que vous êtes à l'aise de partager par écrit ; ce formulaire sert à organiser un rendez-vous, pas à poser un diagnostic.",
+                  "Votre adresse IP, qui limite les envois automatisés abusifs et figure dans la notification que nous recevons.",
+                  "Les journaux de serveur habituels tenus par notre hébergeur, comme les pages demandées et l'heure de la demande.",
+                ],
+              },
+              {
+                heading: "Pourquoi nous les recueillons",
+                body: "Nous utilisons votre demande uniquement pour vous recontacter au sujet du rendez-vous souhaité et pour l'organiser. Nous ne vendons pas vos données et ne les utilisons ni à des fins publicitaires ni de profilage. Ce formulaire n'est ni surveillé en continu ni destiné aux urgences : en cas d'urgence vitale, appelez le 15 (protection civile) ou le 19 (police) plutôt que d'écrire ici.",
+              },
+              {
+                heading: "Qui d'autre y a accès",
+                body: "Nous ne partageons vos données qu'avec les prestataires qui font fonctionner ce site et nous transmettent votre demande :",
+                bullets: [
+                  "Vercel, qui héberge ce site et conserve les journaux de serveur habituels.",
+                  "Telegram, qui transmet votre demande sur le téléphone du secrétariat.",
+                  "Resend, qui achemine votre demande par e-mail à notre équipe.",
+                ],
+              },
+              {
+                heading: "Combien de temps nous les conservons",
+                body: "Nous conservons les demandes de rendez-vous le temps nécessaire pour vous répondre et pour garder une trace de nos échanges. Après quoi nous les supprimons. Si vous nous demandez de supprimer votre demande plus tôt, nous le ferons. Cette politique ne couvre que ce formulaire — pas votre dossier médical, qui est constitué et conservé séparément, au cabinet, une fois que vous êtes patient.",
+              },
+              {
+                heading: "Vos droits",
+                body: "Vous pouvez demander une copie des données que nous détenons sur vous, leur rectification ou leur suppression. Écrivez à {email} et nous vous répondrons. Si notre réponse ne vous satisfait pas, vous pouvez saisir la CNDP (Commission nationale de contrôle de la protection des données à caractère personnel).",
+              },
+              {
+                heading: "Cookies et stockage du navigateur",
+                body: "Ce site ne dépose aucun cookie publicitaire ni de mesure d'audience. Si vous basculez le site entre les modes clair et sombre, ce choix est enregistré dans le stockage local de votre navigateur afin que la page n'affiche pas brièvement le mauvais thème à votre retour. Il reste sur votre appareil et ne nous est jamais transmis.",
+              },
+              {
+                heading: "Modifications de cette politique",
+                body: "Si nous changeons notre façon de traiter vos données, nous mettrons à jour cette page ainsi que la date indiquée en haut.",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
 
   sections: [
     {

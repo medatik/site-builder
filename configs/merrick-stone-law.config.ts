@@ -142,6 +142,95 @@ const config: SiteConfig = {
     ],
   },
 
+  // Routed page. `nav: false` keeps it out of the header and puts it in the
+  // footer's legal row instead. The body is authored once, in English, and
+  // localises through `translations.fr.pages` / `translations.ar.pages` (for
+  // this page's own title/SEO) plus the usual `translations.*.sections`
+  // overlay keyed by this section's `id` (for the body) — the SAME mechanism
+  // as the home page, which is the whole point: a page is not a special case.
+  //
+  // The processor list in "who else sees it" below MUST match the delivery
+  // channels actually enabled on the contact section (email + Telegram), plus
+  // the host. Naming a provider that doesn't handle the data is as wrong as
+  // omitting one that does.
+  pages: [
+    {
+      slug: "privacy",
+      title: "Privacy",
+      nav: false,
+      seo: {
+        title: "Privacy policy — Merrick & Stone",
+        description:
+          "How Merrick & Stone handles the information you send through our free case review form.",
+      },
+      sections: [
+        {
+          type: "legal",
+          id: "privacy-body",
+          enabled: true,
+          props: {
+            eyebrow: "Legal",
+            title: "Privacy policy",
+            updated: "Last updated: 3 August 2026",
+            intro:
+              "This policy explains what personal information {siteName} collects through this website, why we collect it, and what you can ask us to do with it.",
+            blocks: [
+              {
+                heading: "Who we are",
+                body: "{siteName} is the controller of the personal information described here. You can reach us at {email}, call {phone}, or write to us at {address}.",
+              },
+              {
+                heading: "What we collect",
+                body: "We only collect what you type into our free case review form, plus a small amount of technical information your browser sends automatically.",
+                bullets: [
+                  "Your name and phone number, which we need to call you back.",
+                  "Your email address, if you choose to give it.",
+                  "The type of case you selected and, if you provide one, the date it happened.",
+                  "Whatever you write in the \"What happened?\" field — share as much or as little as you're comfortable putting in writing before you've spoken to an attorney.",
+                  "Your IP address, which limits automated abuse of the form and is included in the notification we receive.",
+                  "Standard server logs kept by our website host, such as the pages requested and the time of the request.",
+                ],
+              },
+              {
+                heading: "Why we collect it",
+                body: "We use your submission solely to evaluate whether we can help with your case and to arrange a free consultation. We do not sell your information, and we do not use it for advertising or profiling.",
+              },
+              {
+                heading: "This form does not make you our client",
+                body: "Submitting this form starts a conversation — it does not create an attorney-client relationship, and information you share before that relationship is formed in writing may not be protected by attorney-client privilege. If your matter is time-sensitive, call {phone} rather than relying on a written reply.",
+              },
+              {
+                heading: "Who else sees it",
+                body: "We share your information only with the providers that operate this website and deliver your submission to us:",
+                bullets: [
+                  "Vercel, which hosts this website and keeps standard server logs.",
+                  "Telegram, which delivers your submission to our intake team's phone.",
+                  "Resend, which delivers your submission to our intake team by email.",
+                ],
+              },
+              {
+                heading: "How long we keep it",
+                body: "We keep a submission for as long as we need it to respond to you and to decide whether we can take on your case. If we do not take your case, we delete it after a reasonable review period. If we do, it becomes part of your client file and is kept under our normal file-retention practice. Ask us to delete a submission sooner and we will, unless we are already required to keep it.",
+              },
+              {
+                heading: "Your rights",
+                body: "You can ask us for a copy of the information we hold about you, ask us to correct it, or ask us to delete it. Email {email} and we will respond. If you are not satisfied with our response, you can complain to the CNDP (Commission nationale de contrôle de la protection des données à caractère personnel).",
+              },
+              {
+                heading: "Cookies and browser storage",
+                body: "This site sets no advertising or tracking cookies. If you switch the site between light and dark mode, or change its language, that choice is saved in your browser's local storage so the page does not flash the wrong theme or reset your language on your next visit. It stays on your device and is never sent to us.",
+              },
+              {
+                heading: "Changes to this policy",
+                body: "If we change how we handle your information we will update this page and the date at the top.",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+
   // Trilingual: authored in English, with French + Arabic overlays. The header
   // language selector flips the active locale (?lang=), and `ar` renders RTL
   // with an Arabic font. Only the strings that change are listed per locale.
@@ -171,15 +260,22 @@ const config: SiteConfig = {
         description:
           "Avocats en dommages corporels et en contentieux civil à Casablanca : accidents de la route et de poids lourds, erreurs médicales, accidents du travail et décès par faute. Consultation gratuite. Aucuns honoraires sans résultat.",
       },
+      // Le site a désormais une page routée (/privacy), donc les ancres de la
+      // page d'accueil sont préfixées par "/" — un "#services" nu ne ferait
+      // rien depuis cette page. Le moteur corrige n'importe quel "#..." au
+      // rendu dès qu'un site a des pages (`rootRelativeAnchors` dans
+      // lib/i18n.ts) ; le préfixe est écrit ici en toutes lettres pour que ce
+      // tableau, écrit à la main, ne soit pas le seul endroit qui ait l'air
+      // faux à la lecture.
       nav: [
-        { label: "Domaines", href: "#services" },
-        { label: "Le cabinet", href: "#about" },
-        { label: "Équipe", href: "#team" },
-        { label: "Honoraires", href: "#pricing" },
-        { label: "Avis", href: "#testimonials" },
-        { label: "FAQ", href: "#faq" },
-        { label: "Adresse", href: "#location" },
-        { label: "Contact", href: "#contact" },
+        { label: "Domaines", href: "/#services" },
+        { label: "Le cabinet", href: "/#about" },
+        { label: "Équipe", href: "/#team" },
+        { label: "Honoraires", href: "/#pricing" },
+        { label: "Avis", href: "/#testimonials" },
+        { label: "FAQ", href: "/#faq" },
+        { label: "Adresse", href: "/#location" },
+        { label: "Contact", href: "/#contact" },
       ],
       header: { cta: { label: "Consultation gratuite" } },
       footer: {
@@ -532,6 +628,74 @@ const config: SiteConfig = {
             hours: "Horaires",
           },
         },
+        "privacy-body": {
+          eyebrow: "Mentions légales",
+          title: "Politique de confidentialité",
+          updated: "Dernière mise à jour : 3 août 2026",
+          intro:
+            "Cette politique explique quelles données personnelles {siteName} recueille via ce site, pourquoi nous les recueillons, et ce que vous pouvez nous demander d'en faire.",
+          blocks: [
+            {
+              heading: "Qui nous sommes",
+              body: "{siteName} est responsable du traitement des données décrites ici. Vous pouvez nous joindre à {email}, appeler le {phone}, ou nous écrire au {address}.",
+            },
+            {
+              heading: "Ce que nous recueillons",
+              body: "Nous ne recueillons que ce que vous saisissez dans le formulaire d'étude de dossier gratuite, plus quelques informations techniques que votre navigateur envoie automatiquement.",
+              bullets: [
+                "Vos nom et numéro de téléphone, nécessaires pour vous rappeler.",
+                "Votre adresse e-mail, si vous choisissez de la donner.",
+                "Le type de dossier sélectionné et, si vous la renseignez, la date des faits.",
+                "Ce que vous écrivez dans le champ « Que s'est-il passé ? » — partagez ce que vous êtes à l'aise de mettre par écrit avant d'avoir parlé à un avocat.",
+                "Votre adresse IP, qui limite les envois automatisés abusifs et figure dans la notification que nous recevons.",
+                "Les journaux de serveur habituels tenus par notre hébergeur, comme les pages demandées et l'heure de la demande.",
+              ],
+            },
+            {
+              heading: "Pourquoi nous les recueillons",
+              body: "Nous utilisons votre message uniquement pour évaluer si nous pouvons vous aider et pour organiser une consultation gratuite. Nous ne vendons pas vos données et ne les utilisons ni à des fins publicitaires ni de profilage.",
+            },
+            {
+              heading: "Ce formulaire ne fait pas de vous notre client",
+              body: "Envoyer ce formulaire ouvre une conversation — cela ne crée pas de relation avocat-client, et ce que vous partagez avant que cette relation ne soit formalisée par écrit peut ne pas être couvert par le secret professionnel. Si votre affaire est urgente, appelez le {phone} plutôt que d'attendre une réponse écrite.",
+            },
+            {
+              heading: "Qui d'autre y a accès",
+              body: "Nous ne partageons vos données qu'avec les prestataires qui font fonctionner ce site et nous transmettent votre message :",
+              bullets: [
+                "Vercel, qui héberge ce site et conserve les journaux de serveur habituels.",
+                "Telegram, qui transmet votre message sur le téléphone de notre équipe d'accueil.",
+                "Resend, qui achemine votre message par e-mail à notre équipe d'accueil.",
+              ],
+            },
+            {
+              heading: "Combien de temps nous les conservons",
+              body: "Nous conservons un message le temps nécessaire pour vous répondre et pour décider si nous pouvons prendre votre dossier. Si nous ne le prenons pas, nous le supprimons après un délai raisonnable d'examen. Si nous le prenons, il rejoint votre dossier client et suit nos règles habituelles de conservation. Demandez-nous de le supprimer plus tôt et nous le ferons, sauf obligation contraire.",
+            },
+            {
+              heading: "Vos droits",
+              body: "Vous pouvez demander une copie des données que nous détenons sur vous, leur rectification ou leur suppression. Écrivez à {email} et nous vous répondrons. Si notre réponse ne vous satisfait pas, vous pouvez saisir la CNDP (Commission nationale de contrôle de la protection des données à caractère personnel).",
+            },
+            {
+              heading: "Cookies et stockage du navigateur",
+              body: "Ce site ne dépose aucun cookie publicitaire ni de mesure d'audience. Si vous basculez le site entre les modes clair et sombre, ou changez sa langue, ce choix est enregistré dans le stockage local de votre navigateur afin que la page n'affiche pas brièvement le mauvais thème ni ne réinitialise la langue à votre prochaine visite. Il reste sur votre appareil et ne nous est jamais transmis.",
+            },
+            {
+              heading: "Modifications de cette politique",
+              body: "Si nous changeons notre façon de traiter vos données, nous mettrons à jour cette page ainsi que la date indiquée en haut.",
+            },
+          ],
+        },
+      },
+      pages: {
+        privacy: {
+          title: "Confidentialité",
+          seo: {
+            title: "Politique de confidentialité — Merrick & Stone",
+            description:
+              "Comment Merrick & Stone traite les informations que vous nous transmettez via le formulaire d'étude de dossier.",
+          },
+        },
       },
     },
 
@@ -542,15 +706,22 @@ const config: SiteConfig = {
         description:
           "محامون متخصصون في الأضرار الجسدية والمنازعات المدنية في الدار البيضاء: حوادث السيارات والشاحنات، الأخطاء الطبية، إصابات العمل، والوفاة الناجمة عن خطأ. استشارة مجانية.",
       },
+      // Le site a désormais une page routée (/privacy), donc les ancres de la
+      // page d'accueil sont préfixées par "/" — un "#services" nu ne ferait
+      // rien depuis cette page. Le moteur corrige n'importe quel "#..." au
+      // rendu dès qu'un site a des pages (`rootRelativeAnchors` dans
+      // lib/i18n.ts) ; le préfixe est écrit ici en toutes lettres pour que ce
+      // tableau, écrit à la main, ne soit pas le seul endroit qui ait l'air
+      // faux à la lecture.
       nav: [
-        { label: "مجالات العمل", href: "#services" },
-        { label: "عن المكتب", href: "#about" },
-        { label: "الفريق", href: "#team" },
-        { label: "الأتعاب", href: "#pricing" },
-        { label: "التقييمات", href: "#testimonials" },
-        { label: "الأسئلة", href: "#faq" },
-        { label: "العنوان", href: "#location" },
-        { label: "تواصل", href: "#contact" },
+        { label: "مجالات العمل", href: "/#services" },
+        { label: "عن المكتب", href: "/#about" },
+        { label: "الفريق", href: "/#team" },
+        { label: "الأتعاب", href: "/#pricing" },
+        { label: "التقييمات", href: "/#testimonials" },
+        { label: "الأسئلة", href: "/#faq" },
+        { label: "العنوان", href: "/#location" },
+        { label: "تواصل", href: "/#contact" },
       ],
       header: { cta: { label: "استشارة مجانية" } },
       footer: {
@@ -889,6 +1060,74 @@ const config: SiteConfig = {
             address: "العنوان",
             phone: "الهاتف",
             hours: "ساعات العمل",
+          },
+        },
+        "privacy-body": {
+          eyebrow: "إشعار قانوني",
+          title: "سياسة الخصوصية",
+          updated: "آخر تحديث: 3 أغسطس 2026",
+          intro:
+            "توضّح هذه السياسة البيانات الشخصية التي تجمعها {siteName} عبر هذا الموقع، ولماذا نجمعها، وما يمكنكم أن تطلبوا منا القيام به بشأنها.",
+          blocks: [
+            {
+              heading: "من نحن",
+              body: "{siteName} هي الجهة المسؤولة عن معالجة البيانات الموصوفة هنا. يمكنكم التواصل معنا عبر {email}، أو الاتصال بالرقم {phone}، أو مراسلتنا على العنوان {address}.",
+            },
+            {
+              heading: "ما الذي نجمعه",
+              body: "لا نجمع سوى ما تكتبونه في نموذج المراجعة المجانية للقضية، إضافة إلى بعض المعلومات التقنية التي يرسلها متصفحكم تلقائيًا.",
+              bullets: [
+                "اسمكم ورقم هاتفكم، اللازمان للاتصال بكم.",
+                "بريدكم الإلكتروني، إن اخترتم تقديمه.",
+                "نوع القضية المحدَّد، وتاريخ الواقعة إن ذكرتموه.",
+                "ما تكتبونه في حقل «ماذا حدث؟» — شاركوا بقدر ما ترتاحون لكتابته قبل التحدث إلى محامٍ.",
+                "عنوان IP الخاص بكم، الذي يحدّ من إساءة الاستخدام الآلي للنموذج ويظهر في الإشعار الذي نتلقاه.",
+                "سجلات الخادوم المعتادة التي يحتفظ بها مضيف موقعنا، مثل الصفحات المطلوبة ووقت الطلب.",
+              ],
+            },
+            {
+              heading: "لماذا نجمعها",
+              body: "نستخدم رسالتكم فقط لتقييم إمكانية مساعدتكم وتنظيم استشارة مجانية. لا نبيع بياناتكم ولا نستخدمها لأغراض إعلانية أو للتنميط.",
+            },
+            {
+              heading: "هذا النموذج لا يجعلكم موكّلين لدينا",
+              body: "إرسال هذا النموذج يفتح محادثة — ولا ينشئ علاقة محامٍ-موكّل، وما تشاركونه قبل إرساء هذه العلاقة كتابةً قد لا يكون مشمولًا بسرية المهنة. إن كانت قضيتكم عاجلة، اتصلوا بالرقم {phone} بدل انتظار رد كتابي.",
+            },
+            {
+              heading: "من غيرنا يطّلع عليها",
+              body: "لا نشارك بياناتكم إلا مع الجهات التي تُشغّل هذا الموقع وتنقل رسالتكم إلينا:",
+              bullets: [
+                "Vercel، التي تستضيف هذا الموقع وتحتفظ بسجلات الخادوم المعتادة.",
+                "Telegram، التي تنقل رسالتكم إلى هاتف فريق الاستقبال لدينا.",
+                "Resend، التي تُوصل رسالتكم عبر البريد الإلكتروني إلى فريق الاستقبال لدينا.",
+              ],
+            },
+            {
+              heading: "المدة التي نحتفظ بها",
+              body: "نحتفظ بالرسالة للمدة اللازمة للرد عليكم وتقييم إمكانية تولّي قضيتكم. إن لم نتولَّها، نحذفها بعد فترة مراجعة معقولة. وإن تولّيناها، تصبح جزءًا من ملف موكّلكم وتخضع لقواعد الاحتفاظ المعتادة لدينا. اطلبوا منا حذف رسالتكم في وقت أبكر وسنفعل، ما لم يكن هناك التزام يقضي بخلاف ذلك.",
+            },
+            {
+              heading: "حقوقكم",
+              body: "يمكنكم طلب نسخة من البيانات التي نحتفظ بها عنكم، أو تصحيحها، أو حذفها. راسلونا على {email} وسنرد عليكم. وإذا لم يُرضِكم ردّنا، يمكنكم تقديم شكوى إلى اللجنة الوطنية لمراقبة حماية المعطيات ذات الطابع الشخصي (CNDP).",
+            },
+            {
+              heading: "ملفات تعريف الارتباط وتخزين المتصفح",
+              body: "لا يضع هذا الموقع أي ملفات تعريف ارتباط إعلانية أو تحليلية. عند تبديلكم الموقع بين الوضعين الفاتح والداكن، أو تغيير لغته، يُحفظ هذا الاختيار في التخزين المحلي لمتصفحكم حتى لا تعرض الصفحة السمة الخاطئة للحظة أو تُعيد ضبط اللغة عند زيارتكم التالية. يبقى هذا الاختيار على جهازكم ولا يُرسَل إلينا أبدًا.",
+            },
+            {
+              heading: "التعديلات على هذه السياسة",
+              body: "إذا غيّرنا طريقة تعاملنا مع بياناتكم، سنحدّث هذه الصفحة والتاريخ الموضّح أعلاه.",
+            },
+          ],
+        },
+      },
+      pages: {
+        privacy: {
+          title: "سياسة الخصوصية",
+          seo: {
+            title: "سياسة الخصوصية — ميريك وستون",
+            description:
+              "كيف تتعامل ميريك وستون مع المعلومات التي ترسلونها عبر نموذج المراجعة المجانية للقضية.",
           },
         },
       },

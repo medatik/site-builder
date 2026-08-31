@@ -19,17 +19,30 @@ export function generateStaticParams() {
   return (getActiveConfig().pages ?? []).map((p) => ({ slug: p.slug }));
 }
 
-function findPage(slug: string) {
-  return (getActiveConfig().pages ?? []).find((p) => p.slug === slug);
-}
-
 export async function generateMetadata({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ lang?: string }>;
 }): Promise<Metadata> {
-  const config = getActiveConfig();
-  const page = findPage((await params).slug);
+  const base = getActiveConfig();
+  const { slug } = await params;
+
+  // Same static-vs-dynamic split as the page body below: only resolve a locale
+  // when the site is actually multilingual, so a single-language site's
+  // metadata stays static and never reads `searchParams` at all.
+  //
+  // Before this, metadata always came from the UNLOCALISED config — the page
+  // BODY translated correctly (it goes through `localizeConfig`), but the
+  // browser tab kept the base language's `<title>` regardless of `?lang=`.
+  // That was invisible until this codebase's first multilingual routed page
+  // actually existed to expose it — nothing before had both `i18n` and
+  // `pages` at once.
+  const config = base.i18n
+    ? localizeConfig(base, pickLocale(base, (await searchParams).lang))
+    : base;
+  const page = config.pages?.find((p) => p.slug === slug);
   if (!page) return {};
   return {
     title: page.seo?.title ?? `${page.title} — ${config.siteName}`,
