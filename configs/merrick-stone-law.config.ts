@@ -28,7 +28,12 @@ import type { SiteConfig } from "@/lib/types";
 const config: SiteConfig = {
   client: "merrick-stone-law",
   siteName: "Merrick & Stone",
-  logo: { alt: "Merrick & Stone, Trial Attorneys", monogram: "M" },
+  // FORM 3 of 3 — wordmark only. With no image AND no monogram, the Logo
+  // component renders the site name by itself. Dropping `monogram` is the
+  // entire change; nothing in the components moves.
+  // (VoltEdge shows form 1: a per-mode image pair. Riverside shows form 2:
+  // a monogram tile beside the wordmark.)
+  logo: { alt: "Merrick & Stone, Trial Attorneys" },
 
   theme: {
     stylePreset: "rounded",
@@ -297,7 +302,7 @@ const config: SiteConfig = {
             },
             {
               name: "Andre Stone",
-              photo: { src: "/art/merrick-stone-law/team-as.svg", alt: "Andre Stone" },
+              photo: { src: "/photos/merrick-stone-law/team-as.206d8c07.jpg", alt: "Andre Stone" },
               role: "Associé fondateur",
               credentials: "J.D. · LL.M. Contentieux",
               bio: "Dirige les dossiers de blessures catastrophiques et d'erreurs médicales — et la science qui fait gagner ces affaires.",
@@ -311,7 +316,7 @@ const config: SiteConfig = {
             },
             {
               name: "Marcus Whitfield",
-              photo: { src: "/art/merrick-stone-law/team-mw.svg", alt: "Marcus Whitfield" },
+              photo: { src: "/photos/merrick-stone-law/team-mw.b03298c4.jpg", alt: "Marcus Whitfield" },
               role: "Avocat collaborateur",
               credentials: "J.D.",
               bio: "Spécialisé dans les dossiers de poids lourds et véhicules commerciaux, il fouille les registres et la télématique pour la vraie histoire.",
@@ -325,7 +330,7 @@ const config: SiteConfig = {
             },
             {
               name: "Nathan Cole",
-              photo: { src: "/art/merrick-stone-law/team-nc.svg", alt: "Nathan Cole" },
+              photo: { src: "/photos/merrick-stone-law/team-nc.86e7d9f2.jpg", alt: "Nathan Cole" },
               role: "Chargé de clientèle",
               credentials: "Gestionnaire de dossier",
               bio: "Votre interlocuteur au quotidien, qui vous tient informé et assure le suivi de vos soins et documents.",
@@ -664,7 +669,7 @@ const config: SiteConfig = {
             },
             {
               name: "Andre Stone",
-              photo: { src: "/art/merrick-stone-law/team-as.svg", alt: "Andre Stone" },
+              photo: { src: "/photos/merrick-stone-law/team-as.206d8c07.jpg", alt: "Andre Stone" },
               role: "شريك مؤسِّس",
               credentials: "J.D. · ماجستير في التقاضي",
               bio: "يقود قضايا الإصابات الكارثية والأخطاء الطبية — والعلم الذي يكسبها.",
@@ -678,7 +683,7 @@ const config: SiteConfig = {
             },
             {
               name: "Marcus Whitfield",
-              photo: { src: "/art/merrick-stone-law/team-mw.svg", alt: "Marcus Whitfield" },
+              photo: { src: "/photos/merrick-stone-law/team-mw.b03298c4.jpg", alt: "Marcus Whitfield" },
               role: "محامٍ مساعد",
               credentials: "J.D.",
               bio: "يركّز على قضايا الشاحنات والمركبات التجارية، ويغوص في السجلات والتتبّع لكشف الحقيقة.",
@@ -692,7 +697,7 @@ const config: SiteConfig = {
             },
             {
               name: "Nathan Cole",
-              photo: { src: "/art/merrick-stone-law/team-nc.svg", alt: "Nathan Cole" },
+              photo: { src: "/photos/merrick-stone-law/team-nc.86e7d9f2.jpg", alt: "Nathan Cole" },
               role: "مسؤول علاقة الموكّلين",
               credentials: "مدير قضايا",
               bio: "نقطة تواصلك اليومية، يبقيك على اطّلاع ويتابع علاجك ومستنداتك.",
@@ -1010,7 +1015,7 @@ const config: SiteConfig = {
           },
           {
             name: "Andre Stone",
-            photo: { src: "/art/merrick-stone-law/team-as.svg", alt: "Andre Stone" },
+            photo: { src: "/photos/merrick-stone-law/team-as.206d8c07.jpg", alt: "Andre Stone" },
             role: "Founding Partner",
             credentials: "J.D. · LL.M. Litigation",
             bio: "Leads the firm's catastrophic-injury and medical-malpractice work — and the science that wins those cases.",
@@ -1024,7 +1029,7 @@ const config: SiteConfig = {
           },
           {
             name: "Marcus Whitfield",
-            photo: { src: "/art/merrick-stone-law/team-mw.svg", alt: "Marcus Whitfield" },
+            photo: { src: "/photos/merrick-stone-law/team-mw.b03298c4.jpg", alt: "Marcus Whitfield" },
             role: "Associate Attorney",
             credentials: "J.D.",
             bio: "Focuses on trucking and commercial-vehicle cases, digging through logs and telematics for the real story.",
@@ -1038,7 +1043,7 @@ const config: SiteConfig = {
           },
           {
             name: "Nathan Cole",
-            photo: { src: "/art/merrick-stone-law/team-nc.svg", alt: "Nathan Cole" },
+            photo: { src: "/photos/merrick-stone-law/team-nc.86e7d9f2.jpg", alt: "Nathan Cole" },
             role: "Client Advocate",
             credentials: "Case Manager",
             bio: "Your day-to-day point of contact, keeping you informed and your treatment and records on track.",

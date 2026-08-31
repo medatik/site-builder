@@ -16,12 +16,16 @@ import type { SiteConfig } from "@/lib/types";
 const config: SiteConfig = {
   client: "voltedge-electric",
   siteName: "VoltEdge Électricité",
+  // FORME 1 sur 3 — logo en image. Les deux fichiers diffèrent réellement, ce
+  // qui exerce la bascule par mode : les deux <img> sont rendues et le CSS
+  // masque celle du mode inactif. Ce doit être du CSS et non du JS, car le
+  // sélecteur de thème modifie `data-mode` sans re-rendre React.
+  // (Riverside montre la forme 2 : monogramme + logotype. Merrick montre la
+  // forme 3 : logotype seul.)
   logo: {
     alt: "VoltEdge Électricité",
-    // Pas de fichier image : le moteur rend son propre logotype + monogramme.
-    // Ajoutez `srcLight` / `srcDark` pour une vraie identité graphique ; l'un
-    // des deux suffit, il sert alors dans les DEUX modes.
-    monogram: "VE",
+    srcLight: "/logo/voltedge-electric/logo-light.svg",
+    srcDark: "/logo/voltedge-electric/logo-dark.svg",
   },
 
   theme: {

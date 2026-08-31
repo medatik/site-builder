@@ -1,17 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(-16 0.5 0.5)">
+    <linearGradient id="g" gradientTransform="rotate(-3 0.5 0.5)">
       <stop offset="0" stop-color="#117B6F"/>
       <stop offset="1" stop-color="#0B5A54"/>
     </linearGradient>
   </defs>
-  <!-- No background rect on purpose. These are drawn from colorsLight, so
-       painting the light background here put a cream tile on every card of a
-       DARK-mode page. Transparent, the monogram sits on whatever surface
-       renders it and both modes look deliberate. -->
-  <circle cx="200" cy="200" r="176" fill="url(#g)"/>
-  <circle cx="200" cy="200" r="190" fill="none" stroke="#D36F57" stroke-opacity="0.5" stroke-width="4"/>
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
-        font-family="Georgia, 'Times New Roman', serif" font-size="120"
-        font-weight="700" fill="#F6FAF8" letter-spacing="4.8">NC</text>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <g fill="#F6FAF8" opacity="0.92">
+    <circle cx="200" cy="150" r="58"/>
+    <path d="M96 400v-28c0-54 46-88 104-88s104 34 104 88v28z"/>
+  </g>
 </svg>

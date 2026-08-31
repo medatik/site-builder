@@ -65,9 +65,26 @@ assets. Composition is seeded from the file name, so output is deterministic and
 never churns the repo. It covers team monograms and any slot without a photo, and it is what
 lets a brand-new client site be stood up before anyone has sourced a single image.
 
-**Team members stay monograms deliberately.** A generated pattern is plainly an illustration;
-a stock photograph of a real person placed under an invented name is a different thing, and
-this repository is public.
+**Team portraits** are licensed photographs where one is published, and a generated
+placeholder bust — in the site's own palette, filling the frame exactly like a photo — where
+one is not. Both come through the same `photo` field, so a config swaps between them by
+changing one path.
+
+### Three ways to render a brand mark
+
+`Logo` takes one of three forms, and each demo uses a different one so all three are visible
+in the repository rather than only described:
+
+| Site | Form | Config |
+| --- | --- | --- |
+| VoltEdge | **Image**, one file per mode | `srcLight` + `srcDark` |
+| Riverside | **Monogram tile + wordmark** | `monogram` |
+| Merrick | **Wordmark only** | neither |
+
+VoltEdge's two files genuinely differ, which exercises the per-mode path rather than the
+single-image shortcut: both `<img>` elements render and CSS hides the inactive one. That swap
+**must** be CSS — the theme toggle flips `data-mode` on the wrapper without re-rendering
+React, so a JS branch would go stale the moment someone toggles the theme.
 
 ## Quick start
 

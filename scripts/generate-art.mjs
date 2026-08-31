@@ -3,10 +3,11 @@
  * Generates the demo sites' artwork from their own palettes.
  *
  * Most photographic slots now carry real, licensed photographs (see
- * public/photos/CREDITS.md). This covers what is left: team monograms, and any
- * slot with no photograph behind it. Every image is DERIVED FROM THE CONFIG that
- * uses it — the script reads `colorsLight` out of each config and draws with
- * those exact values, which is the theme system's idea applied to assets.
+ * public/photos/CREDITS.md). This covers what is left: placeholder portraits for
+ * team members without one, and any slot with no photograph behind it. Every
+ * image is DERIVED FROM THE CONFIG that uses it — the script reads `colorsLight`
+ * out of each config and draws with those exact values, which is the theme
+ * system's idea applied to assets.
  *
  * It also remains the fallback for a NEW client: a site can be stood up and
  * demonstrated before anyone has sourced a single photograph.
@@ -18,9 +19,8 @@
  *
  * These are illustrations, not photographs, and deliberately so: a generated
  * photograph of a clinic that does not exist would be a lie in a way a generated
- * pattern is not. That is also why team members stay monograms even now that
- * real photography is available — a stock face under an invented name is a
- * different thing again, and this repository is public.
+ * pattern is not. A team member drawn as a silhouette is plainly a placeholder
+ * for the same reason.
  */
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -68,25 +68,18 @@ function paletteOf(source, file) {
   return palette;
 }
 
-/** Team member names, so avatars can be monograms rather than a stock face. */
-function teamNamesOf(source) {
-  const start = source.indexOf('type: "team"');
-  if (start === -1) return [];
-  const rest = source.slice(start + 1);
-  const end = rest.indexOf('      type: "');
-  const block = end === -1 ? rest : rest.slice(0, end);
-  return [...block.matchAll(/\bname:\s*"([^"]+)"/g)].map((m) => m[1]);
+/**
+ * Which team portraits this config wants drawn.
+ *
+ * Derived from the config rather than listed here: a member whose `photo.src`
+ * points into `/art/` is asking for a generated placeholder, and one pointing
+ * into `/photos/` has a real photograph. So the config decides, and this script
+ * cannot drift from it or leave an orphan behind.
+ */
+function teamPlaceholdersOf(source, slug) {
+  const re = new RegExp(`/art/${slug}/(team-[a-z0-9-]+)\\.svg`, "g");
+  return [...new Set([...source.matchAll(re)].map((m) => m[1]))];
 }
-
-const initialsOf = (name) =>
-  name
-    .replace(/\b(Dr|Mr|Mrs|Ms|Prof)\.?\s+/gi, "")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
 
 /* ------------------------------------------------------------------ *
  * Drawing
@@ -238,7 +231,27 @@ function scene({ palette, motif, w, h, seed }) {
 `;
 }
 
-function avatar({ palette, initials, seed }) {
+/**
+ * Placeholder portrait — a flat silhouette, not a face.
+ *
+ * Used where a real photograph is not being published. It has to read as an
+ * intentional placeholder rather than a missing image, so it is drawn in the
+ * site's own palette and FILLS THE FRAME exactly like the photographs beside it
+ * — a circle among rounded-square photos looked like a different kind of thing.
+ * The gradient fill also means it works on a dark page, which a light
+ * background rect did not.
+ *
+ * Deliberately the neutral bust everyone recognises as \"no photo\". Two attempts
+ * at a silhouette with hair both read as a helmet: hair and face share one fill,
+ * so there is nothing to separate them, and separating them by tone starts
+ * looking like a mask. A shape that is instantly legible as a placeholder beats
+ * one that is trying to depict somebody.
+ *
+ * No background rect on purpose: these are drawn from colorsLight, so painting
+ * the light background here would put a cream tile on every card of a DARK-mode
+ * page. Transparent, it sits on whatever surface renders it.
+ */
+function portrait({ palette, seed }) {
   const rand = rngFrom(seed);
   const s = 400;
   const tilt = Math.round(rand() * 60 - 30);
@@ -249,15 +262,11 @@ function avatar({ palette, initials, seed }) {
       <stop offset="1" stop-color="${palette.secondary}"/>
     </linearGradient>
   </defs>
-  <!-- No background rect on purpose. These are drawn from colorsLight, so
-       painting the light background here put a cream tile on every card of a
-       DARK-mode page. Transparent, the monogram sits on whatever surface
-       renders it and both modes look deliberate. -->
-  <circle cx="${s / 2}" cy="${s / 2}" r="${s * 0.44}" fill="url(#g)"/>
-  <circle cx="${s / 2}" cy="${s / 2}" r="${s * 0.475}" fill="none" stroke="${palette.accent}" stroke-opacity="0.5" stroke-width="${s * 0.01}"/>
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
-        font-family="Georgia, 'Times New Roman', serif" font-size="${s * 0.3}"
-        font-weight="700" fill="${palette.background}" letter-spacing="${s * 0.012}">${initials}</text>
+  <rect width="${s}" height="${s}" fill="url(#g)"/>
+  <g fill="${palette.background}" opacity="0.92">
+    <circle cx="200" cy="150" r="58"/>
+    <path d="M96 400v-28c0-54 46-88 104-88s104 34 104 88v28z"/>
+  </g>
 </svg>
 `;
 }
@@ -310,13 +319,12 @@ for (const file of configs) {
   for (let i = 1; i <= gallery; i++) {
     put(`gallery-${i}.svg`, scene({ palette, motif, w: 1000, h: 1000, seed: `${slug}-gallery-${i}` }));
   }
-  const names = teamNamesOf(source);
-  for (const name of names) {
-    const ini = initialsOf(name);
-    put(`team-${ini.toLowerCase()}.svg`, avatar({ palette, initials: ini, seed: `${slug}-${name}` }));
+  const placeholders = teamPlaceholdersOf(source, slug);
+  for (const file of placeholders) {
+    put(`${file}.svg`, portrait({ palette, seed: `${slug}-${file}` }));
   }
   console.log(
-    `  ${slug}: ${motif}, ${palette.primary}/${palette.accent}, ${names.length} team avatars`,
+    `  ${slug}: ${motif}, ${palette.primary}/${palette.accent}, ${placeholders.length} placeholder portrait(s)`,
   );
 }
 console.log(`\n${written} files written to public/art/`);

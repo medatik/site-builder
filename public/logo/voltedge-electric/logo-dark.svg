@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232 44" width="232" height="44" role="img" aria-label="VoltEdge Électricité">
+  <rect x="0" y="2" width="40" height="40" rx="4" fill="#FFB020"/>
+  <path d="M23.5 8 L12.5 24.5 h7.2 l-2.6 11.5 L28.5 19 h-7.2 z" fill="#0C1622"/>
+  <text x="52" y="24" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif"
+        font-size="21" font-weight="700" letter-spacing="-0.2" fill="#EAF1F8">VoltEdge</text>
+  <text x="52.5" y="36" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif"
+        font-size="8.5" font-weight="600" letter-spacing="2.6" fill="#38D2F0">ÉLECTRICITÉ</text>
+</svg>

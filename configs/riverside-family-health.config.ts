@@ -17,6 +17,11 @@ import type { SiteConfig } from "@/lib/types";
 const config: SiteConfig = {
   client: "riverside-family-health",
   siteName: "Riverside Santé Familiale",
+  // FORME 2 sur 3 — pastille monogramme + logotype. Sans image, le moteur
+  // compose la marque à partir du thème : la pastille reprend le dégradé
+  // primary → accent, le logotype reprend `siteName`.
+  // (VoltEdge montre la forme 1 : une image par mode. Merrick montre la
+  // forme 3 : le logotype seul.)
   logo: {
     alt: "Riverside Santé Familiale",
     monogram: "R",
@@ -372,7 +377,7 @@ const config: SiteConfig = {
           {
             name: "Dr Mathieu Bernard",
             photo: {
-              src: "/art/riverside-family-health/team-mb.svg",
+              src: "/photos/riverside-family-health/team-mb.b1d02631.jpg",
               alt: "Dr Mathieu Bernard",
             },
             role: "Pédiatrie",
@@ -402,7 +407,7 @@ const config: SiteConfig = {
           {
             name: "Dr Jérôme Ollier",
             photo: {
-              src: "/art/riverside-family-health/team-jo.svg",
+              src: "/photos/riverside-family-health/team-jo.ef190cff.jpg",
               alt: "Dr Jérôme Ollier",
             },
             role: "Médecine interne",
