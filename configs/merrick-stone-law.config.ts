@@ -71,9 +71,9 @@ const config: SiteConfig = {
     // their own tel: hrefs from it, and `{phone}` in copy expands to the
     // bidi-hardened display form. Never store the hardened form here: the
     // isolate characters would leak into every generated tel: link.
-    phone: "+1 (312) 555-0148",
-    email: "intake@merrickstonelaw.com",
-    address: "70 W. Madison St., Chicago, IL 60602",
+    phone: "+212 6 00 00 01 48",
+    email: "contact@merrickstone.ma",
+    address: "70 boulevard Mohammed V, 20000 Casablanca",
     // Emitted as JSON-LD "@type". `LegalService` is the schema.org type for a
     // firm; `Attorney` is for an individual practitioner.
     schemaType: "LegalService",
@@ -95,7 +95,7 @@ const config: SiteConfig = {
   // The WhatsApp glyph needs no translation either way.
   floatingButton: {
     enabled: true,
-    href: "https://wa.me/13125550148",
+    href: "https://wa.me/212600000148",
     label: "Chat on WhatsApp",
     icon: "whatsapp",
     position: { x: "right", y: "bottom" },
@@ -125,16 +125,16 @@ const config: SiteConfig = {
 
   footer: {
     tagline:
-      "Chicago trial attorneys for the seriously injured. No fee unless we win — and no shortcuts on the way there.",
-    legal: "Attorney Advertising. Prior results do not guarantee a similar outcome. Merrick & Stone LLP · 70 W. Madison St., Chicago, IL 60602.",
+      "Casablanca trial lawyers for the seriously injured. No fee unless we win — and no shortcuts on the way there.",
+    legal: "Attorney Advertising. Prior results do not guarantee a similar outcome. Merrick & Stone · 70 boulevard Mohammed V, 20000 Casablanca.",
   },
 
   seo: {
-    title: "Merrick & Stone — Chicago Trial Attorneys | No Fee Unless We Win",
+    title: "Merrick & Stone — Casablanca Trial Lawyers | No Fee Unless We Win",
     description:
-      "Chicago personal-injury and civil trial lawyers for car and truck accidents, medical malpractice, workplace injuries, and wrongful death. Free consultation. No fee unless we win.",
+      "Casablanca personal-injury and civil trial lawyers for car and truck accidents, medical malpractice, workplace injuries, and wrongful death. Free consultation. No fee unless we win.",
     keywords: [
-      "Chicago personal injury lawyer",
+      "Casablanca personal injury lawyer",
       "trial attorney",
       "medical malpractice lawyer",
       "car accident attorney",
@@ -167,9 +167,9 @@ const config: SiteConfig = {
       // the English <title> and description, so an hreflang alternate points at
       // a page that looks untranslated in the search result itself.
       seo: {
-        title: "Merrick & Stone — Avocats plaidants à Chicago | Aucuns honoraires sans résultat",
+        title: "Merrick & Stone — Avocats plaidants à Casablanca | Aucuns honoraires sans résultat",
         description:
-          "Avocats en dommages corporels et en contentieux civil à Chicago : accidents de la route et de poids lourds, erreurs médicales, accidents du travail et décès par faute. Consultation gratuite. Aucuns honoraires sans résultat.",
+          "Avocats en dommages corporels et en contentieux civil à Casablanca : accidents de la route et de poids lourds, erreurs médicales, accidents du travail et décès par faute. Consultation gratuite. Aucuns honoraires sans résultat.",
       },
       nav: [
         { label: "Domaines", href: "#services" },
@@ -184,8 +184,8 @@ const config: SiteConfig = {
       header: { cta: { label: "Consultation gratuite" } },
       footer: {
         tagline:
-          "Avocats plaidants à Chicago pour les personnes gravement blessées. Aucuns honoraires sans résultat — et aucun raccourci en chemin.",
-        legal: "Publicité pour avocats. Les résultats passés ne garantissent pas un résultat similaire. Merrick & Stone LLP · 70 W. Madison St., Chicago, IL 60602.",
+          "Avocats plaidants à Casablanca pour les personnes gravement blessées. Aucuns honoraires sans résultat — et aucun raccourci en chemin.",
+        legal: "Publicité pour avocats. Les résultats passés ne garantissent pas un résultat similaire. Merrick & Stone · 70 boulevard Mohammed V, 20000 Casablanca.",
         exploreLabel: "Explorer",
         contactLabel: "Nous contacter",
         copyrightText: "© Merrick & Stone. Tous droits réservés.",
@@ -214,7 +214,7 @@ const config: SiteConfig = {
           secondaryCta: { label: "Appeler le {phone}" },
           badges: [
             "Sans résultat, sans honoraires",
-            "500 M$+ obtenus",
+            "500 M DH+ obtenus",
             "Disponible 24/7",
           ],
         },
@@ -278,7 +278,7 @@ const config: SiteConfig = {
             "Vous ne devez rien sans indemnisation obtenue",
           ],
           stats: [
-            { value: "500 M$+", label: "Obtenus pour nos clients" },
+            { value: "500 M DH+", label: "Obtenus pour nos clients" },
             { value: "20+", label: "Ans à plaider" },
             { value: "98%", label: "Gagnés ou transigés favorablement" },
           ],
@@ -522,7 +522,7 @@ const config: SiteConfig = {
         },
         location: {
           eyebrow: "Notre cabinet",
-          title: "Centre-ville de Chicago, à deux pas du palais de justice",
+          title: "Centre de Casablanca, à deux pas du palais de justice",
           subtitle:
             "Stationnement validé, et nous nous déplaçons à domicile ou à l'hôpital lorsque vous ne pouvez pas venir.",
           directionsLabel: "Itinéraire",
@@ -538,9 +538,9 @@ const config: SiteConfig = {
     // ── ARABIC (RTL) ───────────────────────────────────────────────────────
     ar: {
       seo: {
-        title: "ميريك وستون — محامون في شيكاغو | لا أتعاب دون نتيجة",
+        title: "ميريك وستون — محامون في الدار البيضاء | لا أتعاب دون نتيجة",
         description:
-          "محامون متخصصون في الأضرار الجسدية والمنازعات المدنية في شيكاغو: حوادث السيارات والشاحنات، الأخطاء الطبية، إصابات العمل، والوفاة الناجمة عن خطأ. استشارة مجانية.",
+          "محامون متخصصون في الأضرار الجسدية والمنازعات المدنية في الدار البيضاء: حوادث السيارات والشاحنات، الأخطاء الطبية، إصابات العمل، والوفاة الناجمة عن خطأ. استشارة مجانية.",
       },
       nav: [
         { label: "مجالات العمل", href: "#services" },
@@ -555,8 +555,8 @@ const config: SiteConfig = {
       header: { cta: { label: "استشارة مجانية" } },
       footer: {
         tagline:
-          "محامو مرافعات في شيكاغو للمصابين إصابات بالغة. لا أتعاب إلا بعد الفوز — وبلا اختصارات في الطريق.",
-        legal: "إعلان محاماة. النتائج السابقة لا تضمن نتيجة مماثلة. Merrick & Stone LLP · 70 W. Madison St., Chicago, IL 60602.",
+          "محامو مرافعات في الدار البيضاء للمصابين إصابات بالغة. لا أتعاب إلا بعد الفوز — وبلا اختصارات في الطريق.",
+        legal: "إعلان محاماة. النتائج السابقة لا تضمن نتيجة مماثلة. Merrick & Stone · 70 boulevard Mohammed V, 20000 Casablanca.",
         exploreLabel: "استكشف",
         contactLabel: "تواصل معنا",
         copyrightText: "© جميع الحقوق محفوظة — ميريك وستون.",
@@ -584,7 +584,7 @@ const config: SiteConfig = {
           secondaryCta: { label: "اتصل على {phone}" },
           badges: [
             "لا فوز، لا أتعاب",
-            "أكثر من 500 مليون دولار",
+            "أكثر من 500 مليون درهم",
             "متاح على مدار الساعة",
           ],
         },
@@ -648,7 +648,7 @@ const config: SiteConfig = {
             "لا تدين بشيء إلا إذا حصّلنا لك تعويضًا",
           ],
           stats: [
-            { value: "500 مليون$+", label: "حُصّلت للموكّلين" },
+            { value: "+500 مليون درهم", label: "حُصّلت للموكّلين" },
             { value: "20+", label: "عامًا من المرافعات" },
             { value: "98%", label: "رُبحت أو سُوّيت لصالحنا" },
           ],
@@ -881,7 +881,7 @@ const config: SiteConfig = {
         },
         location: {
           eyebrow: "مكتبنا",
-          title: "وسط شيكاغو، على بُعد خطوات من المحكمة",
+          title: "وسط الدار البيضاء، على بُعد خطوات من المحكمة",
           subtitle:
             "خدمة تصديق ركن السيارة متاحة، ونقوم بزيارات منزلية وفي المستشفى حين يتعذّر عليك القدوم.",
           directionsLabel: "الاتجاهات",
@@ -916,7 +916,7 @@ const config: SiteConfig = {
           href: "{phoneHref}",
           variant: "secondary",
         },
-        badges: ["No win, no fee", "$500M+ recovered", "Available 24/7"],
+        badges: ["No win, no fee", "500M DH+ recovered", "Available 24/7"],
         layout: "centered",
         backdrop: "halftone",
       },
@@ -988,7 +988,7 @@ const config: SiteConfig = {
           "You owe nothing unless we recover for you",
         ],
         stats: [
-          { value: "$500M+", label: "Recovered for clients" },
+          { value: "500M DH+", label: "Recovered for clients" },
           { value: "20+", label: "Years trying cases" },
           { value: "98%", label: "Won or favorably settled" },
         ],
@@ -1237,7 +1237,7 @@ const config: SiteConfig = {
       enabled: true,
       props: {
         eyebrow: "Our office",
-        title: "Downtown Chicago, steps from the courthouse",
+        title: "Central Casablanca, steps from the courthouse",
         subtitle:
           "Parking validation available, and we make house and hospital calls when you can't come to us.",
         // address / phone / hours inherit from the global `business` block

@@ -10,8 +10,10 @@ import type { SiteConfig } from "@/lib/types";
  * clients — être assuré et qualifié, intervenir vite, annoncer le prix
  * d'avance — passe en premier.
  *
- * Les numéros de téléphone appartiennent aux plages fictives réservées par
- * l'ARCEP (07 55 53 XX XX), l'équivalent français du 555-01XX américain.
+ * Entreprise fictive basée à Casablanca. Contrairement aux États-Unis
+ * (555-01XX) ou à la France (plages ARCEP), le Maroc ne réserve aucune plage de
+ * numéros à la fiction : ceux-ci sont donc construits sur un motif visiblement
+ * factice (00 00 01 XX) plutôt que tirés d'une plage garantie non attribuée.
  */
 const config: SiteConfig = {
   client: "voltedge-electric",
@@ -61,9 +63,9 @@ const config: SiteConfig = {
   },
 
   business: {
-    phone: "+33 7 55 53 41 20",
-    email: "contact@voltedge-electricite.fr",
-    address: "18 rue de l'Industrie, 69007 Lyon",
+    phone: "+212 6 00 00 01 47",
+    email: "contact@voltedge-electricite.ma",
+    address: "18 rue de l'Industrie, Aïn Sebaâ, 20250 Casablanca",
     // Émis comme "@type" dans le JSON-LD. Le type schema.org le plus précis
     // devance le "LocalBusiness" par défaut pour le pack local et la recherche
     // « électricien près de chez moi ».
@@ -113,7 +115,7 @@ const config: SiteConfig = {
   // lien pour un autre canal, ou passez `enabled: false` pour le masquer.
   floatingButton: {
     enabled: true,
-    href: "https://wa.me/33755534120",
+    href: "https://wa.me/212600000147",
     label: "Écrire sur WhatsApp",
     icon: "whatsapp",
     position: { x: "right", y: "bottom" },
@@ -121,8 +123,8 @@ const config: SiteConfig = {
 
   footer: {
     tagline:
-      "Qualifiés, assurés et joignables jour et nuit, pour les particuliers et les professionnels de la métropole lyonnaise.",
-    legal: "Qualifelec E2 · RGE · Assurance décennale n° 1043927",
+      "Qualifiés, assurés et joignables jour et nuit, pour les particuliers et les professionnels de la région du Grand Casablanca.",
+    legal: "Entreprise agréée · Assurance décennale n° 1043927 · RC professionnelle",
   },
 
   // Site monolingue : `lang` suffit à fixer `<html lang="fr">`. Une première
@@ -133,12 +135,12 @@ const config: SiteConfig = {
   lang: "fr",
 
   seo: {
-    title: "VoltEdge Électricité — électriciens à Lyon, urgences 24h/24",
+    title: "VoltEdge Électricité — électriciens à Casablanca, urgences 24h/24",
     description:
       "Travaux électriques résidentiels et tertiaires réalisés dans les règles de l'art. Mise aux normes de tableau, bornes de recharge, éclairage et dépannage 24h/24. Qualifiés, assurés, prix annoncé d'avance.",
     keywords: [
       "électricien",
-      "électricien Lyon",
+      "électricien Casablanca",
       "installation borne de recharge",
       "mise aux normes tableau électrique",
       "électricien urgence",
@@ -208,7 +210,7 @@ const config: SiteConfig = {
               },
               {
                 heading: "Vos droits",
-                body: "Vous pouvez demander une copie des données que nous détenons sur vous, leur rectification ou leur suppression. Écrivez à {email} et nous vous répondrons. Si notre réponse ne vous satisfait pas, vous pouvez saisir la CNIL.",
+                body: "Vous pouvez demander une copie des données que nous détenons sur vous, leur rectification ou leur suppression. Écrivez à {email} et nous vous répondrons. Si notre réponse ne vous satisfait pas, vous pouvez saisir la CNDP (Commission nationale de contrôle de la protection des données à caractère personnel).",
               },
               {
                 heading: "Cookies et stockage du navigateur",
@@ -283,7 +285,7 @@ const config: SiteConfig = {
             icon: "gauge",
             title: "Mise aux normes du tableau",
             description:
-              "Passage à un tableau conforme NF C 15-100, remplacement des tableaux vétustes et ajout de puissance pour les usages actuels.",
+              "Passage à un tableau conforme aux normes en vigueur, remplacement des tableaux vétustes et ajout de puissance pour les usages actuels.",
           },
           {
             icon: "plug-zap",
@@ -320,10 +322,10 @@ const config: SiteConfig = {
         title: "L'électricien que vous recommanderiez à vos parents",
         body: [
           "VoltEdge a démarré en 2009 avec une seule camionnette et une règle : traiter chaque logement comme le nôtre. Quinze ans plus tard, la règle n'a pas bougé — seule la taille de l'équipe a changé.",
-          "Nous sommes qualifiés Qualifelec, couverts par une assurance décennale, et chaque intervenant jusqu'au dernier apprenti est identifié. Vous recevez un devis ferme avant que nous touchions au moindre fil, un chantier propre à notre départ, et une garantie qui signifie que nous revenons si quelque chose ne va pas.",
+          "Nous sommes une entreprise agréée, couverte par une assurance décennale, et chaque intervenant jusqu'au dernier apprenti est identifié. Vous recevez un devis ferme avant que nous touchions au moindre fil, un chantier propre à notre départ, et une garantie qui signifie que nous revenons si quelque chose ne va pas.",
         ],
         highlights: [
-          "Qualifelec E2 & assurance décennale",
+          "Agrément électricité & assurance décennale",
           "Devis détaillés, annoncés d'avance",
           "Créneaux d'arrivée respectés",
           "Garantie de bonne exécution d'un an",
@@ -351,7 +353,7 @@ const config: SiteConfig = {
         tiers: [
           {
             name: "Déplacement diagnostic",
-            price: "89 €",
+            price: "890 DH",
             period: "par intervention",
             description:
               "Un électricien qualifié chez vous pour identifier la panne — montant déduit de la réparation.",
@@ -365,7 +367,7 @@ const config: SiteConfig = {
           },
           {
             name: "Mise aux normes du tableau",
-            price: "à partir de 1 850 €",
+            price: "à partir de 18 500 DH",
             description:
               "Passage à un tableau conforme — démarches, main-d'œuvre et remise en état comprises.",
             features: [
@@ -381,14 +383,14 @@ const config: SiteConfig = {
           },
           {
             name: "Pose de borne de recharge",
-            price: "à partir de 650 €",
+            price: "à partir de 6 500 DH",
             description:
               "Recharge à domicile, installée et déclarée par des professionnels qualifiés.",
             features: [
               "Circuit dédié 230 V",
               "Bilan de puissance et déclaration",
               "Compatible avec tous les véhicules",
-              "Aide au montage du dossier de prime",
+              "Démarches auprès du distributeur d'électricité",
             ],
             cta: { label: "Demander un devis", href: "#contact" },
           },
@@ -408,7 +410,7 @@ const config: SiteConfig = {
             src: "/photos/voltedge-electric/gallery-1.dd705410.jpg",
             alt: "Tableau électrique mis aux normes",
             label: "Tableau électrique",
-            caption: "Mise aux normes complète du tableau — Croix-Rousse",
+            caption: "Mise aux normes complète du tableau — Maârif",
           },
           {
             src: "/photos/voltedge-electric/gallery-2.2a7d29f7.jpg",
@@ -454,28 +456,28 @@ const config: SiteConfig = {
             quote:
               "Notre tableau datait d'une maison des années 1950 et a fini par lâcher. VoltEdge a annoncé un forfait, s'est occupé des démarches, et le courant était revenu le jour même. Travail impeccable.",
             author: "Marise T.",
-            role: "Croix-Rousse, Lyon",
+            role: "Maârif, Casablanca",
             rating: 5,
           },
           {
             quote:
               "J'ai appelé à 23h quand la moitié de la maison s'est retrouvée dans le noir. Un vrai électricien a répondu, m'a guidée pour sécuriser l'installation, et est passé dès le lendemain matin. Ils m'ont sauvée.",
             author: "Delphine K.",
-            role: "Villeurbanne",
+            role: "Anfa, Casablanca",
             rating: 5,
           },
           {
             quote:
               "Devis reçu le mardi, chantier terminé le jeudi, et le prix final était exactement celui du devis. C'est devenu assez rare pour être signalé.",
             author: "Olivier M.",
-            role: "Caluire-et-Cuire",
+            role: "Bourgogne, Casablanca",
             rating: 5,
           },
           {
             quote:
               "J'avais demandé trois devis pour une borne de recharge. VoltEdge est le seul à avoir fait un vrai bilan de puissance au lieu d'estimer au jugé. Pose soignée, prix juste.",
             author: "Priya S.",
-            role: "Bron",
+            role: "Aïn Diab, Casablanca",
             rating: 5,
           },
         ],
@@ -491,7 +493,7 @@ const config: SiteConfig = {
           {
             question: "Êtes-vous qualifiés et assurés ?",
             answer:
-              "Oui — nous sommes qualifiés Qualifelec E2 et couverts par une assurance décennale (n° 1043927). Nous transmettons volontiers les attestations avant tout début de travaux.",
+              "Oui — nous sommes une entreprise agréée, couverte par une assurance décennale (n° 1043927) et une responsabilité civile professionnelle. Nous transmettons volontiers les attestations avant tout début de travaux.",
           },
           {
             question: "Assurez-vous réellement les urgences 24h/24 ?",
@@ -506,7 +508,7 @@ const config: SiteConfig = {
           {
             question: "Les devis sont-ils payants ?",
             answer:
-              "Les devis sur travaux planifiés — tableau électrique, borne de recharge, éclairage — sont toujours gratuits. Le déplacement diagnostic est facturé 89 €, montant déduit de la réparation si vous donnez suite.",
+              "Les devis sur travaux planifiés — tableau électrique, borne de recharge, éclairage — sont toujours gratuits. Le déplacement diagnostic est facturé 890 DH, montant déduit de la réparation si vous donnez suite.",
           },
           {
             question: "Garantissez-vous vos travaux ?",
@@ -530,7 +532,7 @@ const config: SiteConfig = {
         },
         secondaryCta: {
           label: "Nous écrire sur WhatsApp",
-          href: "https://wa.me/33755534120",
+          href: "https://wa.me/212600000147",
           icon: "whatsapp",
         },
         variant: "band",
@@ -589,11 +591,11 @@ const config: SiteConfig = {
       enabled: true,
       props: {
         eyebrow: "Zone d'intervention",
-        title: "Basés à Lyon, au service de la métropole",
+        title: "Basés à Casablanca, au service du Grand Casablanca",
         subtitle:
-          "Lyon, Villeurbanne, Caluire-et-Cuire, Bron, Vénissieux et les communes alentour.",
-        address: "18 rue de l'Industrie, 69007 Lyon",
-        phone: "+33 7 55 53 41 20",
+          "Casablanca, Mohammedia, Bouskoura, Dar Bouazza, Aïn Harrouda et les communes alentour.",
+        address: "18 rue de l'Industrie, Aïn Sebaâ, 20250 Casablanca",
+        phone: "+212 6 00 00 01 47",
         hours: [
           { days: "Lun – Ven", hours: "7h00 – 18h00" },
           { days: "Samedi", hours: "8h00 – 16h00" },

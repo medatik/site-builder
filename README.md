@@ -10,9 +10,9 @@ a theme, or a fork.
 
 | Demo | Sector | Language | Preset | Notable |
 | --- | --- | --- | --- | --- |
-| **VoltEdge Électricité** | Electrician, Lyon | French | `sharp` | dual light/dark palette with a toggle, per-client hero override, routed `/confidentialite` page |
-| **Riverside Santé Familiale** | Family clinic, Bordeaux | French | `soft` | light-only palette, three-slide hero, team section |
-| **Merrick & Stone** | Personal-injury law, Chicago | EN / FR / AR | `rounded` | trilingual from one config, including full RTL |
+| **VoltEdge Électricité** | Electrician, Casablanca | French | `sharp` | dual light/dark palette with a toggle, per-client hero override, routed `/confidentialite` page |
+| **Riverside Santé Familiale** | Family clinic, Casablanca | French | `soft` | light-only palette, three-slide hero, team section |
+| **Merrick & Stone** | Personal-injury law, Casablanca | EN / FR / AR | `rounded` | trilingual from one config, including full RTL |
 
 The three share 100% of their code. Every difference between them — including which
 language they are written in — lives in `configs/<slug>.config.ts`.
@@ -22,8 +22,12 @@ language a site is written in is content, not code. Merrick additionally carries
 translation overlay, so the *same* config renders in three languages.
 
 > All business names, addresses, phone numbers and email addresses in these demos are
-> fictional. Phone numbers use the ranges reserved for fiction — `555-01xx` in the US,
-> and ARCEP's `05 36 49`/`07 55 53` ranges in France.
+> fictional. All three businesses are placed in Casablanca.
+>
+> One caveat worth stating rather than hiding: the US reserves `555-01xx` for fiction and
+> France has ARCEP's ranges, but **Morocco reserves no such range**. These numbers are
+> therefore built on a visibly artificial pattern (`00 00 01 xx`) rather than drawn from a
+> block guaranteed to be unassigned. If you publish this, that is the one detail to check.
 
 ## The same codebase, three times
 

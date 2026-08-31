@@ -11,8 +11,10 @@ import type { SiteConfig } from "@/lib/types";
  * facilement, savoir qui l'on va voir — passe devant : les praticiens ont donc
  * leur propre section, et il n'y a ni tarifs ni galerie.
  *
- * Les numéros appartiennent aux plages fictives réservées par l'ARCEP
- * (05 36 49 XX XX).
+ * Cabinet fictif basé à Casablanca. Le Maroc ne réserve aucune plage de
+ * numéros à la fiction, contrairement aux États-Unis (555-01XX) ou à la France
+ * (plages ARCEP) : ceux-ci suivent donc un motif visiblement factice
+ * (00 00 01 XX).
  */
 const config: SiteConfig = {
   client: "riverside-family-health",
@@ -65,9 +67,9 @@ const config: SiteConfig = {
   },
 
   business: {
-    phone: "+33 5 36 49 12 80",
-    email: "contact@riverside-sante.fr",
-    address: "12 avenue des Quais, 33000 Bordeaux",
+    phone: "+212 5 22 00 01 92",
+    email: "contact@riverside-sante.ma",
+    address: "12 boulevard d'Anfa, 20050 Casablanca",
     // Émis comme "@type" dans le JSON-LD. `MedicalClinic` convient à un cabinet
     // de groupe ; `Physician` décrirait un praticien seul.
     schemaType: "MedicalClinic",
@@ -128,8 +130,8 @@ const config: SiteConfig = {
   footer: {
     type: "minimal",
     tagline:
-      "Des soins primaires pour toute la famille, au cœur de Bordeaux — où l'on est une personne d'abord, un patient ensuite.",
-    legal: "Cabinet conventionné secteur 1 · Tiers payant accepté",
+      "Des soins primaires pour toute la famille, au cœur de Casablanca — où l'on est une personne d'abord, un patient ensuite.",
+    legal: "Cabinet conventionné AMO · Tiers payant accepté",
     contactLabel: "Nous contacter",
     copyrightText: "© Tous droits réservés.",
     showHours: true,
@@ -144,11 +146,11 @@ const config: SiteConfig = {
 
   seo: {
     title:
-      "Riverside Santé Familiale — médecine générale et soins primaires à Bordeaux",
+      "Riverside Santé Familiale — médecine générale et soins primaires à Casablanca",
     description:
-      "Médecine générale, pédiatrie, santé de la femme et téléconsultation à Bordeaux. Rendez-vous le jour même, tiers payant accepté. Nouveaux patients bienvenus.",
+      "Médecine générale, pédiatrie, santé de la femme et téléconsultation à Casablanca. Rendez-vous le jour même, tiers payant accepté. Nouveaux patients bienvenus.",
     keywords: [
-      "médecin généraliste Bordeaux",
+      "médecin généraliste Casablanca",
       "soins primaires",
       "pédiatrie",
       "rendez-vous le jour même",
@@ -168,7 +170,7 @@ const config: SiteConfig = {
           "Des consultations sans précipitation, une équipe qui connaît votre nom, et des rendez-vous le jour même quand il le faut. Riverside, c'est la médecine de famille telle qu'elle devrait être.",
         bullets: [
           "Rendez-vous le jour même ou le lendemain",
-          "Tiers payant et principales mutuelles acceptés",
+          "Tiers payant AMO et principales mutuelles acceptés",
           "Consultations au cabinet et téléconsultations sécurisées",
         ],
         primaryCta: {
@@ -184,7 +186,7 @@ const config: SiteConfig = {
         badges: [
           "Praticiens diplômés",
           "4,9★ de satisfaction patients",
-          "Conventionné secteur 1",
+          "Conventionné AMO",
         ],
         // Bandeau plein cadre en rotation. Ce sont les `slides` qui s'affichent ;
         // les propriétés ci-dessus (bullets, badges, backdrop et le texte de
@@ -231,7 +233,7 @@ const config: SiteConfig = {
             title: "Des rendez-vous le jour même,",
             highlight: "souvent en quelques heures.",
             subtitle:
-              "Maux de gorge, infections, petites blessures et tout ce qui ne peut pas attendre la semaine prochaine. Tiers payant et principales mutuelles acceptés.",
+              "Maux de gorge, infections, petites blessures et tout ce qui ne peut pas attendre la semaine prochaine. Tiers payant AMO et principales mutuelles acceptés.",
             primaryCta: {
               label: "Consulter aujourd'hui",
               href: "#contact",
@@ -253,7 +255,7 @@ const config: SiteConfig = {
             title: "La téléconsultation sécurisée",
             highlight: "quand vous ne pouvez pas venir.",
             subtitle:
-              "Suivis, questions sur une ordonnance et conseils en visio, avec un cabinet conventionné que vous connaissez déjà.",
+              "Suivis, questions sur une ordonnance et conseils en visio, avec un cabinet conventionné AMO que vous connaissez déjà.",
             primaryCta: {
               label: "Démarrer une téléconsultation",
               href: "#contact",
@@ -469,7 +471,7 @@ const config: SiteConfig = {
           {
             question: "Comment fonctionne la prise en charge ?",
             answer:
-              "Le cabinet est conventionné secteur 1 : les tarifs sont ceux de l'Assurance Maladie, sans dépassement d'honoraires. Nous pratiquons le tiers payant sur la part obligatoire, et sur la part mutuelle pour la plupart des complémentaires. Munissez-vous de votre carte Vitale et de votre carte de mutuelle.",
+              "Le cabinet est conventionné AMO : les tarifs suivent la tarification nationale de référence, sans dépassement d'honoraires. Nous pratiquons le tiers payant sur la part AMO, et sur la part mutuelle pour la plupart des complémentaires. Munissez-vous de votre carte nationale d'identité et de votre attestation AMO (CNSS ou CNOPS).",
           },
           {
             question: "Puis-je avoir un rendez-vous le jour même ?",
@@ -484,7 +486,7 @@ const config: SiteConfig = {
           {
             question: "Que dois-je apporter à ma première visite ?",
             answer:
-              "Merci d'apporter une pièce d'identité, votre carte Vitale et votre carte de mutuelle, la liste de vos traitements en cours, et tout compte rendu utile de vos précédents médecins. Arriver 15 minutes en avance nous laisse le temps de créer votre dossier.",
+              "Merci d'apporter votre carte nationale d'identité, votre attestation AMO et votre carte de mutuelle, la liste de vos traitements en cours, et tout compte rendu utile de vos précédents médecins. Arriver 15 minutes en avance nous laisse le temps de créer votre dossier.",
           },
         ],
       },
@@ -513,7 +515,7 @@ const config: SiteConfig = {
         eyebrow: "Rendez-vous",
         title: "Demander un rendez-vous",
         subtitle:
-          "Donnez-nous quelques informations et le secrétariat vous rappelle pour confirmer un horaire. En cas d'urgence vitale, appelez le 15 (SAMU) ou le 112.",
+          "Donnez-nous quelques informations et le secrétariat vous rappelle pour confirmer un horaire. En cas d'urgence vitale, appelez le 15 (protection civile) ou le 19 (police).",
         submitLabel: "Envoyer ma demande",
         successMessage:
           "Merci — le secrétariat vous appelle sous un jour ouvré pour confirmer votre rendez-vous.",
@@ -556,9 +558,9 @@ const config: SiteConfig = {
         eyebrow: "Nous trouver",
         title: "Facile à trouver, facile à stationner",
         subtitle:
-          "Sur les quais, avec un parking patients gratuit et un arrêt de tramway à une rue.",
-        address: "12 avenue des Quais, 33000 Bordeaux",
-        phone: "+33 5 36 49 12 80",
+          "Dans le quartier d'Anfa, avec un parking patients gratuit et un arrêt de tramway à une rue.",
+        address: "12 boulevard d'Anfa, 20050 Casablanca",
+        phone: "+212 5 22 00 01 92",
         hours: [
           { days: "Lun – Ven", hours: "8h00 – 17h30" },
           { days: "Samedi", hours: "9h00 – 13h00" },
