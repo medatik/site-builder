@@ -92,12 +92,16 @@ const config: SiteConfig = {
 
   // Icon-only (no showLabel): floatingButton isn't part of the translation
   // overlay system, so a visible label would stay English on the fr/ar pages.
-  // The WhatsApp glyph needs no translation either way.
+  // A phone glyph needs no translation either way.
+  //
+  // `{phoneHref}` rather than a literal tel: URL, so the number lives in
+  // `business.phone` alone — a hand-written copy here would silently drift the
+  // day the number changes, and nothing would flag it.
   floatingButton: {
     enabled: true,
-    href: "https://wa.me/212600000148",
-    label: "Chat on WhatsApp",
-    icon: "whatsapp",
+    href: "{phoneHref}",
+    label: "Call the firm",
+    icon: "phone",
     position: { x: "right", y: "bottom" },
   },
 
